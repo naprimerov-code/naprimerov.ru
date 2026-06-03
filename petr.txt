@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Пётр Филиппович Напримеров — Семейный архив</title>
+<style>
+body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; }
+h1 { color: #1a365d; }
+.back-link { display: block; margin-bottom: 20px; color: #1a365d; text-decoration: none; }
+.section { margin-top: 30px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px; }
+</style>
+</head>
+<body>
+<a href="index.html" class="back-link">← На главную</a>
+
+<h1>Пётр Филиппович Напримеров</h1>
+
+<div class="section">
+<h3>Биография</h3>
+<p>[Здесь будет основной текст: дата рождения, жизненный путь, ключевые моменты]</p>
+</div>
+
+<div class="section">
+<h3>Служба в СМЕРШ</h3>
+<p>[История службы, участие в операциях, важные даты]</p>
+</div>
+
+<div class="section">
+<h3>Награды и документы</h3>
+<ul>
+<li>[Название награды — год]</li>
+<li>[Архивная справка из ЦАМО — 
+
+описание]</li>
+</ul>
+</div>
+</body>
+</html>
