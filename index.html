@@ -1,187 +1,152 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Семейный архив Напримеровых</title>
-<style>
-:root {
---bg-color: #f8f9fa;
---text-color: #212529;
---accent-color: #1a365d;
---card-bg: #ffffff;
---border-color: #e2e8f0;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Напримеровы. История рода</title>
+    <style>
+        /* Общие стили для создания атмосферы исторического архива */
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: #fcfaf6;
+            color: #2c2520;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
 
-@media (prefers-color-scheme: dark) {
-:root {
---bg-color: #0f172a;
---text-color: #f1f5f9;
+        header {
+            background-color: #3e352f;
+            color: #f5f0ea;
+            text-align: center;
+            padding: 3rem 1rem;
+            border-bottom: 4px solid #b59a7b;
+        }
 
---accent-color: #38bdf8;
---card-bg: #1e293b;
---border-color: #334155;
-}
-}
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
 
-body {
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-background-color: var(--bg-color);
-color: var(--text-color);
-line-height: 1.6;
-margin: 0;
-padding: 0;
-}
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-style: italic;
+            color: #d1c7bd;
+            font-size: 1.1rem;
+        }
 
-header {
-background-color: var(--card-bg);
-border-bottom: 1px solid var(--border-color);
-padding: 2rem 1rem;
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
 
-text-align: center;
-}
+        .welcome-section {
+            background-color: #ffffff;
+            border: 1px solid #e8dec9;
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
 
-header h1 {
-margin: 0;
-font-size: 2.2rem;
-letter-spacing: -0.05em;
-}
+        .welcome-section h2 {
+            margin-top: 0;
+            color: #5a4b41;
+            border-bottom: 1px solid #e8dec9;
+            padding-bottom: 0.5rem;
+        }
 
-header p {
-margin: 0.5rem 0 0 0;
-opacity: 0.7;
-font-style: italic;
-}
+        /* Стили для разделов (карточек) */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
 
-nav {
-display: flex;
-justify-content: center;
-gap: 1.5rem;
-margin-top: 1.5rem;
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
-}
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e8dec9;
+            padding: 1.5rem;
+            border-radius: 4px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
 
-nav a {
-color: var(--accent-color);
-text-decoration: none;
-font-weight: 500;
-}
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
 
-nav a:hover {
-text-decoration: underline;
-}
+        .card h3 {
+            margin-top: 0;
+            color: #5a4b41;
+        }
 
-main {
-max-width: 900px;
-margin: 2rem auto;
-padding: 0 1rem;
-}
+        .card p {
+            font-size: 0.95rem;
+            color: #554840;
+            margin-bottom: 0;
+        }
 
-.intro-section {
-background-color: var(--card-bg);
-
-border: 1px solid var(--border-color);
-border-radius: 8px;
-padding: 2rem;
-margin-bottom: 2rem;
-}
-
-.grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1-fraction));
-gap: 1.5rem;
-margin-top: 2rem;
-}
-
-/* Защита от парсера: заменяем 1-fraction на стандартный 1fr при реальной сборке */
-@media (min-width: 600px) {
-.grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-.card {
-background-color: var(--card-bg);
-border: 1px solid var(--border-color);
-border-radius: 8px;
-padding: 1.5rem;
-display: flex;
-flex-direction: column;
-}
-
-.card h3 {
-margin-top: 0;
-color: var(--accent-color);
-}
-
-.card a {
-margin-top: auto;
-color: var(--accent-color);
-text-decoration: none;
-font-weight: bold;
-}
-
-
-footer {
-text-align: center;
-padding: 3rem 1rem;
-margin-top: 4rem;
-border-top: 1px solid var(--border-color);
-font-size: 0.9rem;
-opacity: 0.6;
-}
-</style>
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: #8c7e74;
+            border-top: 1px solid #e8dec9;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-<h1>НАПРИМЕРОВЫ</h1>
-<p>Генеалогический архив и история рода</p>
-<nav>
-<a href="#history">География рода</a>
-<a href="#persons">Персоналии</a>
+    <header>
+        <h1>Напримеровы. История рода</h1>
+        <p>Цифровой архив и генеалогическое древо семьи</p>
+    </header>
 
-<a href="#archive">Документы</a>
-</nav>
-</header>
+    <div class="container">
+        
+        <section class="welcome-section">
+            <h2>Добро пожаловать</h2>
+            <p>Этот сайт посвящен истории, сохранению памяти и исследованию генеалогических корней семьи Напримеровых. Здесь собираются архивные документы, исторические свидетельства, биографии поколений и памятные фотографии, чтобы сберечь наше общее наследие для будущих потомков.</p>
+        </section>
 
-<main>
-<section class="intro-section">
-<h2>О проекте</h2>
-<p>Добро пожаловать на персональный исторический архив семьи Напримеровых. Этот сайт создан для систематизации архивных документов, восстановления хронологии событий и сохранения памяти о поколениях для наших потомков. Если у вас есть архивные данные, фотографии или упоминания фамилии, вы можете связаться с автором проекта.</p>
-</section>
+        <div class="grid">
+            <div class="card">
+                <h3>Родословное древо</h3>
+                <p>Исследование поколений, хронология жизни предков и ключевые вехи в истории семьи.</p>
+            </div>
 
-<section id="history" style="margin-top: 3rem;">
-<h2>География и ключевые ветви</h2>
+            <div class="card">
+                <h3>Архив документов</h3>
+                <p>Исторические выписки, свидетельства, архивные справки и важные семейные летописи.</p>
+            </div>
 
-<div class="card">
-<h3>Рязанская ветвь (с. Канино)</h3>
-<p>История рода, уходящая корнями в Сапожковский уезд Рязанской губернии. Исследования строятся на базе документов Государственного архива Рязанской области (ГАРО), включая метрические книги и ревизские сказки.</p>
-<a href="#">Читать историю ветви →</a>
-</div>
-</section>
+            <div class="card">
+                <h3>Фотогалерея</h3>
+                <p>Собрание старых и современных фотографий, лиц, мест и памятных моментов.</p>
+            </div>
 
-<section id="persons" style="margin-top: 3rem;">
-<h2>Страницы памяти</h2>
-<div class="grid">
-<div class="card">
-<h3>Пётр Филиппович Напримеров</h3>
-<p>Военный офицер контрразведки СМЕРШ. Боевой путь в годы Великой Отечественной войны, архивные справки и наградные 
+            <div class="card">
+                <h3>Воспоминания</h3>
+                <p>Записи, рассказы, биографические очерки и живые истории из жизни разных поколений.</p>
+            </div>
+        </div>
 
-листы.</p>
-<a href="petr.html">Перейти к биографии →</a>
-</div>
-<div class="card">
-<h3>Виктор Петрович Напримеров</h3>
-<p>Многолетняя служба в правоохранительных органах, службе судебных приставов и таможенных органах.</p>
-<a href="#">Перейти к биографии →</a>
-</div>
-</div>
-</section>
-</main>
+    </div>
 
-<footer>
-<p>© 2026 naprimerov.ru. Исследование и разработка: Капитан Напримеров.</p>
-</footer>
+    <footer>
+        <p>© 2026 Семейный архив Напримеровых. Все права защищены.</p>
+    </footer>
 
 </body>
 </html>
