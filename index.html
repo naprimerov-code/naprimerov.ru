@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Напримеровы. История рода</title>
+    <title>Напримеровы. История рода | Naprimerov Family History</title>
     <style>
-        /* Общие стили для создания атмосферы исторического архива */
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
             background-color: #fcfaf6;
@@ -13,6 +12,35 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
+        }
+
+        /* Панель переключения языков */
+        .lang-switch-container {
+            background-color: #2e2621;
+            text-align: right;
+            padding: 0.5rem 2rem;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: #a8998a;
+            cursor: pointer;
+            font-family: sans-serif;
+            font-size: 0.9rem;
+            margin-left: 10px;
+            padding: 2px 6px;
+            transition: color 0.2s;
+        }
+
+        .lang-btn:hover {
+            color: #ffffff;
+        }
+
+        .lang-btn.active {
+            color: #ffffff;
+            font-weight: bold;
+            border-bottom: 2px solid #b59a7b;
         }
 
         header {
@@ -50,7 +78,7 @@
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             margin-bottom: 2rem;
-            text-align: center; /* Центрируем контент и кнопку */
+            text-align: center;
         }
 
         .welcome-section h2 {
@@ -66,7 +94,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Стиль для кнопки связи */
         .contact-btn {
             display: inline-block;
             background-color: #b59a7b;
@@ -90,7 +117,6 @@
             transform: scale(0.98);
         }
 
-        /* Стили для разделов (карточек) */
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -135,60 +161,102 @@
             color: #8c7e74;
             border-top: 1px solid #e8dec9;
         }
+
+        /* Механика скрытия/показа языков */
+        html[lang="ru"] .lang-en { display: none; }
+        html[lang="en"] .lang-ru { display: none; }
     </style>
 </head>
 <body>
 
+    <!-- Переключатель языков -->
+    <div class="lang-switch-container">
+        <button class="lang-btn" id="btn-ru" onclick="changeLang('ru')">RU</button>
+        <button class="lang-btn" id="btn-en" onclick="changeLang('en')">EN</button>
+    </div>
+
     <header>
-        <h1>Напримеровы. История рода</h1>
-        <p>Цифровой архив и генеалогическое древо семьи</p>
+        <h1 class="lang-ru">Напримеровы. История рода</h1>
+        <h1 class="lang-en">The Naprimerov Lineage</h1>
+        
+        <p class="lang-ru">Всемирный реестр и единый архив семьи</p>
+        <p class="lang-en">Global registry and family archive</p>
     </header>
 
     <div class="container">
         
         <section class="welcome-section">
-            <h2>Добро пожаловать</h2>
-            <p>Этот сайт посвящен истории, сохранению памяти и исследованию генеалогических корней семьи Напримеровых. Здесь собираются архивные документы, исторические свидетельства, биографии поколений и памятные фотографии, чтобы сберечь наше общее наследие для будущих потомков.</p>
+            <h2 class="lang-ru">Глобальный поиск однофамильцев</h2>
+            <h2 class="lang-en">Global Surname Gathering</h2>
             
-            <!-- Кнопка связи -->
-            <button class="contact-btn" onclick="sendEmailToDmitry()">Связаться с Напримеровым Дмитрием</button>
+            <p class="lang-ru">Этот проект создан для того, чтобы объединить всех носителей фамилии <strong>Напримеров</strong> по всему миру. Наша цель — собрать воедино осколки семейной истории, восстановить генеалогические древа, сохранить архивные документы и найти затерянные родственные связи. Если вы носите эту фамилию или она есть в вашем роду — добро пожаловать домой.</p>
+            <p class="lang-en">This project aims to unite everyone bearing the surname <strong>Naprimerov</strong> across the globe. Our mission is to piece together family history, restore genealogical trees, preserve archival records, and discover lost family connections. If you carry this name or have it in your ancestry — welcome home.</p>
+            
+            <button class="contact-btn lang-ru" onclick="sendEmail('ru')">Связаться с Напримеровым Дмитрием</button>
+            <button class="contact-btn lang-en" onclick="sendEmail('en')">Contact Dmitry Naprimerov</button>
         </section>
 
         <div class="grid">
             <div class="card">
-                <h3>Родословное древо</h3>
-                <p>Исследование поколений, хронология жизни предков и ключевые вехи в истории семьи.</p>
+                <h3 class="lang-ru">Общее древо</h3>
+                <h3 class="lang-en">Global Family Tree</h3>
+                <p class="lang-ru">Интеграция различных ветвей рода в единую хронологическую систему.</p>
+                <p class="lang-en">Integrating different family branches into a unified chronological system.</p>
             </div>
 
             <div class="card">
-                <h3>Архив документов</h3>
-                <p>Исторические выписки, свидетельства, архивные справки и важные семейные летописи.</p>
+                <h3 class="lang-ru">География рода</h3>
+                <h3 class="lang-en">Family Geography</h3>
+                <p class="lang-ru">Карта расселения поколений и исторические регионы происхождения фамилии.</p>
+                <p class="lang-en">Mapping generation migration and tracing historical regions of origin.</p>
             </div>
 
             <div class="card">
-                <h3>Фотогалерея</h3>
-                <p>Собрание старых и современных фотографий, лиц, мест и памятных моментов.</p>
+                <h3 class="lang-ru">Архив и документы</h3>
+                <h3 class="lang-en">Archives & Records</h3>
+                <p class="lang-ru">База данных архивных выписок, метрических книг и свидетельств.</p>
+                <p class="lang-en">A database of archival summaries, parish registers, and vital records.</p>
             </div>
 
             <div class="card">
-                <h3>Воспоминания</h3>
-                <p>Записи, рассказы, биографические очерки и живые истории из жизни разных поколений.</p>
+                <h3 class="lang-ru">Поиск близких</h3>
+                <h3 class="lang-en">Find Relatives</h3>
+                <p class="lang-ru">Оставьте свои данные, чтобы скоординировать ДНК-исследования и архивные поиски.</p>
+                <p class="lang-en">Leave your details to coordinate DNA research and archival lookups.</p>
             </div>
         </div>
 
     </div>
 
     <footer>
-        <p>© 2026 Семейный архив Напримеровых. Все права защищены.</p>
+        <p class="lang-ru">© 2026 Международный реестр Напримеровых. Все права защищены.</p>
+        <p class="lang-en">© 2026 International Naprimerov Registry. All rights reserved.</p>
     </footer>
 
     <script>
-        // Функция защиты почты от спам-роботов
-        function sendEmailToDmitry() {
-            var part1 = "naprimerov";
-            var part2 = "mail.ru";
-            // Собираем адрес только в момент клика мышкой
-            window.location.href = "mailto:" + part1 + "@" + part2 + "?subject=По поводу сайта Напримеровы. История рода";
+        // Функция переключения языков
+        function changeLang(lang) {
+            document.documentElement.setAttribute('lang', lang);
+            localStorage.setItem('preferredLang', lang);
+            
+            document.getElementById('btn-ru').classList.remove('active');
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+        }
+
+        // Автоопределение сохраненного языка при загрузке страницы
+        var savedLang = localStorage.getItem('preferredLang') || 'ru';
+        changeLang(savedLang);
+
+        // Безопасная отправка почты без публикации адреса для спам-ботов
+        function sendEmail(lang) {
+            var p1 = "naprimerov";
+            var p2 = "mail.ru";
+            var subject = lang === 'ru' 
+                ? "По поводу международного реестра Напримеровых" 
+                : "Regarding the International Naprimerov Registry";
+                
+            window.location.href = "mailto:" + p1 + "@" + p2 + "?subject=" + encodeURIComponent(subject);
         }
     </script>
 
