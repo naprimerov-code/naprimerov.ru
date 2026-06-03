@@ -50,6 +50,7 @@
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             margin-bottom: 2rem;
+            text-align: center; /* Центрируем контент и кнопку */
         }
 
         .welcome-section h2 {
@@ -57,6 +58,36 @@
             color: #5a4b41;
             border-bottom: 1px solid #e8dec9;
             padding-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .welcome-section p {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        /* Стиль для кнопки связи */
+        .contact-btn {
+            display: inline-block;
+            background-color: #b59a7b;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            font-family: 'Georgia', serif;
+            font-size: 1.05rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .contact-btn:hover {
+            background-color: #9e8365;
+        }
+
+        .contact-btn:active {
+            transform: scale(0.98);
         }
 
         /* Стили для разделов (карточек) */
@@ -118,6 +149,9 @@
         <section class="welcome-section">
             <h2>Добро пожаловать</h2>
             <p>Этот сайт посвящен истории, сохранению памяти и исследованию генеалогических корней семьи Напримеровых. Здесь собираются архивные документы, исторические свидетельства, биографии поколений и памятные фотографии, чтобы сберечь наше общее наследие для будущих потомков.</p>
+            
+            <!-- Кнопка связи -->
+            <button class="contact-btn" onclick="sendEmailToDmitry()">Связаться с Напримеровым Дмитрием</button>
         </section>
 
         <div class="grid">
@@ -147,6 +181,16 @@
     <footer>
         <p>© 2026 Семейный архив Напримеровых. Все права защищены.</p>
     </footer>
+
+    <script>
+        // Функция защиты почты от спам-роботов
+        function sendEmailToDmitry() {
+            var part1 = "naprimerov";
+            var part2 = "mail.ru";
+            // Собираем адрес только в момент клика мышкой
+            window.location.href = "mailto:" + part1 + "@" + part2 + "?subject=По поводу сайта Напримеровы. История рода";
+        }
+    </script>
 
 </body>
 </html>
