@@ -84,12 +84,15 @@
         .section-title {
             font-size: 1.6rem;
             color: #1e252b;
-            margin-top: 0;
+            margin-top: 40px;
             margin-bottom: 20px;
             border-bottom: 1px solid #b89047;
             padding-bottom: 10px;
             font-weight: normal;
             letter-spacing: 0.5px;
+        }
+        .section-title:first-of-type {
+            margin-top: 0;
         }
         .info-text {
             font-size: 1.1rem;
@@ -97,6 +100,35 @@
             margin-bottom: 30px;
             text-align: justify;
         }
+        
+        /* Сетка для анонсов будущих разделов */
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        .roadmap-item {
+            background-color: #faf9f6;
+            border: 1px dashed #dcd7cc;
+            padding: 20px;
+            border-radius: 2px;
+        }
+        .roadmap-item h4 {
+            margin: 0 0 10px 0;
+            color: #1e252b;
+            font-size: 1.1rem;
+            font-weight: normal;
+            border-bottom: 1px solid #edeae0;
+            padding-bottom: 5px;
+        }
+        .roadmap-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #64748b;
+            text-align: left;
+        }
+
         .thanks-block {
             margin-top: 40px;
             padding-top: 25px;
@@ -127,6 +159,18 @@
             text-align: center;
             margin-top: 30px;
         }
+        
+        /* Статус-трекер в футере */
+        .status-tracker {
+            margin-top: 50px;
+            padding-top: 15px;
+            border-top: 1px solid #edeae0;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            color: #94a3b8;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 <body>
@@ -138,6 +182,7 @@
 </header>
 
 <main class="content-container">
+    <!-- Раздел 1: Общая информация -->
     <h2 class="section-title" id="info-heading">Общая информация</h2>
     
     <div class="info-text" id="info-p1">
@@ -148,11 +193,29 @@
         В настоящее время ведется систематическая исследовательская работа по сбору исторических документов, изучению метрических книг, поиску фотографий и фиксации семейных воспоминаний. Семейная история — это живая нить, связывающая прошлое с будущим, и каждый представитель рода вносит в неё свой неповторимый вклад.
     </div>
 
+    <!-- Раздел 2: Перспективы исследования (Пункт 3) -->
+    <h2 class="section-title" id="roadmap-heading">В разработке</h2>
+    <div class="roadmap-grid">
+        <div class="roadmap-item">
+            <h4 id="sec1-title">Военная летопись</h4>
+            <p id="sec1-desc">Систематизация документов о предках, прошедших Великую Отечественную войну и преданно служивших отечеству в государственных ведомствах.</p>
+        </div>
+        <div class="roadmap-item">
+            <h4 id="sec2-title">Цифровой архив</h4>
+            <p id="sec2-desc">Реставрация, бережное сохранение и каталогизация старинных семейных фотоснимков, писем и личных архивных документов.</p>
+        </div>
+        <div class="roadmap-item">
+            <h4 id="sec3-title">Карта расселения</h4>
+            <p id="sec3-desc">Визуализация исторической географии рода: от Рязанской земли до современных мест проживания и службы представителей семьи.</p>
+        </div>
+    </div>
+
     <!-- Блок благодарностей -->
     <div class="thanks-block" id="thanks-text">
         Выражаю искреннюю благодарность Константину Горелову и Сергею Галкину за бесценную помощь в создании проекта.
     </div>
 
+    <!-- Блок управляющего -->
     <div class="manager-block">
         <h3 id="manager-title">Проект ведет: Капитан Напримеров Дмитрий Викторович</h3>
         <p id="manager-desc">Основатель и хранитель цифрового архива фамилии</p>
@@ -160,6 +223,11 @@
 
     <div class="center-wrapper">
         <a class="btn btn-contact" id="contact-btn" href="mailto:naprimerov@mail.ru?subject=Связь по проекту рода Напримеровых&body=Здравствуйте, Дмитрий!%0A%0A">Написать мне</a>
+    </div>
+
+    <!-- Статус-трекер исследования (Пункт 4) -->
+    <div class="status-tracker" id="status-text">
+        Текущий статус архива (июнь 2026 г.): Систематизировано IV поколения, продолжается сбор данных по архивным фондам и верификация документов.
     </div>
 </main>
 
@@ -172,11 +240,21 @@
             heading: "Общая информация",
             p1: "Добро пожаловать на персональный информационный ресурс, посвященный истории, генеалогии и сохранению памяти рода Напримеровых. Цель данного проекта — объединить разрозненные архивные сведения, восстановить хронологию поколений, сохранить память об исторических корнях и наладить прочную связь между потомками.",
             p2: "В настоящее время ведется систематическая исследовательская работа по сбору исторических документов, изучению метрических книг, поиску фотографий и фиксации семейных воспоминаний. Семейная история — это живая нить, связывающая прошлое с будущим, и каждый представитель рода вносит в неё свой неповторимый вклад.",
+            
+            roadmapHeading: "В разработке",
+            sec1Title: "Военная летопись",
+            sec1Desc: "Систематизация документов о предках, прошедших Великую Отечественную войну и преданно служивших отечеству в государственных ведомствах.",
+            sec2Title: "Цифровой архив",
+            sec2Desc: "Реставрация, бережное сохранение и каталогизация старинных семейных фотоснимков, писем и личных архивных документов.",
+            sec3Title: "Карта расселения",
+            sec3Desc: "Визуализация исторической географии рода: от Рязанской земли до современных мест проживания и службы представителей семьи.",
+            
             thanksText: "Выражаю искреннюю благодарность Константину Горелову и Сергею Галкину за бесценную помощь в создании проекта.",
-            managerTitle: "Проект ведет: Капитан Напримеров Дмитрий Викторович", // Обновлено здесь
+            managerTitle: "Проект ведет: Капитан Напримеров Дмитрий Викторович",
             managerDesc: "Основатель и хранитель цифрового архива фамилии",
             contact: "Написать мне",
-            toggle: "English"
+            toggle: "English",
+            statusText: "Текущий статус архива (июнь 2026 г.): Систематизировано IV поколения, продолжается сбор данных по архивным фондам и верификация документов."
         },
         en: {
             title: "Genealogy of the Naprimerov Lineage",
@@ -184,11 +262,21 @@
             heading: "General Information",
             p1: "Welcome to the personal information resource dedicated to the history, genealogy, and preservation of the Naprimerov family memory. The purpose of this project is to consolidate scattered archival records, restore the chronology of generations, preserve the memory of historical roots, and establish a strong connection between descendants.",
             p2: "Currently, systematic research is underway to collect historical documents, study parish registers, locate photographs, and record family memoirs. Family history is a living thread connecting the past with the future, and every representative of the lineage makes their own unique contribution to it.",
+            
+            roadmapHeading: "In Development",
+            sec1Title: "Military & State Chronicle",
+            sec1Desc: "Systematization of historical records regarding ancestors who served in World War II and various state departments.",
+            sec2Title: "Digital Archive",
+            sec2Desc: "Restoration, preservation, and cataloging of vintage family photographs, letters, and personal archival documents.",
+            sec3Title: "Lineage Geography",
+            sec3Desc: "Visual mapping of the family's historical migration from the Ryazan region to modern settlements and service locations.",
+            
             thanksText: "I express my sincere gratitude to Konstantin Gorelov and Sergey Galkin for their invaluable assistance in creating this project.",
             managerTitle: "Project Managed by: Capt. Dmitriy Viktorovich Naprimerov",
             managerDesc: "Founder and keeper of the digital family archive",
             contact: "Contact Me",
-            toggle: "Русский"
+            toggle: "Русский",
+            statusText: "Current research status (June 2026): IV generations documented, archival data collection and historical record verification are ongoing."
         }
     };
 
@@ -200,11 +288,21 @@
         document.getElementById('info-heading').innerText = translations[currentLang].heading;
         document.getElementById('info-p1').innerText = translations[currentLang].p1;
         document.getElementById('info-p2').innerText = translations[currentLang].p2;
+        
+        document.getElementById('roadmap-heading').innerText = translations[currentLang].roadmapHeading;
+        document.getElementById('sec1-title').innerText = translations[currentLang].sec1Title;
+        document.getElementById('sec1-desc').innerText = translations[currentLang].sec1Desc;
+        document.getElementById('sec2-title').innerText = translations[currentLang].sec2Title;
+        document.getElementById('sec2-desc').innerText = translations[currentLang].sec2Desc;
+        document.getElementById('sec3-title').innerText = translations[currentLang].sec3Title;
+        document.getElementById('sec3-desc').innerText = translations[currentLang].sec3Desc;
+        
         document.getElementById('thanks-text').innerText = translations[currentLang].thanksText;
         document.getElementById('manager-title').innerText = translations[currentLang].managerTitle;
         document.getElementById('manager-desc').innerText = translations[currentLang].managerDesc;
         document.getElementById('contact-btn').innerText = translations[currentLang].contact;
         document.getElementById('lang-toggle').innerText = translations[currentLang].toggle;
+        document.getElementById('status-text').innerText = translations[currentLang].statusText;
         
         // Обновление темы письма в зависимости от языка
         const mailBtn = document.getElementById('contact-btn');
