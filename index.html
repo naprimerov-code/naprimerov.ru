@@ -88,9 +88,7 @@
 
 <header>
     <h1 id="site-title">Семейное древо НАПРИМЕРОВ</h1>
-    <!-- Кнопка переключения языка -->
     <button class="btn" id="lang-toggle" onclick="toggleLanguage()">English</button>
-    <!-- Кнопка связи -->
     <a class="btn btn-contact" id="contact-btn" href="mailto:naprimerov@mail.ru?subject=Заявка в древо / Tree Application&body=ФИО / Full Name:%0AГоды жизни / Years of life:%0AРодство / Relationship:">Написать мне / Contact Me</a>
 </header>
 
@@ -116,14 +114,14 @@
 
 <script>
     // ==========================================
-    // БАЗА ДАННЫХ: ПРОСТО ДОБАВЛЯЙ СЮДА ЛЮДЕЙ
+    // БАЗА ДАННЫХ ДРЕВА
     // ==========================================
     const familyData = [
         {
             nameRu: "Напримеров Дмитрий Викторович",
             nameEn: "Naprimerov Dmitriy Viktorovich",
             years: "1915 - 1992",
-            level: "grandparents" // Может быть: grandparents, parents, current
+            level: "current" // Перенесен сюда
         },
         {
             nameRu: "Напримеров Пётр Филиппович",
@@ -162,12 +160,10 @@
     let currentLang = 'ru';
 
     function renderTree() {
-        // Очищаем старые списки перед обновлением
         document.getElementById('level-grandparents').innerHTML = '';
         document.getElementById('level-parents').innerHTML = '';
         document.getElementById('level-current').innerHTML = '';
 
-        // Переводим тексты на странице
         document.getElementById('site-title').innerText = translations[currentLang].title;
         document.getElementById('title-gparents').innerText = translations[currentLang].gparents;
         document.getElementById('title-parents').innerText = translations[currentLang].parents;
@@ -175,7 +171,6 @@
         document.getElementById('contact-btn').innerText = translations[currentLang].contact;
         document.getElementById('lang-toggle').innerText = translations[currentLang].toggle;
 
-        // Раскладываем людей по уровням
         familyData.forEach(person => {
             const container = document.getElementById(`level-${person.level}`);
             if (container) {
@@ -193,7 +188,6 @@
         renderTree();
     }
 
-    // Первый запуск при открытии сайта
     renderTree();
 </script>
 
