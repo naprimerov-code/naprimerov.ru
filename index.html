@@ -193,7 +193,7 @@
         В настоящее время ведется систематическая исследовательская работа по сбору исторических документов, изучению метрических книг, поиску фотографий и фиксации семейных воспоминаний. Семейная история — это живая нить, связывающая прошлое с будущим, и каждый представитель рода вносит в неё свой неповторимый вклад.
     </div>
 
-    <!-- Раздел 2: Перспективы исследования (Пункт 3) -->
+    <!-- Раздел 2: Перспективы исследования -->
     <h2 class="section-title" id="roadmap-heading">В разработке</h2>
     <div class="roadmap-grid">
         <div class="roadmap-item">
@@ -208,6 +208,12 @@
             <h4 id="sec3-title">Карта расселения</h4>
             <p id="sec3-desc">Визуализация исторической географии рода: от Рязанской земли до современных мест проживания и службы представителей семьи.</p>
         </div>
+    </div>
+
+    <!-- Раздел 3: Приглашение к сотрудничеству -->
+    <h2 class="section-title" id="invite-heading">Ищу Напримеровых!</h2>
+    <div class="info-text" id="invite-text">
+        Привет, однофамилец или родственник. Я создаю карту нашей большой семьи и хочу отправить тебе подарок из Рязанской области. Оставь свои координаты.
     </div>
 
     <!-- Блок благодарностей -->
@@ -225,7 +231,7 @@
         <a class="btn btn-contact" id="contact-btn" href="mailto:naprimerov@mail.ru?subject=Связь по проекту рода Напримеровых&body=Здравствуйте, Дмитрий!%0A%0A">Написать мне</a>
     </div>
 
-    <!-- Статус-трекер исследования (Пункт 4) -->
+    <!-- Статус-трекер исследования -->
     <div class="status-tracker" id="status-text">
         Текущий статус архива (июнь 2026 г.): Систематизировано IV поколения, продолжается сбор данных по архивным фондам и верификация документов.
     </div>
@@ -249,6 +255,9 @@
             sec3Title: "Карта расселения",
             sec3Desc: "Визуализация исторической географии рода: от Рязанской земли до современных мест проживания и службы представителей семьи.",
             
+            inviteHeading: "Ищу Напримеровых!",
+            inviteText: "Привет, однофамилец или родственник. Я создаю карту нашей большой семьи и хочу отправить тебе подарок из Рязанской области. Оставь свои координаты.",
+            
             thanksText: "Выражаю искреннюю благодарность Константину Горелову и Сергею Галкину за бесценную помощь в создании проекта.",
             managerTitle: "Проект ведет: Капитан Напримеров Дмитрий Викторович",
             managerDesc: "Основатель и хранитель цифрового архива фамилии",
@@ -271,6 +280,9 @@
             sec3Title: "Lineage Geography",
             sec3Desc: "Visual mapping of the family's historical migration from the Ryazan region to modern settlements and service locations.",
             
+            inviteHeading: "Looking for Naprimerovs!",
+            inviteText: "Hello, namesake or relative! I am creating a map of our big family and would love to send you a gift from the Ryazan region. Please leave your contact details.",
+            
             thanksText: "I express my sincere gratitude to Konstantin Gorelov and Sergey Galkin for their invaluable assistance in creating this project.",
             managerTitle: "Project Managed by: Capt. Dmitriy Viktorovich Naprimerov",
             managerDesc: "Founder and keeper of the digital family archive",
@@ -283,6 +295,9 @@
     let currentLang = 'ru';
 
     function renderPage() {
+        // Обновление атрибута языка тега html для SEO
+        document.documentElement.lang = currentLang;
+
         document.getElementById('site-title').innerText = translations[currentLang].title;
         document.getElementById('site-subtitle').innerText = translations[currentLang].subtitle;
         document.getElementById('info-heading').innerText = translations[currentLang].heading;
@@ -296,6 +311,9 @@
         document.getElementById('sec2-desc').innerText = translations[currentLang].sec2Desc;
         document.getElementById('sec3-title').innerText = translations[currentLang].sec3Title;
         document.getElementById('sec3-desc').innerText = translations[currentLang].sec3Desc;
+        
+        document.getElementById('invite-heading').innerText = translations[currentLang].inviteHeading;
+        document.getElementById('invite-text').innerText = translations[currentLang].inviteText;
         
         document.getElementById('thanks-text').innerText = translations[currentLang].thanksText;
         document.getElementById('manager-title').innerText = translations[currentLang].managerTitle;
