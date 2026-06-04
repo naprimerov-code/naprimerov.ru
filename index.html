@@ -97,6 +97,14 @@
             margin-bottom: 30px;
             text-align: justify;
         }
+        .thanks-block {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px dashed #b89047;
+            font-style: italic;
+            color: #5a5d60;
+            font-size: 1.05rem;
+        }
         .manager-block {
             background-color: #faf9f6;
             border-left: 4px solid #b89047;
@@ -140,6 +148,11 @@
         В настоящее время ведется систематическая исследовательская работа по сбору исторических документов, изучению метрических книг, поиску фотографий и фиксации семейных воспоминаний. Семейная история — это живая нить, связывающая прошлое с будущим, и каждый представитель рода вносит в неё свой неповторимый вклад.
     </div>
 
+    <!-- Блок благодарностей -->
+    <div class="thanks-block" id="thanks-text">
+        Выражаю искреннюю благодарность Константину Горелову и Сергею Галкину за бесценную помощь в создании проекта.
+    </div>
+
     <div class="manager-block">
         <h3 id="manager-title">Проект ведет: Напримеров Дмитрий Викторович</h3>
         <p id="manager-desc">Основатель и хранитель цифрового архива фамилии</p>
@@ -159,8 +172,9 @@
             heading: "Общая информация",
             p1: "Добро пожаловать на персональный информационный ресурс, посвященный истории, генеалогии и сохранению памяти рода Напримеровых. Цель данного проекта — объединить разрозненные архивные сведения, восстановить хронологию поколений, сохранить память об исторических корнях и наладить прочную связь между потомками.",
             p2: "В настоящее время ведется систематическая исследовательская работа по сбору исторических документов, изучению метрических книг, поиску фотографий и фиксации семейных воспоминаний. Семейная история — это живая нить, связывающая прошлое с будущим, и каждый представитель рода вносит в неё свой неповторимый вклад.",
-            managerTitle: "Проект ведет: Напримеров Дмитрий Викторович",
-            managerDesc: "Основатель и хранитель цифрового архива фамилии",
+            thanksText: "Выражаю искреннюю благодарность Константину Горелову и Сергею Галкину за бесценную помощь в создании проекта.",
+            managerTitle: "Проект ведет:Капитан Напримеров Дмитрий Викторович",
+            managerDesc: "Master Mariner Naprimerov Dmitrii",
             contact: "Написать мне",
             toggle: "English"
         },
@@ -170,6 +184,7 @@
             heading: "General Information",
             p1: "Welcome to the personal information resource dedicated to the history, genealogy, and preservation of the Naprimerov family memory. The purpose of this project is to consolidate scattered archival records, restore the chronology of generations, preserve the memory of historical roots, and establish a strong connection between descendants.",
             p2: "Currently, systematic research is underway to collect historical documents, study parish registers, locate photographs, and record family memoirs. Family history is a living thread connecting the past with the future, and every representative of the lineage makes their own unique contribution to it.",
+            thanksText: "I express my sincere gratitude to Konstantin Gorelov and Sergey Galkin for their invaluable assistance in creating this project.",
             managerTitle: "Project Managed by: Dmitriy Viktorovich Naprimerov",
             managerDesc: "Founder and keeper of the digital family archive",
             contact: "Contact Me",
@@ -185,6 +200,7 @@
         document.getElementById('info-heading').innerText = translations[currentLang].heading;
         document.getElementById('info-p1').innerText = translations[currentLang].p1;
         document.getElementById('info-p2').innerText = translations[currentLang].p2;
+        document.getElementById('thanks-text').innerText = translations[currentLang].thanksText;
         document.getElementById('manager-title').innerText = translations[currentLang].managerTitle;
         document.getElementById('manager-desc').innerText = translations[currentLang].managerDesc;
         document.getElementById('contact-btn').innerText = translations[currentLang].contact;
