@@ -5,81 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Семейное древо Напримеров / Naprimerov Family Tree</title>
     <style>
+        /* Морской стиль (Морская палитра: глубокий синий, золото, белый и стальной) */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f0f4f8; /* Цвет легкого морского бриза */
+            color: #1d2d44;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             text-align: center;
         }
         header {
-            margin-bottom: 40px;
+            background-color: #0b2545; /* Глубокий океанский синий */
+            color: #ffffff;
+            padding: 40px 20px;
+            border-bottom: 5px solid #c5a059; /* Золотой капитанский кант */
+            box-shadow: 0 4px 12px rgba(11, 37, 69, 0.2);
+        }
+        header h1 {
+            margin: 0 0 20px 0;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
         }
         .btn {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 10px 24px;
             margin: 10px;
-            font-size: 16px;
+            font-size: 15px;
+            font-weight: 600;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 4px;
             text-decoration: none;
             display: inline-block;
+            transition: all 0.3s ease;
         }
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #ffffff;
+            color: #0b2545;
         }
         .btn-contact {
-            background-color: #28a745;
+            background-color: #c5a059; /* Золотая кнопка связи */
+            color: #0b2545;
+            border-color: #c5a059;
         }
         .btn-contact:hover {
-            background-color: #218838;
+            background-color: #134074;
+            color: #ffffff;
+            border-color: #134074;
         }
         .tree-container {
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            max-width: 800px;
-            margin: 0 auto;
+            gap: 35px;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
         .tree-level {
-            background: white;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background: #ffffff;
+            border: 1px solid #d0dbe5;
+            border-left: 6px solid #0b2545; /* Синий корабельный борт */
+            border-radius: 4px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
         }
         .level-title {
-            font-weight: bold;
-            color: #666;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
+            font-weight: 700;
+            color: #134074;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f4f8;
+            padding-bottom: 8px;
             text-transform: uppercase;
             font-size: 14px;
+            letter-spacing: 1px;
+            text-align: left;
         }
         .nodes-group {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
+            justify-content: flex-start;
+            gap: 20px;
         }
         .tree-node {
-            background-color: #e9ecef;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            padding: 10px 15px;
-            min-width: 200px;
+            background-color: #ffffff;
+            border: 2px solid #134074; /* Напоминает оформление кают-компании */
+            border-radius: 4px;
+            padding: 15px 20px;
+            min-width: 240px;
+            text-align: left;
+            box-shadow: 2px 2px 8px rgba(19, 64, 116, 0.05);
+            position: relative;
+        }
+        .tree-node::before {
+            content: "⚓"; /* Маленький аккуратный якорь на каждой карточке */
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            color: #cbd5e1;
+            font-size: 14px;
         }
         .tree-node h4 {
-            margin: 0 0 5px 0;
-            color: #1e293b;
+            margin: 0 0 8px 0;
+            color: #0b2545;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+            padding-right: 20px;
         }
         .tree-node p {
             margin: 0;
-            color: #64748b;
+            color: #c5a059; /* Золотистый цвет для дат */
+            font-weight: 600;
             font-size: 14px;
         }
     </style>
@@ -114,19 +153,19 @@
 
 <script>
     // ==========================================
-    // БАЗА ДАННЫХ ДРЕВА
+    // БАЗА ДАННЫХ ДРЕВА (ОБНОВЛЕННАЯ)
     // ==========================================
     const familyData = [
         {
             nameRu: "Напримеров Дмитрий Викторович",
             nameEn: "Naprimerov Dmitriy Viktorovich",
-            years: "1915 - 1992",
-            level: "current" // Перенесен сюда
+            years: "27.09.1980", 
+            level: "current"
         },
         {
             nameRu: "Напримеров Пётр Филиппович",
             nameEn: "Naprimerov Petr Filippovich",
-            years: "1912 - 1985",
+            years: "1915 - 1992", 
             level: "grandparents"
         },
         {
