@@ -3,470 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Напримеровы. История рода | Naprimerov Family History</title>
+    <title>Семейное древо Напримеров / Naprimerov Family Tree</title>
     <style>
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background-color: #fcfaf6;
-            color: #2c2520;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            text-align: center;
         }
-
-        /* Верхняя панель (Музыка и Языки) */
-        .top-bar {
-            background-color: #2e2621;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.6rem 2rem;
-            box-sizing: border-box;
-        }
-
-        /* Плеер фоновой музыки */
-        .audio-player {
-            display: flex;
-            align-items: center;
-        }
-
-        .music-btn {
-            background-color: #473b33;
-            border: 1px solid #b59a7b;
-            color: #f5f0ea;
-            cursor: pointer;
-            font-family: 'Georgia', serif;
-            font-size: 0.85rem;
-            padding: 5px 14px;
-            border-radius: 4px;
-            transition: all 0.2s;
-        }
-
-        .music-btn:hover {
-            background-color: #b59a7b;
-            color: #2e2621;
-        }
-
-        /* Переключатель языков */
-        .lang-switch-container {
-            text-align: right;
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            color: #a8998a;
-            cursor: pointer;
-            font-family: sans-serif;
-            font-size: 0.9rem;
-            margin-left: 10px;
-            padding: 2px 6px;
-            transition: color 0.2s;
-        }
-
-        .lang-btn:hover {
-            color: #ffffff;
-        }
-
-        .lang-btn.active {
-            color: #ffffff;
-            font-weight: bold;
-            border-bottom: 2px solid #b59a7b;
-        }
-
         header {
-            background-color: #3e352f;
-            color: #f5f0ea;
-            text-align: center;
-            padding: 3rem 1rem;
-            border-bottom: 4px solid #b59a7b;
+            margin-bottom: 40px;
         }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            font-weight: normal;
-            letter-spacing: 1px;
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
         }
-
-        header p {
-            margin: 0.5rem 0 0 0;
-            font-style: italic;
-            color: #d1c7bd;
-            font-size: 1.1rem;
+        .btn:hover {
+            background-color: #0056b3;
         }
-
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+        .btn-contact {
+            background-color: #28a745;
         }
-
-        .welcome-section {
-            background-color: #ffffff;
-            border: 1px solid #e8dec9;
-            padding: 2rem;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-            text-align: center;
+        .btn-contact:hover {
+            background-color: #218838;
         }
-
-        .welcome-section h2 {
-            margin-top: 0;
-            color: #5a4b41;
-            border-bottom: 1px solid #e8dec9;
-            padding-bottom: 0.5rem;
-            text-align: left;
-        }
-
-        .welcome-section p {
-            text-align: left;
-            margin-bottom: 1.5rem;
-        }
-
-        /* ГЕНЕАЛОГИЧЕСКОЕ ДРЕВО */
-        .tree-section {
-            background-color: #ffffff;
-            border: 1px solid #e8dec9;
-            padding: 2rem;
-            border-radius: 4px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .tree-section h2 {
-            color: #5a4b41;
-            border-bottom: 1px solid #e8dec9;
-            padding-bottom: 0.5rem;
-            margin-top: 0;
-        }
-
-        .tree-branch {
+        .tree-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
         }
-
         .tree-level {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .level-title {
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        .nodes-group {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
             flex-wrap: wrap;
-            width: 100%;
-            <!-- Для уровня дедушек (1915) -->
-<div class="tree-level" id="level-1915">
-    <!-- INSERT_1915 -->
-    <!-- Здесь уже могут быть другие карточки -->
-</div>
-
-<!-- Для уровня родителей (например, 1947) -->
-<div class="tree-level" id="level-1947">
-    <!-- INSERT_1947 -->
-</div>
-
-        }
-
-        .tree-node {
-            background-color: #fbf9f3;
-            border: 2px solid #b59a7b;
-            padding: 0.8rem 1.2rem;
-            border-radius: 6px;
-            text-align: center;
-            min-width: 140px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-        }
-
-        .tree-node.root-couple {
-            background-color: #3e352f;
-            color: #f5f0ea;
-            border-color: #b59a7b;
-        }
-
-        .tree-node h4 {
-            margin: 0;
-            font-size: 1.05rem;
-        }
-
-        .tree-node p {
-            margin: 0.2rem 0 0 0;
-            font-size: 0.85rem;
-            font-style: italic;
-            opacity: 0.9;
-        }
-
-        /* КНОПКИ */
-        .btn-container {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .action-btn {
-            display: inline-block;
-            background-color: #b59a7b;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 0.8rem 2rem;
-            font-family: 'Georgia', serif;
-            font-size: 1.05rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s, transform 0.1s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin: 0.5rem;
-        }
-
-        .action-btn:hover { background-color: #9e8365; }
-        .action-btn:active { transform: scale(0.98); }
-        .action-btn.secondary { background-color: #5a4b41; }
-        .action-btn.secondary:hover { background-color: #473b33; }
-
-        /* МОДАЛЬНОЕ ОКНО */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.5);
             justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 1rem;
-            box-sizing: border-box;
+            gap: 15px;
         }
-
-        .modal-content {
-            background-color: #ffffff;
+        .tree-node {
+            background-color: #e9ecef;
+            border: 1px solid #cbd5e1;
             border-radius: 6px;
-            padding: 2rem;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            position: relative;
+            padding: 10px 15px;
+            min-width: 200px;
         }
-
-        .modal h3 { margin-top: 0; color: #5a4b41; border-bottom: 1px solid #e8dec9; padding-bottom: 0.5rem; }
-        
-        .form-group { margin-bottom: 1.2rem; text-align: left; }
-        .form-group label { display: block; font-size: 0.9rem; margin-bottom: 0.3rem; color: #5a4b41; font-weight: bold; }
-        .form-group input, .form-group textarea {
-            width: 100%; padding: 0.6rem; border: 1px solid #e8dec9; border-radius: 4px; font-family: serif; font-size: 1rem; box-sizing: border-box;
+        .tree-node h4 {
+            margin: 0 0 5px 0;
+            color: #1e293b;
         }
-
-        .close-modal {
-            position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #8c7e74;
+        .tree-node p {
+            margin: 0;
+            color: #64748b;
+            font-size: 14px;
         }
-
-        footer {
-            text-align: center; padding: 2rem 1rem; margin-top: 4rem; font-size: 0.9rem; color: #8c7e74; border-top: 1px solid #e8dec9;
-        }
-
-        html[lang="ru"] .lang-en { display: none; }
-        html[lang="en"] .lang-ru { display: none; }
     </style>
 </head>
 <body>
 
-    <!-- Меню управления ресурсом -->
-    <div class="top-bar">
-        <div class="audio-player">
-            <audio id="bgMusic" loop src="music.mp3"></audio>
-            <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
-                <span class="lang-ru">🎵 Включить музыку</span>
-                <span class="lang-en">🎵 Play Music</span>
-            </button>
-        </div>
-        
-        <div class="lang-switch-container">
-            <button class="lang-btn" id="btn-ru" onclick="changeLang('ru')">RU</button>
-            <button class="lang-btn" id="btn-en" onclick="changeLang('en')">EN</button>
-        </div>
+<header>
+    <h1 id="site-title">Семейное древо НАПРИМЕРОВ</h1>
+    <!-- Кнопка переключения языка -->
+    <button class="btn" id="lang-toggle" onclick="toggleLanguage()">English</button>
+    <!-- Кнопка связи -->
+    <a class="btn btn-contact" id="contact-btn" href="mailto:naprimerov@mail.ru?subject=Заявка в древо / Tree Application&body=ФИО / Full Name:%0AГоды жизни / Years of life:%0AРодство / Relationship:">Написать мне / Contact Me</a>
+</header>
+
+<main class="tree-container">
+    <!-- Поколение 1: Дедушки -->
+    <div class="tree-level">
+        <div class="level-title" id="title-gparents">Поколение: Дедушки и Бабушки</div>
+        <div class="nodes-group" id="level-grandparents"></div>
     </div>
 
-    <header>
-        <h1 class="lang-ru">Напримеровы. История рода</h1>
-        <h1 class="lang-en">The Naprimerov Lineage</h1>
-        <p class="lang-ru">Всемирный реестр и единый архив семьи</p>
-        <p class="lang-en">Global registry and family archive</p>
-    </header>
-
-    <div class="container">
-        
-        <section class="welcome-section">
-            <h2 class="lang-ru">Глобальный поиск однофамильцев</h2>
-            <h2 class="lang-en">Global Surname Gathering</h2>
-            <p class="lang-ru">Этот проект создан для того, чтобы объединить всех носителей фамилии <strong>Напримеров</strong> по всему миру. Если вы носите эту фамилию или она есть в вашем роду — добро пожаловать домой.</p>
-            <p class="lang-en">This project aims to unite everyone bearing the surname <strong>Naprimerov</strong> across the globe. If you carry this name or have it in your ancestry — welcome home.</p>
-            
-            <button class="action-btn secondary lang-ru" onclick="sendDirectEmail('ru')">Связаться со смотрителем</button>
-            <button class="action-btn secondary lang-en" onclick="sendDirectEmail('en')">Contact Custodian</button>
-        </section>
-
-        <!-- ГЕНЕАЛОГИЧЕСКАЯ СЕКЦИЯ -->
-        <section class="tree-section">
-            <h2 class="lang-ru">Родословное древо (Фрагмент)</h2>
-            <h2 class="lang-en">Family Tree (Fragment)</h2>
-            
-            <div class="tree-branch">
-                <!-- Старшая пара -->
-                <div class="tree-level">
-                    <div class="tree-node root-couple">
-                        <h4>Филипп и Елена</h4>
-                        <p class="lang-ru">Брак до 1900 г.</p>
-                        <p class="lang-en">Married before 1900</p>
-                    </div>
-                </div>
-                
-                <!-- Второе поколение (Дети) -->
-                <div class="tree-level">
-                    <div class="tree-node">
-                        <h4>Евдокия</h4>
-                        <p>1900 г.р.</p>
-                    </div>
-                    <div class="tree-node">
-                        <h4>Матрона</h4>
-                        <p>1903 г.р.</p>
-                    </div>
-                    <div class="tree-node">
-                        <h4>Василий</h4>
-                        <p>1906 г.р.</p>
-                    </div>
-                    <div class="tree-node">
-                        <h4>Арсений</h4>
-                        <p>1909 г.р.</p>
-                    </div>
-                    <div class="tree-node">
-                        <h4>Михаил</h4>
-                        <p>1911 г.р.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="btn-container">
-                <button class="action-btn lang-ru" onclick="openModal()">Предложить родственника в древо</button>
-                <button class="action-btn lang-en" onclick="openModal()">Suggest a Relative to the Tree</button>
-            </div>
-        </section>
-
+    <!-- Поколение 2: Родители -->
+    <div class="tree-level">
+        <div class="level-title" id="title-parents">Поколение: Родители</div>
+        <div class="nodes-group" id="level-parents"></div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО ФОРМЫ СВЯЗИ -->
-    <div class="modal" id="treeModal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
-            
-            <h3 class="lang-ru">Заявка на добавление</h3>
-            <h3 class="lang-en">Addition Request</h3>
-            
-            <form id="treeForm" onsubmit="handleFormSubmit(event)">
-                <div class="form-group">
-                    <label class="lang-ru">Ваше имя / Контакт</label>
-                    <label class="lang-en">Your Name / Contact</label>
-                    <input type="text" id="senderName" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="lang-ru">Имя родственника для древа</label>
-                    <label class="lang-en">Relative's Full Name</label>
-                    <input type="text" id="relativeName" placeholder="Например: Иван Филиппович" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="lang-ru">Годы жизни / Дата рождения</label>
-                    <label class="lang-en">Years of Life / DOB</label>
-                    <input type="text" id="relativeDates" placeholder="1935 - 2010">
-                </div>
-
-                <div class="form-group">
-                    <label class="lang-ru">К кому в древе относится (Родство)</label>
-                    <label class="lang-en">Lineage Connection (Relation)</label>
-                    <input type="text" id="relativeRelation" placeholder="Например: Сын Василия Филипповича" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="lang-ru">Дополнительная информация / Источник</label>
-                    <label class="lang-en">Additional Info / Source</label>
-                    <textarea id="relativeInfo" rows="3" placeholder="Семейный архив, документы..."></textarea>
-                </div>
-
-                <button type="submit" class="action-btn lang-ru" style="width:100%; margin:0;">Отправить на одобрение Дмитрию</button>
-                <button type="submit" class="action-btn lang-en" style="width:100%; margin:0;">Submit for Dmitry's Approval</button>
-            </form>
-        </div>
+    <!-- Поколение 3: Мы -->
+    <div class="tree-level">
+        <div class="level-title" id="title-current">Поколение: Текущее</div>
+        <div class="nodes-group" id="level-current"></div>
     </div>
+</main>
 
-    <footer>
-        <p class="lang-ru">© 2026 Международный реестр Напримеровых. Все права защищены.</p>
-        <p class="lang-en">© 2026 International Naprimerov Registry. All rights reserved.</p>
-    </footer>
-
-    <script>
-        function changeLang(lang) {
-            document.documentElement.setAttribute('lang', lang);
-            localStorage.setItem('preferredLang', lang);
-            document.getElementById('btn-ru').classList.remove('active');
-            document.getElementById('btn-en').classList.remove('active');
-            document.getElementById('btn-' + lang).classList.add('active');
+<script>
+    // ==========================================
+    // БАЗА ДАННЫХ: ПРОСТО ДОБАВЛЯЙ СЮДА ЛЮДЕЙ
+    // ==========================================
+    const familyData = [
+        {
+            nameRu: "Напримеров Дмитрий Викторович",
+            nameEn: "Naprimerov Dmitriy Viktorovich",
+            years: "1915 - 1992",
+            level: "grandparents" // Может быть: grandparents, parents, current
+        },
+        {
+            nameRu: "Напримеров Пётр Филиппович",
+            nameEn: "Naprimerov Petr Filippovich",
+            years: "1912 - 1985",
+            level: "grandparents"
+        },
+        {
+            nameRu: "Напримеров Виктор Петрович",
+            nameEn: "Naprimerov Viktor Petrovich",
+            years: "1947 - н.в.",
+            level: "parents"
         }
+    ];
 
-        var savedLang = localStorage.getItem('preferredLang') || 'ru';
-        changeLang(savedLang);
-
-        function openModal() { document.getElementById('treeModal').style.display = 'flex'; }
-        function closeModal() { document.getElementById('treeModal').style.display = 'none'; }
-
-        function sendDirectEmail(lang) {
-            var p1 = "naprimerov", p2 = "mail.ru";
-            var sub = lang === 'ru' ? "Вопрос по архиву Напримеровых" : "Inquiry regarding Naprimerov Archive";
-            window.location.href = "mailto:" + p1 + "@" + p2 + "?subject=" + encodeURIComponent(sub);
+    // Перевод интерфейса
+    const translations = {
+        ru: {
+            title: "Семейное древо НАПРИМЕРОВ",
+            gparents: "Поколение: Дедушки и Бабушки",
+            parents: "Поколение: Родители",
+            current: "Поколение: Текущее",
+            contact: "Связаться со мной",
+            toggle: "English"
+        },
+        en: {
+            title: "NAPRIMEROV Family Tree",
+            gparents: "Generation: Grandparents",
+            parents: "Generation: Parents",
+            current: "Generation: Current",
+            contact: "Contact Me",
+            toggle: "Русский"
         }
+    };
 
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            var sender = document.getElementById('senderName').value;
-            var name = document.getElementById('relativeName').value;
-            var dates = document.getElementById('relativeDates').value;
-            var relation = document.getElementById('relativeRelation').value;
-            var info = document.getElementById('relativeInfo').value;
+    let currentLang = 'ru';
 
-            var emailBody = `ЗАЯВКА НА ОДОБРЕНИЕ В ДРЕВО NAPRIMEROV.RU\n=========================================\n\nОт кого: ${sender}\nКого добавить: ${name}\nГоды жизни: ${dates}\nСвязь/Родство: ${relation}\nДоп. инфо: ${info}\n\n-----------------------------------------\nИнструкция для Дмитрия: Если вы одобряете запись, добавьте блок:\n<div class="tree-node"><h4>${name}</h4><p>${dates}</p></div>\nв нужный уровень (tree-level) файла index.html на GitHub.`;
-            var p1 = "naprimerov", p2 = "mail.ru";
-            var subject = `Заявка в древо: ${name}`;
-            
-            window.location.href = "mailto:" + p1 + "@" + p2 + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(emailBody);
-            closeModal();
-            document.getElementById('treeForm').reset();
-        }
+    function renderTree() {
+        // Очищаем старые списки перед обновлением
+        document.getElementById('level-grandparents').innerHTML = '';
+        document.getElementById('level-parents').innerHTML = '';
+        document.getElementById('level-current').innerHTML = '';
 
-        /* УПРАВЛЕНИЕ МУЗЫКОЙ */
-        function toggleMusic() {
-            var audio = document.getElementById('bgMusic');
-            var btn = document.getElementById('musicBtn');
-            var currentLang = document.documentElement.getAttribute('lang') || 'ru';
-            
-            if (audio.paused) {
-                audio.play().then(function() {
-                    btn.innerHTML = currentLang === 'ru' ? '⏸ Пауза' : '⏸ Pause';
-                }).catch(function(error) {
-                    console.log("Ошибка аудио:", error);
-                });
-            } else {
-                audio.pause();
-                btn.innerHTML = currentLang === 'ru' ? '🎵 Включить музыку' : '🎵 Play Music';
+        // Переводим тексты на странице
+        document.getElementById('site-title').innerText = translations[currentLang].title;
+        document.getElementById('title-gparents').innerText = translations[currentLang].gparents;
+        document.getElementById('title-parents').innerText = translations[currentLang].parents;
+        document.getElementById('title-current').innerText = translations[currentLang].current;
+        document.getElementById('contact-btn').innerText = translations[currentLang].contact;
+        document.getElementById('lang-toggle').innerText = translations[currentLang].toggle;
+
+        // Раскладываем людей по уровням
+        familyData.forEach(person => {
+            const container = document.getElementById(`level-${person.level}`);
+            if (container) {
+                const name = currentLang === 'ru' ? person.nameRu : person.nameEn;
+                const node = document.createElement('div');
+                node.className = 'tree-node';
+                node.innerHTML = `<h4>${name}</h4><p>${person.years}</p>`;
+                container.appendChild(node);
             }
-        }
-        
-        document.getElementById('btn-ru').addEventListener('click', function() {
-            var audio = document.getElementById('bgMusic');
-            document.getElementById('musicBtn').innerHTML = audio.paused ? '🎵 Включить музыку' : '⏸ Пауза';
         });
-        document.getElementById('btn-en').addEventListener('click', function() {
-            var audio = document.getElementById('bgMusic');
-            document.getElementById('musicBtn').innerHTML = audio.paused ? '🎵 Play Music' : '⏸ Pause';
-        });
-    </script>
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'ru' ? 'en' : 'ru';
+        renderTree();
+    }
+
+    // Первый запуск при открытии сайта
+    renderTree();
+</script>
 
 </body>
 </html>
