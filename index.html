@@ -3,83 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Семейное древо Напримеров / Naprimerov Family Tree</title>
+    <title>Родословная рода Напримеровых / Genealogy of the Naprimerov Lineage</title>
     <style>
-        /* Морской стиль (Морская палитра: глубокий синий, золото, белый и стальной) */
+        /* Стиль Классической Летописи (Глубокий графит, благородное золото и теплая слоновая кость) */
         body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background-color: #f0f4f8; /* Цвет легкого морского бриза */
-            color: #1d2d44;
+            font-family: "Georgia", "Times New Roman", serif; /* Исторический, книжный шрифт */
+            background-color: #f7f5f0; /* Цвет старинной плотной бумаги */
+            color: #2b2d2f;
             margin: 0;
             padding: 0;
             text-align: center;
         }
         header {
-            background-color: #0b2545; /* Глубокий океанский синий */
-            color: #ffffff;
-            padding: 40px 20px;
-            border-bottom: 5px solid #c5a059; /* Золотой капитанский кант */
-            box-shadow: 0 4px 12px rgba(11, 37, 69, 0.2);
+            background-color: #1e252b; /* Глубокий строгий темный тон */
+            color: #f7f5f0;
+            padding: 50px 20px;
+            border-bottom: 3px solid #b89047; /* Благородное матовое золото */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
         header h1 {
-            margin: 0 0 20px 0;
-            font-size: 2.2rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
+            margin: 0 0 10px 0;
+            font-size: 2.4rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+        header p {
+            margin: 0 0 25px 0;
+            font-style: italic;
+            color: #b89047;
+            font-size: 1.1rem;
         }
         .btn {
+            font-family: Arial, sans-serif;
             background-color: transparent;
-            color: #ffffff;
-            border: 2px solid #ffffff;
+            color: #f7f5f0;
+            border: 1px solid #b89047;
             padding: 10px 24px;
-            margin: 10px;
-            font-size: 15px;
-            font-weight: 600;
+            margin: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 2px;
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
         }
         .btn:hover {
-            background-color: #ffffff;
-            color: #0b2545;
+            background-color: #b89047;
+            color: #1e252b;
         }
         .btn-contact {
-            background-color: #c5a059; /* Золотая кнопка связи */
-            color: #0b2545;
-            border-color: #c5a059;
+            background-color: #b89047;
+            color: #1e252b;
         }
         .btn-contact:hover {
-            background-color: #134074;
-            color: #ffffff;
-            border-color: #134074;
+            background-color: transparent;
+            color: #b89047;
         }
         .tree-container {
             display: flex;
             flex-direction: column;
-            gap: 35px;
+            gap: 40px;
             max-width: 900px;
-            margin: 40px auto;
+            margin: 50px auto;
             padding: 0 20px;
         }
         .tree-level {
             background: #ffffff;
-            border: 1px solid #d0dbe5;
-            border-left: 6px solid #0b2545; /* Синий корабельный борт */
-            border-radius: 4px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            border: 1px solid #e2ded5;
+            border-radius: 2px;
+            padding: 25px;
+            box-shadow: 0 5px 12px rgba(43, 45, 47, 0.03);
+            position: relative;
+        }
+        .tree-level::before {
+            content: "";
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px solid #edeae0;
+            pointer-events: none;
         }
         .level-title {
-            font-weight: 700;
-            color: #134074;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #f0f4f8;
-            padding-bottom: 8px;
-            text-transform: uppercase;
-            font-size: 14px;
+            font-weight: normal;
+            color: #1e252b;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #b89047;
+            padding-bottom: 10px;
+            font-size: 18px;
             letter-spacing: 1px;
             text-align: left;
         }
@@ -90,70 +101,63 @@
             gap: 20px;
         }
         .tree-node {
-            background-color: #ffffff;
-            border: 2px solid #134074; /* Напоминает оформление кают-компании */
-            border-radius: 4px;
+            background-color: #faf9f6;
+            border: 1px solid #dcd7cc;
+            border-top: 3px solid #b89047; /* Золотой акцент сверху каждой карточки */
+            border-radius: 2px;
             padding: 15px 20px;
             min-width: 240px;
             text-align: left;
-            box-shadow: 2px 2px 8px rgba(19, 64, 116, 0.05);
-            position: relative;
-        }
-        .tree-node::before {
-            content: "⚓"; /* Маленький аккуратный якорь на каждой карточке */
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            color: #cbd5e1;
-            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
         .tree-node h4 {
             margin: 0 0 8px 0;
-            color: #0b2545;
-            font-size: 16px;
-            font-weight: 600;
+            color: #1e252b;
+            font-size: 17px;
+            font-weight: normal;
             line-height: 1.4;
-            padding-right: 20px;
         }
         .tree-node p {
             margin: 0;
-            color: #c5a059; /* Золотистый цвет для дат */
-            font-weight: 600;
-            font-size: 14px;
+            color: #7a7365;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1 id="site-title">Семейное древо НАПРИМЕРОВ</h1>
+    <h1 id="site-title">Родословная рода Напримеровых</h1>
+    <p id="site-subtitle">Летопись поколений, история и семейная память</p>
     <button class="btn" id="lang-toggle" onclick="toggleLanguage()">English</button>
-    <a class="btn btn-contact" id="contact-btn" href="mailto:naprimerov@mail.ru?subject=Заявка в древо / Tree Application&body=ФИО / Full Name:%0AГоды жизни / Years of life:%0AРодство / Relationship:">Написать мне / Contact Me</a>
+    <a class="btn btn-contact" id="contact-btn" href="mailto:naprimerov@mail.ru?subject=Заявка в генеалогическое древо рода Напримеров&body=ФИО / Full Name:%0AГоды жизни / Years of life:%0AРодственная связь / Relationship:">Внести имя в летопись рода</a>
 </header>
 
 <main class="tree-container">
-    <!-- Поколение 1: Дедушки -->
+    <!-- Старшее поколение -->
     <div class="tree-level">
-        <div class="level-title" id="title-gparents">Поколение: Дедушки и Бабушки</div>
+        <div class="level-title" id="title-gparents">Род Напримеровых: Дедушки и Бабушки</div>
         <div class="nodes-group" id="level-grandparents"></div>
     </div>
 
-    <!-- Поколение 2: Родители -->
+    <!-- Родители -->
     <div class="tree-level">
-        <div class="level-title" id="title-parents">Поколение: Родители</div>
+        <div class="level-title" id="title-parents">Род Напримеровых: Родительское поколение</div>
         <div class="nodes-group" id="level-parents"></div>
     </div>
 
-    <!-- Поколение 3: Мы -->
+    <!-- Текущее поколение -->
     <div class="tree-level">
-        <div class="level-title" id="title-current">Поколение: Текущее</div>
+        <div class="level-title" id="title-current">Род Напримеровых: Современники (Текущее поколение)</div>
         <div class="nodes-group" id="level-current"></div>
     </div>
 </main>
 
 <script>
     // ==========================================
-    // БАЗА ДАННЫХ ДРЕВА (ОБНОВЛЕННАЯ)
+    // БАЗА ДАННЫХ ДРЕВА
     // ==========================================
     const familyData = [
         {
@@ -176,22 +180,24 @@
         }
     ];
 
-    // Перевод интерфейса
+    // Переводы текстов с упоминанием рода
     const translations = {
         ru: {
-            title: "Семейное древо НАПРИМЕРОВ",
-            gparents: "Поколение: Дедушки и Бабушки",
-            parents: "Поколение: Родители",
-            current: "Поколение: Текущее",
-            contact: "Связаться со мной",
+            title: "Родословная рода Напримеровых",
+            subtitle: "Летопись поколений, история и семейная память",
+            gparents: "Род Напримеровых: Дедушки и Бабушки",
+            parents: "Род Напримеровых: Родительское поколение",
+            current: "Род Напримеровых: Современники (Текущее поколение)",
+            contact: "Внести имя в летопись рода",
             toggle: "English"
         },
         en: {
-            title: "NAPRIMEROV Family Tree",
-            gparents: "Generation: Grandparents",
-            parents: "Generation: Parents",
-            current: "Generation: Current",
-            contact: "Contact Me",
+            title: "Genealogy of the Naprimerov Lineage",
+            subtitle: "Chronicle of generations, family history and memory",
+            gparents: "Naprimerov Lineage: Grandparents",
+            parents: "Naprimerov Lineage: Parents' Generation",
+            current: "Naprimerov Lineage: Contemporaries (Current Generation)",
+            contact: "Submit a name to the chronicle",
             toggle: "Русский"
         }
     };
@@ -204,6 +210,7 @@
         document.getElementById('level-current').innerHTML = '';
 
         document.getElementById('site-title').innerText = translations[currentLang].title;
+        document.getElementById('site-subtitle').innerText = translations[currentLang].subtitle;
         document.getElementById('title-gparents').innerText = translations[currentLang].gparents;
         document.getElementById('title-parents').innerText = translations[currentLang].parents;
         document.getElementById('title-current').innerText = translations[currentLang].current;
