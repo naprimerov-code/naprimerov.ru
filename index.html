@@ -14,20 +14,20 @@
             padding: 0;
         }
 
-        /* Верхняя панель для управления и языков */
+        /* Верхняя панель (Музыка и Языки) */
         .top-bar {
             background-color: #2e2621;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 2rem;
+            padding: 0.6rem 2rem;
+            box-sizing: border-box;
         }
 
-        /* Стили аудиоплеера */
+        /* Плеер фоновой музыки */
         .audio-player {
             display: flex;
             align-items: center;
-            gap: 10px;
         }
 
         .music-btn {
@@ -37,7 +37,7 @@
             cursor: pointer;
             font-family: 'Georgia', serif;
             font-size: 0.85rem;
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 4px;
             transition: all 0.2s;
         }
@@ -47,6 +47,7 @@
             color: #2e2621;
         }
 
+        /* Переключатель языков */
         .lang-switch-container {
             text-align: right;
         }
@@ -124,7 +125,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* СТИЛИ ГЕНЕАЛОГИЧЕСКОГО ДРЕВА */
+        /* ГЕНЕАЛОГИЧЕСКОЕ ДРЕВО */
         .tree-section {
             background-color: #ffffff;
             border: 1px solid #e8dec9;
@@ -212,7 +213,7 @@
         .action-btn.secondary { background-color: #5a4b41; }
         .action-btn.secondary:hover { background-color: #473b33; }
 
-        /* МОДАЛЬНОЕ ОКНО ФОРМЫ */
+        /* МОДАЛЬНОЕ ОКНО */
         .modal {
             display: none;
             position: fixed;
@@ -239,7 +240,7 @@
         
         .form-group { margin-bottom: 1.2rem; text-align: left; }
         .form-group label { display: block; font-size: 0.9rem; margin-bottom: 0.3rem; color: #5a4b41; font-weight: bold; }
-        .form-group input, .form-group select, .form-group textarea {
+        .form-group input, .form-group textarea {
             width: 100%; padding: 0.6rem; border: 1px solid #e8dec9; border-radius: 4px; font-family: serif; font-size: 1rem; box-sizing: border-box;
         }
 
@@ -257,10 +258,9 @@
 </head>
 <body>
 
-    <!-- Верхняя панель (Музыка + Языки) -->
+    <!-- Меню управления ресурсом -->
     <div class="top-bar">
         <div class="audio-player">
-            <!-- Скрытый аудио-тег, зацикленный (loop) -->
             <audio id="bgMusic" loop src="music.mp3"></audio>
             <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
                 <span class="lang-ru">🎵 Включить музыку</span>
@@ -293,13 +293,13 @@
             <button class="action-btn secondary lang-en" onclick="sendDirectEmail('en')">Contact Custodian</button>
         </section>
 
-        <!-- РАЗДЕЛ ДРЕВА -->
+        <!-- ГЕНЕАЛОГИЧЕСКАЯ СЕКЦИЯ -->
         <section class="tree-section">
             <h2 class="lang-ru">Родословное древо (Фрагмент)</h2>
             <h2 class="lang-en">Family Tree (Fragment)</h2>
             
             <div class="tree-branch">
-                <!-- Старшее поколение -->
+                <!-- Старшая пара -->
                 <div class="tree-level">
                     <div class="tree-node root-couple">
                         <h4>Филипп и Елена</h4>
@@ -308,7 +308,7 @@
                     </div>
                 </div>
                 
-                <!-- Дети -->
+                <!-- Второе поколение (Дети) -->
                 <div class="tree-level">
                     <div class="tree-node">
                         <h4>Евдокия</h4>
@@ -341,7 +341,7 @@
 
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО ЗАЯВКИ -->
+    <!-- МОДАЛЬНОЕ ОКНО ФОРМЫ СВЯЗИ -->
     <div class="modal" id="treeModal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal()">&times;</button>
@@ -377,7 +377,7 @@
                 <div class="form-group">
                     <label class="lang-ru">Дополнительная информация / Источник</label>
                     <label class="lang-en">Additional Info / Source</label>
-                    <textarea id="relativeInfo" rows="3" placeholder="Метрическая книга, семейный архив..."></textarea>
+                    <textarea id="relativeInfo" rows="3" placeholder="Семейный архив, документы..."></textarea>
                 </div>
 
                 <button type="submit" class="action-btn lang-ru" style="width:100%; margin:0;">Отправить на одобрение Дмитрию</button>
@@ -439,7 +439,7 @@
                 audio.play().then(function() {
                     btn.innerHTML = currentLang === 'ru' ? '⏸ Пауза' : '⏸ Pause';
                 }).catch(function(error) {
-                    console.log("Ошибка воспроизведения:", error);
+                    console.log("Ошибка аудио:", error);
                 });
             } else {
                 audio.pause();
@@ -447,7 +447,6 @@
             }
         }
         
-        // При смене языка во время воспроизведения обновляем текст на кнопке
         document.getElementById('btn-ru').addEventListener('click', function() {
             var audio = document.getElementById('bgMusic');
             document.getElementById('musicBtn').innerHTML = audio.paused ? '🎵 Включить музыку' : '⏸ Пауза';
