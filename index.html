@@ -14,10 +14,41 @@
             padding: 0;
         }
 
-        .lang-switch-container {
+        /* Верхняя панель для управления и языков */
+        .top-bar {
             background-color: #2e2621;
-            text-align: right;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 0.5rem 2rem;
+        }
+
+        /* Стили аудиоплеера */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .music-btn {
+            background-color: #473b33;
+            border: 1px solid #b59a7b;
+            color: #f5f0ea;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .music-btn:hover {
+            background-color: #b59a7b;
+            color: #2e2621;
+        }
+
+        .lang-switch-container {
+            text-align: right;
         }
 
         .lang-btn {
@@ -226,9 +257,21 @@
 </head>
 <body>
 
-    <div class="lang-switch-container">
-        <button class="lang-btn" id="btn-ru" onclick="changeLang('ru')">RU</button>
-        <button class="lang-btn" id="btn-en" onclick="changeLang('en')">EN</button>
+    <!-- Верхняя панель (Музыка + Языки) -->
+    <div class="top-bar">
+        <div class="audio-player">
+            <!-- Скрытый аудио-тег, зацикленный (loop) -->
+            <audio id="bgMusic" loop src="music.mp3"></audio>
+            <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+                <span class="lang-ru">🎵 Включить музыку</span>
+                <span class="lang-en">🎵 Play Music</span>
+            </button>
+        </div>
+        
+        <div class="lang-switch-container">
+            <button class="lang-btn" id="btn-ru" onclick="changeLang('ru')">RU</button>
+            <button class="lang-btn" id="btn-en" onclick="changeLang('en')">EN</button>
+        </div>
     </div>
 
     <header>
@@ -360,54 +403,59 @@
         var savedLang = localStorage.getItem('preferredLang') || 'ru';
         changeLang(savedLang);
 
-        /* Модальное окно */
         function openModal() { document.getElementById('treeModal').style.display = 'flex'; }
         function closeModal() { document.getElementById('treeModal').style.display = 'none'; }
 
-        /* Маскированная отправка обычной почты */
         function sendDirectEmail(lang) {
             var p1 = "naprimerov", p2 = "mail.ru";
             var sub = lang === 'ru' ? "Вопрос по архиву Напримеровых" : "Inquiry regarding Naprimerov Archive";
             window.location.href = "mailto:" + p1 + "@" + p2 + "?subject=" + encodeURIComponent(sub);
         }
 
-        /* ОБРАБОТКА ЗАЯВКИ В ДРЕВО */
         function handleFormSubmit(e) {
             e.preventDefault();
-            
-            var currentLang = document.documentElement.getAttribute('lang') || 'ru';
-            
-            // Собираем данные из полей
             var sender = document.getElementById('senderName').value;
             var name = document.getElementById('relativeName').value;
             var dates = document.getElementById('relativeDates').value;
             var relation = document.getElementById('relativeRelation').value;
             var info = document.getElementById('relativeInfo').value;
 
-            // Формируем текст письма для вас
-            var emailBody = `ЗАЯВКА НА ОДОБРЕНИЕ В ДРЕВО NAPRIMEROV.RU\n`;
-            emailBody += `=========================================\n\n`;
-            emailBody += `От кого: ${sender}\n`;
-            emailBody += `Кого добавить: ${name}\n`;
-            emailBody += `Годы жизни: ${dates}\n`;
-            emailBody += `Связь/Родство: ${relation}\n`;
-            emailBody += `Доп. инфо: ${info}\n\n`;
-            emailBody += `-----------------------------------------\n`;
-            emailBody += `Инструкция для Дмитрия: Если вы одобряете запись, добавьте блок:\n`;
-            emailBody += `<div class="tree-node"><h4>${name}</h4><p>${dates}</p></div>\n`;
-            emailBody += `в нужный уровень (tree-level) файла index.html на GitHub.`;
-
+            var emailBody = `ЗАЯВКА НА ОДОБРЕНИЕ В ДРЕВО NAPRIMEROV.RU\n=========================================\n\nОт кого: ${sender}\nКого добавить: ${name}\nГоды жизни: ${dates}\nСвязь/Родство: ${relation}\nДоп. инфо: ${info}\n\n-----------------------------------------\nИнструкция для Дмитрия: Если вы одобряете запись, добавьте блок:\n<div class="tree-node"><h4>${name}</h4><p>${dates}</p></div>\nв нужный уровень (tree-level) файла index.html на GitHub.`;
             var p1 = "naprimerov", p2 = "mail.ru";
             var subject = `Заявка в древо: ${name}`;
             
-            // Открываем почтовик
-            window.location.href = "mailto:" + p1 + "@" + p2 + 
-                "?subject=" + encodeURIComponent(subject) + 
-                "&body=" + encodeURIComponent(emailBody);
-                
+            window.location.href = "mailto:" + p1 + "@" + p2 + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(emailBody);
             closeModal();
             document.getElementById('treeForm').reset();
         }
+
+        /* УПРАВЛЕНИЕ МУЗЫКОЙ */
+        function toggleMusic() {
+            var audio = document.getElementById('bgMusic');
+            var btn = document.getElementById('musicBtn');
+            var currentLang = document.documentElement.getAttribute('lang') || 'ru';
+            
+            if (audio.paused) {
+                audio.play().then(function() {
+                    btn.innerHTML = currentLang === 'ru' ? '⏸ Пауза' : '⏸ Pause';
+                }).catch(function(error) {
+                    console.log("Ошибка воспроизведения:", error);
+                });
+            } else {
+                audio.pause();
+                btn.innerHTML = currentLang === 'ru' ? '🎵 Включить музыку' : '🎵 Play Music';
+            }
+        }
+        
+        // При смене языка во время воспроизведения обновляем текст на кнопке
+        document.getElementById('btn-ru').addEventListener('click', function() {
+            var audio = document.getElementById('bgMusic');
+            document.getElementById('musicBtn').innerHTML = audio.paused ? '🎵 Включить музыку' : '⏸ Пауза';
+        });
+        document.getElementById('btn-en').addEventListener('click', function() {
+            var audio = document.getElementById('bgMusic');
+            document.getElementById('musicBtn').innerHTML = audio.paused ? '🎵 Play Music' : '⏸ Pause';
+        });
     </script>
 
 </body>
