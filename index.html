@@ -181,12 +181,13 @@
             font-family: Arial, sans-serif;
             letter-spacing: 1px;
         }
+        
+        /* ИСПРАВЛЕНО: Теперь элементы переносятся (wrap), если не влезают по ширине экрана */
         .gen-row {
             display: flex;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 16px;
-            min-width: max-content;
             padding: 5px 20px;
             box-sizing: border-box;
             align-items: flex-start;
@@ -498,7 +499,7 @@
                                 data-desc-ru="IV поколение рода. Глава большой семьи, давшей начало нескольким ветвям фамилии."
                                 data-desc-en="Generation IV. Head of a large family that initiated several branches of the name."></button>
                         <button class="tree-node" id="node-elena" onclick="showInfo('elena', this)"
-                                data-name-ru="Elena Alekseevna (Shishkareva) (Wife)" data-name-en="Elena Alekseevna (Shishkareva) (Wife)"
+                                data-name-ru="Елена Алексеевна (Шишкарева) (Жена)" data-name-en="Elena Alekseevna (Shishkareva) (Wife)"
                                 data-desc-ru="Супруга Филиппа Потаповича. IV поколение рода."
                                 data-desc-en="Spouse of Filipp Potapovich. Generation IV."></button>
                     </div>
@@ -551,6 +552,7 @@
         <div class="gen-section" id="gen-sec-6">
             <span class="gen-label" id="lbl-g6">VI Поколение</span>
             <div class="gen-row">
+                <!-- Ветвь Виктора Петровича -->
                 <div class="parent-block">
                     <div class="couple-wrapper">
                         <button class="tree-node" id="node-viktor" onclick="showInfo('viktor', this)"
@@ -563,6 +565,14 @@
                                 data-desc-en="Spouse of Viktor Petrovich. Generation VI."></button>
                     </div>
                     <div class="parent-arrow"></div>
+                </div>
+
+                <!-- Ветвь Вячеслава Петровича -->
+                <div class="parent-block">
+                    <button class="tree-node child-node" id="node-vyacheslav" onclick="showInfo('vyacheslav', this)"
+                            data-name-ru="Вячеслав Петрович" data-name-en="Vyacheslav Petrovich"
+                            data-desc-ru="Сын Петра Филипповича. Брат Виктора Петровича. VI поколение рода."
+                            data-desc-en="Son of Petr Filippovich. Brother of Viktor Petrovich. Generation VI."></button>
                 </div>
             </div>
         </div>
