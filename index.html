@@ -5,37 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Родословная рода Напримеровых</title>
     <style>
-        /* Базовые стили */
-        body { font-family: "Georgia", serif; background-color: #f7f5f0; color: #2b2d2f; margin: 0; padding: 0; text-align: center; }
-        header { background-color: #1e252b; color: #f7f5f0; padding: 40px 20px; position: relative; border-bottom: 3px solid #b89047; }
+        /* Базовые параметры стиля */
+        body { font-family: "Georgia", serif; background-color: #f7f5f0; color: #2b2d2f; margin: 0; padding: 0; text-align: center; line-height: 1.6; }
+        header { background-color: #1e252b; color: #f7f5f0; padding: 40px 20px; border-bottom: 3px solid #b89047; position: relative; }
         
-        /* Меню 3 точки */
+        /* Меню "Три точки" */
         .menu-container { position: absolute; top: 20px; right: 20px; z-index: 1000; }
-        .menu-btn { background: none; border: none; color: #b89047; font-size: 32px; cursor: pointer; }
+        .menu-btn { background: none; border: none; color: #b89047; font-size: 32px; cursor: pointer; transition: 0.3s; }
+        .menu-btn:hover { color: #fff; }
         .menu-dropdown { 
             display: none; position: absolute; right: 0; top: 40px; background: #fff; 
-            border: 1px solid #ddd; min-width: 200px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            border: 1px solid #ddd; min-width: 220px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+            text-align: left;
         }
         .menu-dropdown a { 
             display: block; padding: 15px; text-decoration: none; color: #2b2d2f; 
-            border-bottom: 1px solid #eee; text-align: left; 
+            border-bottom: 1px solid #eee; font-family: Arial, sans-serif; font-size: 14px;
         }
         .menu-dropdown a:hover { background: #f9f9f9; color: #b89047; }
-        
-        /* Дерево */
+
+        /* Структура древа */
         .content { max-width: 900px; margin: 40px auto; padding: 20px; }
-        .gen-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; margin: 25px 0 10px; }
-        .tree-node { background: #fff; border: 1px solid #b89047; padding: 10px 20px; display: inline-block; margin: 5px; }
-        .couple-wrapper { border: 2px solid #b89047; padding: 10px; display: inline-block; background: #faf7f2; }
-        .arrow { height: 20px; width: 2px; background: #b89047; margin: 5px auto; }
+        .gen-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 5px; }
+        .gen-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
         
-        /* Секция связи */
-        .contact-section { margin-top: 60px; padding: 40px; border-top: 1px solid #b89047; }
-        .contact-btn { 
-            background: #b89047; color: #fff; padding: 15px 30px; 
-            text-decoration: none; display: inline-block; border-radius: 2px; 
+        .tree-node { 
+            background: #fff; border: 1px solid #b89047; padding: 10px 20px; 
+            margin: 5px; display: inline-block; cursor: pointer; min-width: 150px; font-size: 14px;
         }
-        footer { margin-top: 50px; color: #94a3b8; font-size: 12px; padding-bottom: 20px; }
+        
+        .couple-wrapper { 
+            border: 2px solid #b89047; padding: 10px; display: inline-flex; 
+            gap: 10px; background: #faf7f2; margin: 5px;
+        }
+        
+        /* Стрелки связи */
+        .arrow { height: 30px; width: 2px; background: #b89047; margin: 0 auto; position: relative; }
+        .arrow::after { content: "▼"; position: absolute; bottom: -12px; left: -5px; font-size: 10px; color: #b89047; }
+
+        .branch-layout { display: flex; justify-content: center; gap: 40px; margin-top: 20px; align-items: flex-start; }
+        .branch-col { display: flex; flex-direction: column; align-items: center; }
+        
+        /* Блок сиблингов */
+        .siblings-box { border: 1px dashed #b89047; padding: 20px; margin-top: 20px; background: #faf7f2; }
+
+        /* Панель добавления */
+        #add-panel { margin-top: 40px; padding: 20px; border: 1px dashed #b89047; display: none; }
+        .btn-add { background: #b89047; color: #fff; border: none; padding: 10px 20px; cursor: pointer; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -47,69 +63,79 @@
         <div id="menu" class="menu-dropdown">
             <a href="#tree">Генеалогическое древо</a>
             <a href="mailto:naprimerov@mail.ru">Связаться с Капитаном</a>
+            <a href="#">Военная летопись</a>
             <a href="#">Цифровой архив</a>
         </div>
     </div>
 </header>
 
 <div class="content" id="tree">
-    <div class="gen-label">I Поколение</div>
-    <div class="tree-node">Наум</div>
-    <div class="arrow"></div>
+    
+    <div class="gen-container"><div class="gen-label">I Поколение</div><div class="tree-node">Наум</div><div class="arrow"></div></div>
+    <div class="gen-container"><div class="gen-label">II Поколение</div><div class="tree-node">Михаил Наумович</div><div class="arrow"></div></div>
+    <div class="gen-container"><div class="gen-label">III Поколение</div><div class="tree-node">Потап Михайлович</div><div class="arrow"></div></div>
 
-    <div class="gen-label">II Поколение</div>
-    <div class="tree-node">Михаил Наумович</div>
-    <div class="arrow"></div>
-
-    <div class="gen-label">III Поколение</div>
-    <div class="tree-node">Потап Михайлович</div>
-    <div class="arrow"></div>
-
-    <div class="gen-label">IV Поколение</div>
-    <div class="couple-wrapper">
-        <div class="tree-node">Филипп Потапович</div>
-        <div class="tree-node">Елена Алексеевна</div>
+    <div class="gen-container"><div class="gen-label">IV Поколение</div>
+        <div class="couple-wrapper"><div class="tree-node">Филипп Потапович</div><div class="tree-node">Елена Алексеевна</div></div>
+        <div class="arrow"></div>
     </div>
-    <div class="arrow"></div>
-
-    <div class="gen-label">V Поколение</div>
-    <div class="couple-wrapper">
-        <div class="tree-node">Пётр Филиппович</div>
-        <div class="tree-node">Анна Ивановна</div>
+    <div class="gen-container"><div class="gen-label">V Поколение</div>
+        <div class="couple-wrapper"><div class="tree-node">Пётр Филиппович</div><div class="tree-node">Анна Ивановна</div></div>
+        <div class="arrow"></div>
     </div>
-    <div class="arrow"></div>
-
-    <div class="gen-label">VI Поколение</div>
-    <div class="couple-wrapper">
-        <div class="tree-node">Виктор Петрович</div>
-        <div class="tree-node">Надежда Петровна</div>
+    <div class="gen-container"><div class="gen-label">VI Поколение</div>
+        <div class="couple-wrapper"><div class="tree-node">Виктор Петрович</div><div class="tree-node">Надежда Петровна</div></div>
+        <div class="arrow"></div>
     </div>
-    <div class="arrow"></div>
 
-    <div class="gen-label">VII Поколение</div>
-    <div class="couple-wrapper">
-        <div class="tree-node">Дмитрий Викторович</div>
-        <div class="tree-node">Анна Викторовна</div>
+    <div class="branch-layout">
+        <div class="branch-col">
+            <div class="gen-label">VII Поколение</div>
+            <div class="couple-wrapper"><div class="tree-node">Дмитрий Викторович</div><div class="tree-node">Анна Викторовна</div></div>
+            <div class="arrow"></div>
+            <div class="gen-label">VIII Поколение / Ветвь Дмитрия</div>
+            <div style="display:flex;"><div class="tree-node">Даниил Дмитриевич</div><div class="tree-node">Полина Дмитриевна</div><div class="tree-node">Ангелина Дмитриевна</div></div>
+        </div>
+        <div class="branch-col">
+            <div class="gen-label">VII Поколение</div>
+            <div class="tree-node">Анна Викторовна</div>
+            <div class="arrow"></div>
+            <div class="gen-label">VIII Поколение / Ветвь Анны</div>
+            <div class="tree-node">Станислав Владиславович</div>
+        </div>
     </div>
-    <div class="arrow"></div>
 
-    <div class="gen-label">VIII Поколение</div>
-    <div class="tree-node">Даниил Дмитриевич</div>
-    <div class="tree-node">Полина Дмитриевна</div>
-    <div class="tree-node">Ангелина Дмитриевна</div>
+    <div class="siblings-box">
+        <div class="tree-node">Вячеслав Петрович</div><br>
+        <div class="tree-node">Василий Филиппович</div>
+        <div class="tree-node">Евдокия Филипповна</div>
+        <div class="tree-node">Матрона Филипповна</div>
+        <div class="tree-node">Афанасий Филиппович</div>
+        <div class="tree-node">Михаил Филиппович</div>
+    </div>
+
+    <button class="btn-add" onclick="document.getElementById('add-panel').style.display='block'">+ Добавить родственника</button>
+
+    <div id="add-panel">
+        <h3>Форма добавления</h3>
+        <input type="text" placeholder="Имя родственника"><br>
+        <button class="btn-add" onclick="alert('Данные отправлены Капитану!')">Сохранить в архив</button>
+    </div>
 </div>
-
-<section class="contact-section">
-    <h2>Связь с Капитаном</h2>
-    <p>По вопросам пополнения архива или уточнения данных:</p>
-    <a href="mailto:naprimerov@mail.ru" class="contact-btn">Написать письмо</a>
-</section>
-
-<footer>
-    Статус системы: Июнь 2026 г. | Разработано для семьи Напримеровых.
-</footer>
 
 <script>
     // Закрытие меню при клике вне его
     window.onclick = function(event) {
-        if (!
+        if (!event.target.matches('.menu-btn')) {
+            var dropdowns = document.getElementsByClassName("menu-dropdown");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
