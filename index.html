@@ -108,13 +108,13 @@
         .btn-contact:hover { background-color: transparent; color: #b89047; }
         
         .content-container {
-            max-width: 950px;
+            max-width: 1050px;
             margin: 60px auto;
             padding: 40px;
             background: #ffffff;
             border: 1px solid #e2ded5;
             border-radius: 2px;
-            box-shadow: 0 5px 12 rgba(43, 45, 47, 0.03);
+            box-shadow: 0 5px 12px rgba(43, 45, 47, 0.03);
             position: relative;
             text-align: left;
         }
@@ -144,7 +144,7 @@
             text-align: justify;
         }
         
-        /* СТИЛИ ГЕНЕАЛОГИЧЕСКОГО ДРЕВА С СИСТЕМОЙ ЗАМЕТНЫХ СКВОЗНЫХ СТРЕЛОК */
+        /* СТИЛИ ГЕНЕАЛОГИЧЕСКОГО ДРЕВА */
         .tree-vertical {
             display: flex;
             flex-direction: column;
@@ -162,15 +162,6 @@
             margin: 5px 0;
             position: relative;
         }
-        
-        /* ЖЕСТКОЕ ВЫЖИГАНИЕ ЛЮБЫХ СТАРЫХ СКРЫТЫХ ДУБЛИРУЮЩИХ СТРЕЛОК */
-        .gen-section::before, .gen-section::after,
-        .gen-row::before, .gen-row::after,
-        .parent-block::before, .parent-block::after,
-        .tree-vertical::before, .tree-vertical::after {
-            content: none !important;
-            display: none !important;
-        }
 
         .gen-label {
             font-size: 0.75rem;
@@ -182,18 +173,39 @@
             letter-spacing: 1px;
         }
         
-        /* ИСПРАВЛЕНО: Теперь элементы переносятся (wrap), если не влезают по ширине экрана */
         .gen-row {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 16px;
-            padding: 5px 20px;
+            gap: 20px;
+            padding: 5px 10px;
             box-sizing: border-box;
             align-items: flex-start;
         }
 
-        /* Контейнер точечной вертикальной связи Родитель -> Четкая линия под ним */
+        /* Анатомия ветвей и колонок */
+        .tree-branch-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .flex-branches {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .flex-branches {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+        }
+
         .parent-block {
             display: flex;
             flex-direction: column;
@@ -201,19 +213,18 @@
             position: relative;
         }
         
-        /* ОДНА ХОРОШО ЗАМЕТНАЯ СТРЕЛКА-ЛИНИЯ ПО ВСЕЙ ДЛИНЕ ПРОМЕЖУТКА */
+        /* Вертикальные направляющие стрелки */
         .parent-arrow {
             width: 2px;
             height: 38px;
             background-color: #b89047;
-            margin: 12px 0 2px 0;
+            margin: 12px 0 12px 0;
             position: relative;
             display: block;
         }
-        /* Наконечник стрелки на конце линии */
         .parent-arrow::after {
-            content: "" !important;
-            display: block !important;
+            content: "";
+            display: block;
             position: absolute;
             bottom: -6px;
             left: 50%;
@@ -225,7 +236,19 @@
             border-top: 7px solid #b89047;
         }
         
-        /* Стили для разделения веток внутри одного поколения */
+        /* Изолированная боковая группа сиблингов */
+        .siblings-wrap-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            max-width: 260px;
+            border: 1px dashed #edeae0;
+            padding: 15px;
+            background-color: #faf9f6;
+            border-radius: 4px;
+        }
+
         .branch-subgroup {
             display: flex;
             flex-direction: column;
@@ -448,7 +471,7 @@
         
         <!-- I Поколение -->
         <div class="gen-section" id="gen-sec-1">
-            <span class="gen-label" id="lbl-g1">I Поколение</span>
+            <span class="gen-label lbl-g1">I Поколение</span>
             <div class="gen-row">
                 <div class="parent-block">
                     <button class="tree-node main-line" id="node-naum" onclick="showInfo('naum', this)"
@@ -462,7 +485,7 @@
 
         <!-- II Поколение -->
         <div class="gen-section" id="gen-sec-2">
-            <span class="gen-label" id="lbl-g2">II Поколение</span>
+            <span class="gen-label lbl-g2">II Поколение</span>
             <div class="gen-row">
                 <div class="parent-block">
                     <button class="tree-node main-line" id="node-mikhail_n" onclick="showInfo('mikhail_n', this)"
@@ -476,7 +499,7 @@
 
         <!-- III Поколение -->
         <div class="gen-section" id="gen-sec-3">
-            <span class="gen-label" id="lbl-g3">III Поколение</span>
+            <span class="gen-label lbl-g3">III Поколение</span>
             <div class="gen-row">
                 <div class="parent-block">
                     <button class="tree-node main-line" id="node-potap" onclick="showInfo('potap', this)"
@@ -490,7 +513,7 @@
 
         <!-- IV Поколение -->
         <div class="gen-section" id="gen-sec-4">
-            <span class="gen-label" id="lbl-g4">IV Поколение</span>
+            <span class="gen-label lbl-g4">IV Поколение</span>
             <div class="gen-row">
                 <div class="parent-block">
                     <div class="couple-wrapper">
@@ -508,11 +531,13 @@
             </div>
         </div>
 
-        <!-- V Поколение -->
+        <!-- V Поколение и ниже (Refactored to avoid wrong wrapping arrows) -->
         <div class="gen-section" id="gen-sec-5">
-            <span class="gen-label" id="lbl-g5">V Поколение</span>
-            <div class="gen-row">
-                <div class="parent-block">
+            <span class="gen-label lbl-g5">V Поколение</span>
+            <div class="gen-row" style="align-items: flex-start; gap: 30px;">
+                
+                <!-- ОСНОВНАЯ НИСХОДЯЩАЯ ЛИНИЯ: Ветвь Петра Филипповича -->
+                <div class="tree-branch-column">
                     <div class="couple-wrapper">
                         <button class="tree-node" id="node-petr" onclick="showInfo('petr', this)"
                                 data-name-ru="Пётр Филиппович" data-name-en="Petr Filippovich"
@@ -524,118 +549,119 @@
                                 data-desc-en="Spouse of Petr Filippovich. Generation V."></button>
                     </div>
                     <div class="parent-arrow"></div>
-                </div>
-                <button class="tree-node child-node" id="node-vasily" onclick="showInfo('vasily', this)"
-                        data-name-ru="Василий Филиппович" data-name-en="Vasily Filippovich"
-                        data-desc-ru="Пропал без вести в конце 1942г под Великим Новгородом, западнее Старой Русы."
-                        data-desc-en="Missing in action in late 1942 near Veliky Novgorod, west of Staraya Russa."></button>
-                <button class="tree-node child-node" id="node-evdokiya" onclick="showInfo('evdokiya', this)"
-                        data-name-ru="Евдокия Филипповна" data-name-en="Evdokiya Filippovna"
-                        data-desc-ru="Информация в процессе сбора и архивного поиска..."
-                        data-desc-en="Information is currently being collected from archival sources..."></button>
-                <button class="tree-node child-node" id="node-matrona" onclick="showInfo('matrona', this)"
-                        data-name-ru="Матрона Филипповна" data-name-en="Matrona Filippovna"
-                        data-desc-ru="Информация в процессе сбора и архивного поиска..."
-                        data-desc-en="Information is currently being collected from archival sources..."></button>
-                <button class="tree-node child-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)"
-                        data-name-ru="Афанасий Филиппович" data-name-en="Afanasiy Filippovich"
-                        data-desc-ru="Информация в процессе сбора и архивного поиска..."
-                        data-desc-en="Information is currently being collected from archival sources..."></button>
-                <button class="tree-node child-node" id="node-mikhail_f" onclick="showInfo('mikhail_f', this)"
-                        data-name-ru="Михаил Филиппович" data-name-en="Mikhail Filippovich"
-                        data-desc-ru="Информация в процессе сбора и архивного поиска..."
-                        data-desc-en="Information is currently being collected from archival sources..."></button>
-            </div>
-        </div>
+                    
+                    <!-- VI Поколение (Встроено во внутренний контейнер линии Петра) -->
+                    <span class="gen-label lbl-g6">VI Поколение</span>
+                    <div class="gen-row" style="align-items: flex-start; gap: 20px;">
+                        
+                        <!-- Линия Виктора Петровича -->
+                        <div class="tree-branch-column">
+                            <div class="couple-wrapper">
+                                <button class="tree-node" id="node-viktor" onclick="showInfo('viktor', this)"
+                                        data-name-ru="Виктор Петрович" data-name-en="Viktor Petrovich"
+                                        data-desc-ru="Родился в 1947 г. Посвятил жизнь служению закону и государству: карьера в правоохранительных органах, службе судебных приставов и таможне."
+                                        data-desc-en="Born in 1947. Dedicated his life to state service and law enforcement, serving in police departments, bailiff services, and customs."></button>
+                                <button class="tree-node" id="node-nadezhda" onclick="showInfo('nadezhda', this)"
+                                        data-name-ru="Надежда Петровна (Жена)" data-name-en="Nadezhda Petrovna (Wife)"
+                                        data-desc-ru="Супруга Виктора Петровича. VI поколение рода."
+                                        data-desc-en="Spouse of Viktor Petrovich. Generation VI."></button>
+                            </div>
+                            <div class="parent-arrow"></div>
+                            
+                            <!-- VII и VIII ПОКОЛЕНИЯ: Разветвление на параллельные колонки ветвей -->
+                            <div class="flex-branches">
+                                
+                                <!-- КОЛОНКА 1: Ветвь Дмитрия Викторовича -->
+                                <div class="tree-branch-column">
+                                    <span class="gen-label lbl-g7">VII Поколение</span>
+                                    <div class="couple-wrapper">
+                                        <button class="tree-node" id="node-dmitry" onclick="showInfo('dmitry', this)"
+                                                data-name-ru="Дмитрий Викторович" data-name-en="Dmitriy Viktorovich"
+                                                data-desc-ru="Капитан морского флота (нефтеналивные и химические танкеры). Основатель и хранитель цифрового архива фамилии."
+                                                data-desc-en="Merchant marine captain (oil/chemical tankers). Founder and keeper of the digital family archive."></button>
+                                        <button class="tree-node" id="node-dmitry-wife" onclick="showInfo('dmitry-wife', this)"
+                                                data-name-ru="Анна Викторовна (Жена)" data-name-en="Anna Viktorovna (Wife)"
+                                                data-desc-ru="Супруга Дмитрия Викторовича. VII поколение рода."
+                                                data-desc-en="Spouse of Dmitriy Viktorovich. Generation VII."></button>
+                                    </div>
+                                    <div class="parent-arrow"></div>
+                                    
+                                    <span class="gen-label lbl-g8">VIII Поколение</span>
+                                    <div class="branch-subgroup" id="group-dmitry">
+                                        <span class="branch-label" id="lbl-branch-dmitry" style="color: #b89047;">Ветвь Дмитрия</span>
+                                        <div class="branch-nodes" id="row-parent-dmitry">
+                                            <button class="tree-node child-node" id="node-daniil" onclick="showInfo('daniil', this)"
+                                                    data-name-ru="Даниил Дмитриевич" data-name-en="Daniil Dmitrievich"
+                                                    data-desc-ru="Сын Дмитрия Викторовича. Продолжатель прямой линии VIII поколения рода."
+                                                    data-desc-en="Son of Dmitriy Viktorovich. Successor of the main direct line of the VIII generation."></button>
+                                            <button class="tree-node child-node" id="node-polina" onclick="showInfo('polina', this)"
+                                                    data-name-ru="Полина Дмитриевна" data-name-en="Polina Dmitrievna"
+                                                    data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых."
+                                                    data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage."></button>
+                                            <button class="tree-node child-node" id="node-angelina" onclick="showInfo('angelina', this)"
+                                                    data-name-ru="Ангелина Дмитриевна" data-name-en="Angelina Dmitrievna"
+                                                    data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых."
+                                                    data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage."></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- КОЛОНКА 2: Ветвь Анны Викторовны (Расположена строго параллельно и напротив мамы) -->
+                                <div class="tree-branch-column">
+                                    <span class="gen-label lbl-g7">VII Поколение</span>
+                                    <button class="tree-node child-node" id="node-anna" onclick="showInfo('anna', this)"
+                                            data-name-ru="Анна Викторовна" data-name-en="Anna Viktorovna"
+                                            data-desc-ru="Дочь Виктора Петровича. Семейный архив в процессе наполнения."
+                                            data-desc-en="Daughter of Viktor Petrovich. Family archive records are currently in progress."></button>
+                                    <div class="parent-arrow"></div>
+                                    
+                                    <span class="gen-label lbl-g8">VIII Поколение</span>
+                                    <div class="branch-subgroup" id="group-anna">
+                                        <span class="branch-label" id="lbl-branch-anna" style="color: #94a3b8;">Ветвь Анны</span>
+                                        <div class="branch-nodes" id="row-parent-anna">
+                                            <button class="tree-node child-node" id="node-stanislav" onclick="showInfo('stanislav', this)"
+                                                    data-name-ru="Станислав Владиславович" data-name-en="Stanislav Vladislavovich"
+                                                    data-desc-ru="Сын Анны Викторовны. VIII поколение рода Напримеровых."
+                                                    data-desc-en="Son of Anna Viktorovna. VIII generation of the lineage."></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
 
-        <!-- VI Поколение -->
-        <div class="gen-section" id="gen-sec-6">
-            <span class="gen-label" id="lbl-g6">VI Поколение</span>
-            <div class="gen-row">
-                <!-- Ветвь Виктора Петровича -->
-                <div class="parent-block">
-                    <div class="couple-wrapper">
-                        <button class="tree-node" id="node-viktor" onclick="showInfo('viktor', this)"
-                                data-name-ru="Виктор Петрович" data-name-en="Viktor Petrovich"
-                                data-desc-ru="Родился в 1947 г. Посвятил жизнь служению закону и государству: карьера в правоохранительных органах, службе судебных приставов и таможне."
-                                data-desc-en="Born in 1947. Dedicated his life to state service and law enforcement, serving in police departments, bailiff services, and customs."></button>
-                        <button class="tree-node" id="node-nadezhda" onclick="showInfo('nadezhda', this)"
-                                data-name-ru="Надежда Петровна (Жена)" data-name-en="Nadezhda Petrovna (Wife)"
-                                data-desc-ru="Супруга Виктора Петровича. VI поколение рода."
-                                data-desc-en="Spouse of Viktor Petrovich. Generation VI."></button>
-                    </div>
-                    <div class="parent-arrow"></div>
-                </div>
-
-                <!-- Ветвь Вячеслава Петровича -->
-                <div class="parent-block">
-                    <button class="tree-node child-node" id="node-vyacheslav" onclick="showInfo('vyacheslav', this)"
-                            data-name-ru="Вячеслав Петрович" data-name-en="Vyacheslav Petrovich"
-                            data-desc-ru="Сын Петра Филипповича. Брат Виктора Петровича. VI поколение рода."
-                            data-desc-en="Son of Petr Filippovich. Brother of Viktor Petrovich. Generation VI."></button>
-                </div>
-            </div>
-        </div>
-
-        <!-- VII Поколение -->
-        <div class="gen-section" id="gen-sec-7">
-            <span class="gen-label" id="lbl-g7">VII Поколение</span>
-            <div class="gen-row" style="gap: 20px;">
-                <div class="parent-block">
-                    <div class="couple-wrapper">
-                        <button class="tree-node" id="node-dmitry" onclick="showInfo('dmitry', this)"
-                                data-name-ru="Дмитрий Викторович" data-name-en="Dmitriy Viktorovich"
-                                data-desc-ru="Капитан морского флота (нефтеналивные и химические танкеры). Основатель и хранитель цифрового архива фамилии."
-                                data-desc-en="Merchant marine captain (oil/chemical tankers). Founder and keeper of the digital family archive."></button>
-                        <button class="tree-node" id="node-dmitry-wife" onclick="showInfo('dmitry-wife', this)"
-                                data-name-ru="Анна Викторовна (Жена)" data-name-en="Anna Viktorovna (Wife)"
-                                data-desc-ru="Супруга Дмитрия Викторовича. VII поколение рода."
-                                data-desc-en="Spouse of Dmitriy Viktorovich. Generation VII."></button>
-                    </div>
-                    <div class="parent-arrow"></div>
-                </div>
-                
-                <div class="parent-block">
-                    <button class="tree-node child-node" id="node-anna" onclick="showInfo('anna', this)"
-                            data-name-ru="Анна Викторовна" data-name-en="Anna Viktorovna"
-                            data-desc-ru="Дочь Виктора Петровича. Семейный архив в процессе наполнения."
-                            data-desc-en="Daughter of Viktor Petrovich. Family archive records are currently in progress."></button>
-                    <div class="parent-arrow"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- VIII Поколение -->
-        <div class="gen-section" id="gen-sec-8">
-            <span class="gen-label" id="lbl-g8">VIII Поколение</span>
-            <div class="gen-row" style="gap: 30px; align-items: flex-start;">
-                
-                <div class="branch-subgroup" id="group-dmitry">
-                    <span class="branch-label" id="lbl-branch-dmitry" style="color: #b89047;">Ветвь Дмитрия</span>
-                    <div class="branch-nodes" id="row-parent-dmitry">
-                        <button class="tree-node child-node" id="node-daniil" onclick="showInfo('daniil', this)"
-                                data-name-ru="Даниил Дмитриевич" data-name-en="Daniil Dmitrievich"
-                                data-desc-ru="Сын Дмитрия Викторовича. Продолжатель прямой линии VIII поколения рода."
-                                data-desc-en="Son of Dmitriy Viktorovich. Successor of the main direct line of the VIII generation."></button>
-                        <button class="tree-node child-node" id="node-polina" onclick="showInfo('polina', this)"
-                                data-name-ru="Полина Дмитриевна" data-name-en="Polina Dmitrievna"
-                                data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых."
-                                data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage."></button>
-                        <button class="tree-node child-node" id="node-angelina" onclick="showInfo('angelina', this)"
-                                data-name-ru="Ангелина Дмитриевна" data-name-en="Angelina Dmitrievna"
-                                data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых."
-                                data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage."></button>
+                        <!-- Вячеслав Петрович (Брат Виктора, без потомков) -->
+                        <div style="margin-top: 0;">
+                            <button class="tree-node child-node" id="node-vyacheslav" onclick="showInfo('vyacheslav', this)"
+                                    data-name-ru="Вячеслав Петрович" data-name-en="Vyacheslav Petrovich"
+                                    data-desc-ru="Сын Петра Филипповича. Брат Виктора Петровича. VI поколение рода."
+                                    data-desc-en="Son of Petr Filippovich. Brother of Viktor Petrovich. Generation VI."></button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="branch-subgroup" id="group-anna">
-                    <span class="branch-label" id="lbl-branch-anna" style="color: #94a3b8;">Ветвь Анны</span>
-                    <div class="branch-nodes" id="row-parent-anna">
-                        <button class="tree-node child-node" id="node-stanislav" onclick="showInfo('stanislav', this)"
-                                data-name-ru="Станислав Владиславович" data-name-en="Stanislav Vladislavovich"
-                                data-desc-ru="Сын Анны Викторовны. VIII поколение рода Напримеровых."
-                                data-desc-en="Son of Anna Viktorovna. VIII generation of the lineage."></button>
-                    </div>
+                <!-- БОКОВОЙ БЛОК СИБЛИНГОВ: Остальные дети Филиппа (Изолированы от стрелки Петра) -->
+                <div class="siblings-wrap-group">
+                    <button class="tree-node child-node" id="node-vasily" onclick="showInfo('vasily', this)"
+                            data-name-ru="Василий Филиппович" data-name-en="Vasily Filippovich"
+                            data-desc-ru="Пропал без вести в конце 1942г под Великим Новгородом, западнее Старой Русы."
+                            data-desc-en="Missing in action in late 1942 near Veliky Novgorod, west of Staraya Russa."></button>
+                    <button class="tree-node child-node" id="node-evdokiya" onclick="showInfo('evdokiya', this)"
+                            data-name-ru="Евдокия Филипповна" data-name-en="Evdokiya Filippovna"
+                            data-desc-ru="Информация в процессе сбора и архивного поиска..."
+                            data-desc-en="Information is currently being collected from archival sources..."></button>
+                    <button class="tree-node child-node" id="node-matrona" onclick="showInfo('matrona', this)"
+                            data-name-ru="Матрона Филипповна" data-name-en="Matrona Filippovna"
+                            data-desc-ru="Информация в процессе сбора и архивного поиска..."
+                            data-desc-en="Information is currently being collected from archival sources..."></button>
+                    <button class="tree-node child-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)"
+                            data-name-ru="Афанасий Филиппович" data-name-en="Afanasiy Filippovich"
+                            data-desc-ru="Информация в процессе сбора и архивного поиска..."
+                            data-desc-en="Information is currently being collected from archival sources..."></button>
+                    <button class="tree-node child-node" id="node-mikhail_f" onclick="showInfo('mikhail_f', this)"
+                            data-name-ru="Михаил Филиппович" data-name-en="Mikhail Filippovich"
+                            data-desc-ru="Информация в процессе сбора и архивного поиска..."
+                            data-desc-en="Information is currently being collected from archival sources..."></button>
                 </div>
 
             </div>
@@ -790,8 +816,11 @@
         document.getElementById('lbl-branch-dmitry').innerText = translations[currentLang].branchDmitry;
         document.getElementById('lbl-branch-anna').innerText = translations[currentLang].branchAnna;
         
+        // Исправлено: теперь обновляет все маркеры поколений во всех параллельных колонках-ветвях
         for(let i=1; i<=8; i++) {
-            document.getElementById(`lbl-g${i}`).innerText = translations[currentLang][`g${i}`];
+            document.querySelectorAll(`.lbl-g${i}`).forEach(el => {
+                el.innerText = translations[currentLang][`g${i}`];
+            });
         }
 
         document.querySelectorAll('.tree-node').forEach(el => {
