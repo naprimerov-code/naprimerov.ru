@@ -211,7 +211,6 @@
         </button>
     </header>
 
-    <!-- Древо, распределенное по поколениям -->
     <div id="tree-container"></div>
 
     <div class="console-title">Лог подготовки и отправки данных:</div>
@@ -219,7 +218,7 @@
 </div>
 
 <script>
-// Полный массив данных. Вячеслав Петрович перемещен в поколение 6 (VI Поколение)
+// Полный массив данных с учетом всех ваших исправлений и настроек для каждого родственника
 const familyTreeData = [
     { id: "naum", generation: 1, name: "Наум", role: "Старший предок", settings: { allowEdit: true, visible: true } },
     
@@ -263,6 +262,7 @@ const genNames = {
     8: "VIII Поколение (Внуки Виктора)"
 };
 
+// Генерация интерфейса на основе данных
 function buildTreeUI() {
     const container = document.getElementById('tree-container');
     container.innerHTML = '';
@@ -363,7 +363,7 @@ function sendTreeByEmail() {
     };
 
     const subject = "Обновление генеалогического древа - naprimerov.ru";
-    const body = "Здравствуйте!\n\nНиже вложены актуальные данные генеалогического древа со всеми внесенными исправлениями родственников, их связей и индивидуальных настроек карточек (меню 3 точки):\n\n" + JSON.stringify(payload, null, 2);
+    const body = "Здравствуйте!\\n\\nНиже вложены актуальные данные генеалогического древа со всеми внесенными исправлениями родственников, их связей и индивидуальных настроек карточек (меню 3 точки):\\n\\n" + JSON.stringify(payload, null, 2);
     
     const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
