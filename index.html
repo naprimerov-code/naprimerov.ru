@@ -35,7 +35,26 @@
             color: #b89047;
             font-size: 1.2rem;
         }
-        
+        .children-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Принудительное отображение для кнопок детей */
+.children-block .tree-node {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #2b2d2f !important; /* Гарантируем, что текст темный */
+    background: #ffffff !important;
+    border: 1px solid #edeae0 !important;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    min-width: 160px;
+}
+
         /* Кнопка-три точки и меню */
         .menu-container {
             position: absolute;
