@@ -1,178 +1,115 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Семейный архив Напримеровых</title>
-<style>
-:root {
---bg-color: #f8f9fa;
---text-color: #212529;
---accent-color: #1a365d;
---card-bg: #ffffff;
---border-color: #e2e8f0;
-}
-
-@media (prefers-color-scheme: dark) {
-:root {
---bg-color: #0f172a;
---text-color: #f1f5f9;
---accent-color: #38bdf8;
---card-bg: #1e293b;
---border-color: #334155;
-}
-}
-
-body {
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-background-color: var(--bg-color);
-color: var(--text-color);
-line-height: 1.6;
-margin: 0;
-padding: 0;
-}
-
-header {
-background-color: var(--card-bg);
-border-bottom: 1px solid var(--border-color);
-padding: 2rem 1rem;
-text-align: center;
-}
-
-header h1 {
-margin: 0;
-font-size: 2.2rem;
-letter-spacing: -0.05em;
-}
-
-header p {
-margin: 0.5rem 0 0 0;
-opacity: 0.7;
-font-style: italic;
-}
-
-nav {
-display: flex;
-justify-content: center;
-gap: 1.5rem;
-margin-top: 1.5rem;
-}
-
-nav a {
-color: var(--accent-color);
-text-decoration: none;
-font-weight: 500;
-}
-
-nav a:hover {
-text-decoration: underline;
-}
-
-main {
-max-width: 900px;
-margin: 2rem auto;
-padding: 0 1rem;
-}
-
-.intro-section {
-background-color: var(--card-bg);
-border: 1px solid var(--border-color);
-border-radius: 8px;
-padding: 2rem;
-margin-bottom: 2rem;
-}
-
-.grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1-fraction));
-gap: 1.5rem;
-margin-top: 2rem;
-}
-
-/* Защита от парсера: заменяем 1-fraction на стандартный 1fr при реальной сборке */
-@media (min-width: 600px) {
-.grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-.card {
-background-color: var(--card-bg);
-border: 1px solid var(--border-color);
-border-radius: 8px;
-padding: 1.5rem;
-display: flex;
-flex-direction: column;
-}
-
-.card h3 {
-margin-top: 0;
-color: var(--accent-color);
-}
-
-.card a {
-margin-top: auto;
-color: var(--accent-color);
-text-decoration: none;
-font-weight: bold;
-}
-
-footer {
-text-align: center;
-padding: 3rem 1rem;
-margin-top: 4rem;
-border-top: 1px solid var(--border-color);
-font-size: 0.9rem;
-opacity: 0.6;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Родословная рода Напримеровых</title>
+    <style>
+        /* Базовые стили */
+        body { font-family: "Georgia", serif; background-color: #f7f5f0; color: #2b2d2f; margin: 0; padding: 0; text-align: center; }
+        header { background-color: #1e252b; color: #f7f5f0; padding: 40px 20px; position: relative; border-bottom: 3px solid #b89047; }
+        
+        /* Меню 3 точки */
+        .menu-container { position: absolute; top: 20px; right: 20px; z-index: 1000; }
+        .menu-btn { background: none; border: none; color: #b89047; font-size: 32px; cursor: pointer; }
+        .menu-dropdown { 
+            display: none; position: absolute; right: 0; top: 40px; background: #fff; 
+            border: 1px solid #ddd; min-width: 200px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        }
+        .menu-dropdown a { 
+            display: block; padding: 15px; text-decoration: none; color: #2b2d2f; 
+            border-bottom: 1px solid #eee; text-align: left; 
+        }
+        .menu-dropdown a:hover { background: #f9f9f9; color: #b89047; }
+        
+        /* Дерево */
+        .content { max-width: 900px; margin: 40px auto; padding: 20px; }
+        .gen-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; margin: 25px 0 10px; }
+        .tree-node { background: #fff; border: 1px solid #b89047; padding: 10px 20px; display: inline-block; margin: 5px; }
+        .couple-wrapper { border: 2px solid #b89047; padding: 10px; display: inline-block; background: #faf7f2; }
+        .arrow { height: 20px; width: 2px; background: #b89047; margin: 5px auto; }
+        
+        /* Секция связи */
+        .contact-section { margin-top: 60px; padding: 40px; border-top: 1px solid #b89047; }
+        .contact-btn { 
+            background: #b89047; color: #fff; padding: 15px 30px; 
+            text-decoration: none; display: inline-block; border-radius: 2px; 
+        }
+        footer { margin-top: 50px; color: #94a3b8; font-size: 12px; padding-bottom: 20px; }
+    </style>
 </head>
 <body>
 
 <header>
-<h1>НАПРИМЕРОВЫ</h1>
-<p>Генеалогический архив и история рода</p>
-<nav>
-<a href="#history">География рода</a>
-<a href="#persons">Персоналии</a>
-<a href="#archive">Документы</a>
-</nav>
+    <h1>Родословная рода Напримеровых</h1>
+    <div class="menu-container">
+        <button class="menu-btn" onclick="document.getElementById('menu').classList.toggle('show')">⋮</button>
+        <div id="menu" class="menu-dropdown">
+            <a href="#tree">Генеалогическое древо</a>
+            <a href="mailto:naprimerov@mail.ru">Связаться с Капитаном</a>
+            <a href="#">Цифровой архив</a>
+        </div>
+    </div>
 </header>
 
-<main>
-<section class="intro-section">
-<h2>О проекте</h2>
-<p>Добро пожаловать на персональный исторический архив семьи Напримеровых. Этот сайт создан для систематизации архивных документов, восстановления хронологии событий и сохранения памяти о поколениях для наших потомков. Если у вас есть архивные данные, фотографии или упоминания фамилии, вы можете связаться с автором проекта.</p>
-</section>
+<div class="content" id="tree">
+    <div class="gen-label">I Поколение</div>
+    <div class="tree-node">Наум</div>
+    <div class="arrow"></div>
 
-<section id="history" style="margin-top: 3rem;">
-<h2>География и ключевые ветви</h2>
-<div class="card">
-<h3>Рязанская ветвь (с. Канино)</h3>
-<p>История рода, уходящая корнями в Сапожковский уезд Рязанской губернии. Исследования строятся на базе документов Государственного архива Рязанской области (ГАРО), включая метрические книги и ревизские сказки.</p>
-<a href="#">Читать историю ветви →</a>
-</div>
-</section>
+    <div class="gen-label">II Поколение</div>
+    <div class="tree-node">Михаил Наумович</div>
+    <div class="arrow"></div>
 
-<section id="persons" style="margin-top: 3rem;">
-<h2>Страницы памяти</h2>
-<div class="grid">
-<div class="card">
-<h3>Пётр Филиппович Напримеров</h3>
-<p>Военный офицер контрразведки СМЕРШ. Боевой путь в годы Великой Отечественной войны, архивные справки и наградные листы.</p>
-<a href="#">Перейти к биографии →</a>
+    <div class="gen-label">III Поколение</div>
+    <div class="tree-node">Потап Михайлович</div>
+    <div class="arrow"></div>
+
+    <div class="gen-label">IV Поколение</div>
+    <div class="couple-wrapper">
+        <div class="tree-node">Филипп Потапович</div>
+        <div class="tree-node">Елена Алексеевна</div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="gen-label">V Поколение</div>
+    <div class="couple-wrapper">
+        <div class="tree-node">Пётр Филиппович</div>
+        <div class="tree-node">Анна Ивановна</div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="gen-label">VI Поколение</div>
+    <div class="couple-wrapper">
+        <div class="tree-node">Виктор Петрович</div>
+        <div class="tree-node">Надежда Петровна</div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="gen-label">VII Поколение</div>
+    <div class="couple-wrapper">
+        <div class="tree-node">Дмитрий Викторович</div>
+        <div class="tree-node">Анна Викторовна</div>
+    </div>
+    <div class="arrow"></div>
+
+    <div class="gen-label">VIII Поколение</div>
+    <div class="tree-node">Даниил Дмитриевич</div>
+    <div class="tree-node">Полина Дмитриевна</div>
+    <div class="tree-node">Ангелина Дмитриевна</div>
 </div>
-<div class="card">
-<h3>Виктор Петрович Напримеров</h3>
-<p>Многолетняя служба в правоохранительных органах, службе судебных приставов и таможенных органах.</p>
-<a href="#">Перейти к биографии →</a>
-</div>
-</div>
+
+<section class="contact-section">
+    <h2>Связь с Капитаном</h2>
+    <p>По вопросам пополнения архива или уточнения данных:</p>
+    <a href="mailto:naprimerov@mail.ru" class="contact-btn">Написать письмо</a>
 </section>
-</main>
 
 <footer>
-<p>© 2026 naprimerov.ru. Исследование и разработка: Капитан Напримеров.</p>
+    Статус системы: Июнь 2026 г. | Разработано для семьи Напримеровых.
 </footer>
 
-</body>
-</html>
-
+<script>
+    // Закрытие меню при клике вне его
+    window.onclick = function(event) {
+        if (!
