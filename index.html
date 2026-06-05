@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
+<html lang="ru"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Родословная рода Напримеровых / Genealogy of the Naprimerov Lineage</title>
@@ -363,9 +362,9 @@
         <button class="menu-btn" id="menu-trigger" onclick="toggleMenu(event)">⋮</button>
         <div class="menu-dropdown" id="menu-dropdown">
             <button onclick="menuAction(1)" id="menu-item-1">Родословное древо</button>
-            <button onclick="menuAction(2)" id="menu-item-2">Цифровой архив_в разработке</button>
+            <button onclick="menuAction(2)" id="menu-item-2">Цифровой архив _в разработке</button>
             <button onclick="menuAction(3)" id="menu-item-3">Военная летопись</button>
-            <button onclick="menuAction(4)" id="menu-item-4">Интерактивная карта расселения</button>
+            <button onclick="menuAction(4)" id="menu-item-4">Interactive Map</button>
         </div>
     </div>
 
@@ -376,8 +375,8 @@
 
 <main class="content-container">
     <h2 class="section-title" id="info-heading">Общая информация</h2>
-    <div class="info-text" id="info-p1"></div>
-    <div class="info-text" id="info-p2"></div>
+    <div class="info-text" id="info-p1">Добро пожаловать на персональный информационный ресурс, посвященный истории, генеалогии и сохранению памяти рода Напримеровых. Цель данного проекта — объединить разрозненные архивные сведения, восстановить хронологию поколений, сохранить память об исторических корнях и наладить прочную связь между потомками.</div>
+    <div class="info-text" id="info-p2">В настоящее время ведется систематическая исследовательская работа по сбору исторических документов, изучению метрических книг, поиску фотографий и фиксации семейных воспоминаний. Семейная история — это живая нить, связывающая прошлое с будущим, и каждый представитель рода вносит в неё свой неповторимый вклад.</div>
 
     <!-- РАЗДЕЛ: ГЕНЕАЛОГИЧЕСКОЕ ДРЕВО -->
     <h2 class="section-title" id="tree-heading">Генеалогическое древо</h2>
@@ -387,10 +386,7 @@
         <div class="gen-section" id="gen-sec-1">
             <span class="gen-label" id="lbl-g1">I Поколение</span>
             <div class="gen-row">
-                <button class="tree-node main-line" id="node-naum" onclick="showInfo('naum', this)"
-                        data-name-ru="Наум" data-name-en="Naum"
-                        data-desc-ru="Родоначальник задокументированной ветви. Коренной житель Рязанских земель."
-                        data-desc-en="The founding father of the documented lineage. Native to the Ryazan lands."></button>
+                <button class="tree-node main-line" id="node-naum" onclick="showInfo('naum', this)" data-name-ru="Наум" data-name-en="Naum" data-desc-ru="Родоначальник задокументированной ветви. Коренной житель Рязанских земель." data-desc-en="The founding father of the documented lineage. Native to the Ryazan lands.">Наум</button>
             </div>
         </div>
 
@@ -398,10 +394,7 @@
         <div class="gen-section" id="gen-sec-2">
             <span class="gen-label" id="lbl-g2">II Поколение</span>
             <div class="gen-row">
-                <button class="tree-node main-line" id="node-mikhail_n" onclick="showInfo('mikhail_n', this)"
-                        data-name-ru="Михаил Наумович" data-name-en="Mikhail Naumovich"
-                        data-desc-ru="II поколение рода. Исторические сведения собираются по архивным фондам."
-                        data-desc-en="Generation II. Historical records are currently being gathered from archival funds."></button>
+                <button class="tree-node main-line" id="node-mikhail_n" onclick="showInfo('mikhail_n', this)" data-name-ru="Михаил Наумович" data-name-en="Mikhail Naumovich" data-desc-ru="II поколение рода. Исторические сведения собираются по архивным фондам." data-desc-en="Generation II. Historical records are currently being gathered from archival funds.">Михаил Наумович</button>
             </div>
         </div>
 
@@ -409,10 +402,7 @@
         <div class="gen-section" id="gen-sec-3">
             <span class="gen-label" id="lbl-g3">III Поколение</span>
             <div class="gen-row">
-                <button class="tree-node main-line" id="node-potap" onclick="showInfo('potap', this)"
-                        data-name-ru="Потап Михайлович" data-name-en="Potap Mikhailovich"
-                        data-desc-ru="III поколение рода. Ведется верификация документов метрических книг."
-                        data-desc-en="Generation III. Parish register verification is in progress."></button>
+                <button class="tree-node main-line" id="node-potap" onclick="showInfo('potap', this)" data-name-ru="Потап Михайлович" data-name-en="Potap Mikhailovich" data-desc-ru="III поколение рода. Ведется верификация документов метрических книг." data-desc-en="Generation III. Parish register verification is in progress.">Потап Михайлович</button>
             </div>
         </div>
 
@@ -420,10 +410,7 @@
         <div class="gen-section" id="gen-sec-4">
             <span class="gen-label" id="lbl-g4">IV Поколение</span>
             <div class="gen-row">
-                <button class="tree-node main-line" id="node-filipp" onclick="showInfo('filipp', this)"
-                        data-name-ru="Филипп Потапович" data-name-en="Filipp Potapovich"
-                        data-desc-ru="IV поколение рода. Глава большой семьи, давшей начало нескольким ветвям фамилии."
-                        data-desc-en="Generation IV. Head of a large family that initiated several branches of the name."></button>
+                <button class="tree-node main-line" id="node-filipp" onclick="showInfo('filipp', this)" data-name-ru="Филипп Потапович" data-name-en="Filipp Potapovich" data-desc-ru="IV поколение рода. Глава большой семьи, давшей начало нескольким ветвям фамилии." data-desc-en="Generation IV. Head of a large family that initiated several branches of the name.">Филипп Потапович</button>
             </div>
         </div>
 
@@ -431,30 +418,12 @@
         <div class="gen-section" id="gen-sec-5">
             <span class="gen-label" id="lbl-g5">V Поколение</span>
             <div class="gen-row">
-                <button class="tree-node" id="node-vasily" onclick="showInfo('vasily', this)"
-                        data-name-ru="Василий Филиппович" data-name-en="Vasily Filippovich"
-                        data-desc-ru="Пропал без вести в конце 1942г под Великим Новгородом, западнее Старой Русы."
-                        data-desc-en="Missing in action in late 1942 near Veliky Novgorod, west of Staraya Russa."></button>
-                <button class="tree-node main-line" id="node-petr" onclick="showInfo('petr', this)"
-                        data-name-ru="Пётр Филиппович" data-name-en="Petr Filippovich"
-                        data-desc-ru="Ваш дед. Военный офицер контрразведки СМЕРШ в годы Великой Отечественной войны. Ветеран государственной службы."
-                        data-desc-en="Your grandfather. Military officer in SMERSH counterintelligence during WWII. Veteran of state service."></button>
-                <button class="tree-node" id="node-evdokiya" onclick="showInfo('evdokiya', this)"
-                        data-name-ru="Евдокия Филипповна" data-name-en="Evdokiya Filippovna"
-                        data-desc-ru="Информация в процессе сбора и архивного поиска..."
-                        data-desc-en="Information is currently being collected from archival sources..."></button>
-                <button class="tree-node" id="node-matrona" onclick="showInfo('matrona', this)"
-                        data-name-ru="Матрона Филипповна" data-name-en="Matrona Filippovna"
-                        data-desc-ru="Информация в процессе сбора и архивного поиска..."
-                        data-desc-en="Information is currently being collected from archival sources..."></button>
-                <button class="tree-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)"
-                        data-name-ru="Афанасий Филиппович" data-name-en="Afanasiy Filippovich"
-                        data-desc-ru="Информация в процессе сбора и архивного поиска..."
-                        data-desc-en="Information is currently being collected from archival sources..."></button>
-                <button class="tree-node" id="node-mikhail_f" onclick="showInfo('mikhail_f', this)"
-                        data-name-ru="Михаил Филиппович" data-name-en="Mikhail Filippovich"
-                        data-desc-ru="Информация в процессе сбора и архивного поиска..."
-                        data-desc-en="Information is currently being collected from archival sources..."></button>
+                <button class="tree-node" id="node-vasily" onclick="showInfo('vasily', this)" data-name-ru="Василий Филиппович" data-name-en="Vasily Filippovich" data-desc-ru="Пропал без вести в конце 1942г под Великим Новгородом, западнее Старой Русы." data-desc-en="Missing in action in late 1942 near Veliky Novgorod, west of Staraya Russa.">Василий Филиппович</button>
+                <button class="tree-node main-line" id="node-petr" onclick="showInfo('petr', this)" data-name-ru="Пётр Филиппович" data-name-en="Petr Filippovich" data-desc-ru="Ваш дед. Военный офицер контрразведки СМЕРШ в годы Великой Отечественной войны. Ветеран государственной службы." data-desc-en="Your grandfather. Military officer in SMERSH counterintelligence during WWII. Veteran of state service.">Пётр Филиппович</button>
+                <button class="tree-node" id="node-evdokiya" onclick="showInfo('evdokiya', this)" data-name-ru="Евдокия Филипповна" data-name-en="Evdokiya Filippovna" data-desc-ru="Информация в процессе сбора и архивного поиска..." data-desc-en="Information is currently being collected from archival sources...">Евдокия Филипповна</button>
+                <button class="tree-node" id="node-matrona" onclick="showInfo('matrona', this)" data-name-ru="Матрона Филипповна" data-name-en="Matrona Filippovna" data-desc-ru="Информация в процессе сбора и архивного поиска..." data-desc-en="Information is currently being collected from archival sources...">Матрона Филипповна</button>
+                <button class="tree-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)" data-name-ru="Афанасий Филиппович" data-name-en="Afanasiy Filippovich" data-desc-ru="Информация в процессе сбора и архивного поиска..." data-desc-en="Information is currently being collected from archival sources...">Афанасий Филиппович</button>
+                <button class="tree-node" id="node-mikhail_f" onclick="showInfo('mikhail_f', this)" data-name-ru="Михаил Филиппович" data-name-en="Mikhail Filippovich" data-desc-ru="Информация в процессе сбора и архивного поиска..." data-desc-en="Information is currently being collected from archival sources...">Михаил Филиппович</button>
             </div>
         </div>
 
@@ -462,25 +431,16 @@
         <div class="gen-section" id="gen-sec-6">
             <span class="gen-label" id="lbl-g6">VI Поколение</span>
             <div class="gen-row">
-                <button class="tree-node main-line" id="node-viktor" onclick="showInfo('viktor', this)"
-                        data-name-ru="Виктор Петрович" data-name-en="Viktor Petrovich"
-                        data-desc-ru="Родился в 1947 г. Посвятил жизнь служению закону и государству: карьера в правоохранительных органах, службе судебных приставов и таможне."
-                        data-desc-en="Born in 1947. Dedicated his life to state service and law enforcement, serving in police departments, bailiff services, and customs."></button>
-            </div>
+                <button class="tree-node main-line" id="node-viktor" onclick="showInfo('viktor', this)" data-name-ru="Виктор Петрович" data-name-en="Viktor Petrovich" data-desc-ru="Родился в 1947 г. Посвятил жизнь служению закону и государству: карьера в правоохранительных органах, службе судебных приставов и таможне." data-desc-en="Born in 1947. Dedicated his life to state service and law enforcement, serving in police departments, bailiff services, and customs.">Виктор Петрович</button>
+            <button class="tree-node" id="node-custom-1780652786651" onclick="showInfo('custom-1780652786651', this)" data-name-ru="Быстров Станислав Владиславович" data-name-en="Bystrov Stanislav" data-desc-ru="Информация собирается..." data-desc-en="Information in progress..."></button></div>
         </div>
 
         <!-- VII Поколение -->
         <div class="gen-section" id="gen-sec-7">
             <span class="gen-label" id="lbl-g7">VII Поколение</span>
             <div class="gen-row" style="gap: 40px;">
-                <button class="tree-node main-line" id="node-dmitry" onclick="showInfo('dmitry', this)"
-                        data-name-ru="Дмитрий Викторович" data-name-en="Dmitriy Viktorovich"
-                        data-desc-ru="Капитан морского флота (нефтеналивные и химические танкеры). Основатель и хранитель цифрового архива фамилии."
-                        data-desc-en="Merchant marine captain (oil/chemical tankers). Founder and keeper of the digital family archive."></button>
-                <button class="tree-node" id="node-anna" onclick="showInfo('anna', this)"
-                        data-name-ru="Анна Викторовна" data-name-en="Anna Viktorovna"
-                        data-desc-ru="Дочь Виктора Петровича. Семейный архив в процессе наполнения."
-                        data-desc-en="Daughter of Viktor Petrovich. Family archive records are currently in progress."></button>
+                <button class="tree-node main-line" id="node-dmitry" onclick="showInfo('dmitry', this)" data-name-ru="Дмитрий Викторович" data-name-en="Dmitriy Viktorovich" data-desc-ru="Капитан морского флота (нефтеналивные и химические танкеры). Основатель и хранитель цифрового архива фамилии." data-desc-en="Merchant marine captain (oil/chemical tankers). Founder and keeper of the digital family archive.">Дмитрий Викторович</button>
+                <button class="tree-node" id="node-anna" onclick="showInfo('anna', this)" data-name-ru="Анна Викторовна" data-name-en="Anna Viktorovna" data-desc-ru="Дочь Виктора Петровича. Семейный архив в процессе наполнения." data-desc-en="Daughter of Viktor Petrovich. Family archive records are currently in progress.">Анна Викторовна</button>
             </div>
         </div>
 
@@ -493,18 +453,9 @@
                 <div class="branch-subgroup" id="group-dmitry">
                     <span class="branch-label" id="lbl-branch-dmitry" style="color: #b89047;">Ветвь Дмитрия</span>
                     <div class="branch-nodes" id="row-parent-dmitry">
-                        <button class="tree-node main-line" id="node-daniil" onclick="showInfo('daniil', this)"
-                                data-name-ru="Даниил Дмитриевич" data-name-en="Daniil Dmitrievich"
-                                data-desc-ru="Сын Дмитрия Викторовича. Продолжатель прямой линии VIII поколения рода."
-                                data-desc-en="Son of Dmitriy Viktorovich. Successor of the main direct line of the VIII generation."></button>
-                        <button class="tree-node" id="node-polina" onclick="showInfo('polina', this)"
-                                data-name-ru="Полина Дмитриевна" data-name-en="Polina Dmitrievna"
-                                data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых."
-                                data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage."></button>
-                        <button class="tree-node" id="node-angelina" onclick="showInfo('angelina', this)"
-                                data-name-ru="Ангелина Дмитриевна" data-name-en="Angelina Dmitrievna"
-                                data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых."
-                                data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage."></button>
+                        <button class="tree-node main-line" id="node-daniil" onclick="showInfo('daniil', this)" data-name-ru="Даниил Дмитриевич" data-name-en="Daniil Dmitrievich" data-desc-ru="Сын Дмитрия Викторовича. Продолжатель прямой линии VIII поколения рода." data-desc-en="Son of Dmitriy Viktorovich. Successor of the main direct line of the VIII generation.">Даниил Дмитриевич</button>
+                        <button class="tree-node" id="node-polina" onclick="showInfo('polina', this)" data-name-ru="Полина Дмитриевна" data-name-en="Polina Dmitrievna" data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых." data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage.">Полина Дмитриевна</button>
+                        <button class="tree-node" id="node-angelina" onclick="showInfo('angelina', this)" data-name-ru="Ангелина Дмитриевна" data-name-en="Angelina Dmitrievna" data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых." data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage.">Ангелина Дмитриевна</button>
                     </div>
                 </div>
 
@@ -525,7 +476,7 @@
     <button class="add-node-trigger" id="btn-add-trigger" onclick="toggleAddPanel()">+ Добавить родственника</button>
 
     <!-- ПАНЕЛЬ: Добавление нового родственника -->
-    <div id="add-panel">
+    <div id="add-panel" style="display: none;">
         <h4 style="margin-top:0; color:#1e252b; font-size:1.2rem; font-weight:normal;" id="add-panel-title">Добавить человека в древо</h4>
         
         <label class="form-label" id="lbl-form-gen">Выберите поколение:</label>
@@ -565,11 +516,11 @@
     </div>
 
     <!-- Информационная панель для вывода и редактирования текущего текста -->
-    <div id="info-panel">
-        <h4 id="info-name" style="margin-top:0; color:#1e252b; font-size:1.2rem; font-weight:normal;"></h4>
-        <div id="info-text" class="edit-area" contenteditable="true"></div>
-        <button class="btn-save" id="btn-save-text" onclick="saveInfo()">Сохранить изменения</button>
-        <small id="edit-hint" style="display:block; margin-top:8px; color:#94a3b8; font-family:Arial, sans-serif; font-size:11px;"></small>
+    <div id="info-panel" style="display: none;">
+        <h4 id="info-name" style="margin-top:0; color:#1e252b; font-size:1.2rem; font-weight:normal;">Быстров Станислав Владиславович</h4>
+        <div id="info-text" class="edit-area" contenteditable="true">Информация собирается...</div>
+        <button class="btn-save" id="btn-save-text" onclick="saveInfo()">Сохранить изменения и скачать код</button>
+        <small id="edit-hint" style="display:block; margin-top:8px; color:#94a3b8; font-family:Arial, sans-serif; font-size:11px;">* Введите секретный код. Измененный файл сайта скачается, и внизу отобразится текстовый блок для копирования кода.</small>
     </div>
 
     <!-- Раздел 3: Перспективы исследования -->
@@ -577,37 +528,37 @@
     <div class="roadmap-grid">
         <div class="roadmap-item" id="roadmap-military">
             <h4 id="sec1-title">Военная летопись</h4>
-            <p id="sec1-desc"></p>
+            <p id="sec1-desc">Систематизация документов о предках, прошедших Великую Отечественную войну и преданно служивших отечеству в государственных ведомствах.</p>
         </div>
         <div class="roadmap-item" id="roadmap-archive">
             <h4 id="sec2-title">Цифровой архив</h4>
-            <p id="sec2-desc"></p>
+            <p id="sec2-desc">Реставрация, бережное сохранение и каталогизация старинных семейных фотоснимков, писем и личных архивных документов.</p>
         </div>
         <div class="roadmap-item" id="roadmap-map">
             <h4 id="sec3-title">Карта расселения</h4>
-            <p id="sec3-desc"></p>
+            <p id="sec3-desc">Визуализация исторической географии рода: от Рязанской земли до современных мест проживания и службы представителей семьи.</p>
         </div>
     </div>
 
     <!-- Раздел 4: Приглашение к сотрудничеству -->
     <h2 class="section-title" id="invite-heading">Ищу Напримеровых!</h2>
-    <div class="info-text" id="invite-text"></div>
+    <div class="info-text" id="invite-text">Привет, однофамилец или родственник. Я создаю карту нашей большой семьи и хочу отправить тебе подарок из Рязанской области. Оставь свои координаты.</div>
 
     <!-- Блок благодарностей -->
-    <div class="thanks-block" id="thanks-text"></div>
+    <div class="thanks-block" id="thanks-text">Выражаю искреннюю благодарность Константину Горелову и Сергею Галкину за бесценную помощь в создании проекта.</div>
 
     <!-- Блок управляющего -->
     <div class="manager-block">
-        <h3 id="manager-title"></h3>
-        <p id="manager-desc"></p>
+        <h3 id="manager-title">Проект ведет: Капитан Напримеров Дмитрий Викторович</h3>
+        <p id="manager-desc">Основатель и хранитель цифрового архива фамилии</p>
     </div>
 
     <div class="center-wrapper">
-        <a class="btn btn-contact" id="contact-btn" href=""></a>
+        <a class="btn btn-contact" id="contact-btn" href="mailto:naprimerov@mail.ru?subject=Feedback&amp;body=Hello!">Написать мне</a>
     </div>
 
     <!-- Статус-трекер исследования -->
-    <div class="status-tracker" id="status-text"></div>
+    <div class="status-tracker" id="status-text">Текущий статус архива (июнь 2026 г.): Систематизировано IV поколения, продолжается сбор данных по архивным фондам и верификация документов.</div>
 </main>
 
 <script>
@@ -939,5 +890,6 @@
     renderPage();
 </script>
 
-</body>
-</html>
+
+
+</body></html>
