@@ -73,3 +73,309 @@
         .generation-title {
             font-size: 16px;
             font-weight: bold;
+            color: var(--accent-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nodes-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .person-card {
+            background: #fdfdfd;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .person-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border-color: #cbd5e1;
+        }
+
+        .person-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+            padding-right: 20px;
+        }
+
+        .person-role {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+
+        /* Три точки (Контекстное меню настроек) */
+        .three-dots {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .three-dots:hover {
+            background-color: #f1f5f9;
+        }
+
+        .three-dots::after {
+            content: "•••";
+            letter-spacing: 1px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        /* Выпадающее меню настроек */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 36px;
+            right: 12px;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            z-index: 10;
+            min-width: 160px;
+            overflow: hidden;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 10px 14px;
+            font-size: 13px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: background 0.1s;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8fafc;
+            color: var(--accent-color);
+        }
+
+        .dropdown-item.delete {
+            color: #e74c3c;
+        }
+
+        .dropdown-item.delete:hover {
+            background-color: #fff5f5;
+        }
+
+        /* Лог действий и структуры */
+        .console-log {
+            margin-top: 30px;
+            background: #1e1e1e;
+            color: #a6e22e;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .console-title {
+            color: #efefef;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div>
+            <h1>Панель управления древом: naprimerov.ru</h1>
+            <p style="color: #7f8c8d; margin: 5px 0 0 0; font-size: 14px;">Редактирование связей, индивидуальные настройки (3 точки) и отправка изменений по Email</p>
+        </div>
+        <button class="btn-sync" onclick="sendTreeByEmail()">
+            <span>✉️</span> Сформировать и отправить по почте
+        </button>
+    </header>
+
+    <!-- Древо, распределенное по поколениям -->
+    <div id="tree-container"></div>
+
+    <div class="console-title">Лог подготовки и отправки данных:</div>
+    <div class="console-log" id="http-log">> Ожидание действий пользователя...</div>
+</div>
+
+<script>
+// Полный массив данных. Вячеслав Петрович перемещен в поколение 6 (VI Поколение)
+const familyTreeData = [
+    { id: "naum", generation: 1, name: "Наум", role: "Старший предок", settings: { allowEdit: true, visible: true } },
+    
+    { id: "mikhail_n", generation: 2, name: "Михаил Наумович", parentId: "naum", role: "Сын Наума", settings: { allowEdit: true, visible: true } },
+    
+    { id: "potap_m", generation: 3, name: "Потап Михайлович", parentId: "mikhail_n", role: "Сын Михаила", settings: { allowEdit: true, visible: true } },
+    
+    { id: "filipp_p", generation: 4, name: "Филипп Потапович", parentId: "potap_m", role: "Отец ветви", settings: { allowEdit: true, visible: true } },
+    { id: "elena_a", generation: 4, name: "Елена Алексеевна (Шишкарева)", spouseId: "filipp_p", role: "Жена Филиппа", settings: { allowEdit: true, visible: true } },
+    
+    { id: "petr_f", generation: 5, name: "Пётр Филиппович", parentId: "filipp_p", role: "Сын Филиппа", settings: { allowEdit: true, visible: true } },
+    { id: "anna_i", generation: 5, name: "Анна Ивановна", spouseId: "petr_f", role: "Жена Петра", settings: { allowEdit: true, visible: true } },
+    { id: "vasiliy_f", generation: 5, name: "Василий Филиппович", parentId: "filipp_p", role: "Сын Филиппа", settings: { allowEdit: true, visible: true } },
+    { id: "evdokiya_f", generation: 5, name: "Евдокия Филипповна", parentId: "filipp_p", role: "Дочь Филиппа", settings: { allowEdit: true, visible: true } },
+    { id: "matrona_f", generation: 5, name: "Матрона Филипповна", parentId: "filipp_p", role: "Дочь Филиппа", settings: { allowEdit: true, visible: true } },
+    { id: "afanasiy_f", generation: 5, name: "Афанасий Филиппович", parentId: "filipp_p", role: "Сын Филиппа", settings: { allowEdit: true, visible: true } },
+    { id: "mikhail_f", generation: 5, name: "Михаил Филиппович", parentId: "filipp_p", role: "Сын Филиппа", settings: { allowEdit: true, visible: true } },
+    
+    { id: "viktor_p", generation: 6, name: "Виктор Петрович", parentId: "petr_f", role: "Сын Петра", settings: { allowEdit: true, visible: true } },
+    { id: "nadezhda_p", generation: 6, name: "Надежда Петровна", spouseId: "viktor_p", role: "Жена Виктора", settings: { allowEdit: true, visible: true } },
+    { id: "vyacheslav_p", generation: 6, name: "Вячеслав Петрович", parentId: "petr_f", role: "Сын Петра", settings: { allowEdit: true, visible: true } },
+    
+    { id: "dmitriy_v", generation: 7, name: "Дмитрий Викторович", parentId: "viktor_p", role: "Сын Виктора", settings: { allowEdit: true, visible: true } },
+    { id: "anna_v_w", generation: 7, name: "Анна Викторовна (Жена)", spouseId: "dmitriy_v", role: "Жена Дмитрия", settings: { allowEdit: true, visible: true } },
+    { id: "anna_v_d", generation: 7, name: "Анна Викторовна (Дочь)", parentId: "viktor_p", role: "Дочь Виктора", settings: { allowEdit: true, visible: true } },
+    
+    { id: "daniil_d", generation: 8, name: "Даниил Дмитриевич", parentId: "dmitriy_v", role: "Сын Дмитрия", settings: { allowEdit: true, visible: true } },
+    { id: "polina_d", generation: 8, name: "Полина Дмитриевна", parentId: "dmitriy_v", role: "Дочь Дмитрия", settings: { allowEdit: true, visible: true } },
+    { id: "angelina_d", generation: 8, name: "Ангелина Дмитриевна", parentId: "dmitriy_v", role: "Дочь Дмитрия", settings: { allowEdit: true, visible: true } },
+    { id: "stanislav_v", generation: 8, name: "Станислав Владиславович", parentId: "anna_v_d", role: "Племянник (Сын Анны)", settings: { allowEdit: true, visible: true } }
+];
+
+const genNames = {
+    1: "I Поколение (Старший предок)",
+    2: "II Поколение",
+    3: "III Поколение",
+    4: "IV Поколение (Филипп и Елена)",
+    5: "V Поколение (Дети Филиппа)",
+    6: "VI Поколение (Дети Петра)",
+    7: "VII Поколение (Дети Виктора)",
+    8: "VIII Поколение (Внуки Виктора)"
+};
+
+function buildTreeUI() {
+    const container = document.getElementById('tree-container');
+    container.innerHTML = '';
+
+    const sortedGenerations = {};
+    familyTreeData.forEach(p => {
+        if (!sortedGenerations[p.generation]) sortedGenerations[p.generation] = [];
+        sortedGenerations[p.generation].push(p);
+    });
+
+    Object.keys(sortedGenerations).forEach(gen => {
+        const genBox = document.createElement('div');
+        genBox.className = 'generation-block';
+        
+        const title = document.createElement('div');
+        title.className = 'generation-title';
+        title.innerText = genNames[gen] || `${gen} Поколение`;
+        genBox.appendChild(title);
+
+        const list = document.createElement('div');
+        list.className = 'nodes-list';
+
+        sortedGenerations[gen].forEach(person => {
+            const card = document.createElement('div');
+            card.className = 'person-card';
+            card.id = `card-${person.id}`;
+            
+            if (person.settings && person.settings.visible === false) {
+                card.style.opacity = '0.4';
+            }
+            
+            card.innerHTML = `
+                <div class="person-name">${person.name}</div>
+                <div class="person-role">${person.role}</div>
+                <div class="three-dots" onclick="toggleMenu(event, '${person.id}')"></div>
+                <div class="dropdown-menu" id="menu-${person.id}">
+                    <div class="dropdown-item" onclick="nodeAction('edit', '${person.id}')">⚙️ Настройки карточки</div>
+                    <div class="dropdown-item" onclick="nodeAction('relation', '${person.id}')">🔗 Изменить связь</div>
+                    <div class="dropdown-item delete" onclick="nodeAction('delete', '${person.id}')">❌ Скрыть/Удалить</div>
+                </div>
+            `;
+            list.appendChild(card);
+        });
+
+        genBox.appendChild(list);
+        container.appendChild(genBox);
+    });
+}
+
+function toggleMenu(event, id) {
+    event.stopPropagation();
+    document.querySelectorAll('.dropdown-menu').forEach(m => {
+        if(m.id !== `menu-${id}`) m.classList.remove('show');
+    });
+    const currentMenu = document.getElementById(`menu-${id}`);
+    currentMenu.classList.toggle('show');
+}
+
+document.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
+});
+
+function nodeAction(action, id) {
+    const person = familyTreeData.find(p => p.id === id);
+    const logEl = document.getElementById('http-log');
+    
+    if (action === 'edit') {
+        const newName = prompt(`Редактирование настроек для: ${person.name}. Введите новое имя или оставьте прежним:`, person.name);
+        if (newName) {
+            person.name = newName;
+            buildTreeUI();
+            logEl.innerHTML += `<br>> [Настройки] Изменено имя для ID: ${id} на "${newName}"`;
+        }
+    } else if (action === 'relation') {
+        const newParent = prompt(`Изменение связей для ID: ${id}. Текущий родитель/супруг: ${person.parentId || person.spouseId}. Укажите новый ID связи:`, person.parentId || person.spouseId);
+        if (newParent) {
+            if (person.parentId) person.parentId = newParent;
+            if (person.spouseId) person.spouseId = newParent;
+            logEl.innerHTML += `<br>> [Связи] Обновлена родительская связь для ID: ${id}`;
+        }
+    } else if (action === 'delete') {
+        if(confirm(`Вы уверены, что хотите применить настройки удаления/скрытия для ${person.name}?`)) {
+            person.settings.visible = false;
+            buildTreeUI();
+            logEl.innerHTML += `<br>> [Настройки] Карточка ${id} отмечена как скрытая`;
+        }
+    }
+}
+
+function sendTreeByEmail() {
+    const logEl = document.getElementById('http-log');
+    logEl.innerHTML += `<br><br>> Сборка текущей структуры древа и настроек...`;
+
+    const payload = {
+        timestamp: new Date().toISOString(),
+        domain: "naprimerov.ru",
+        tree: familyTreeData
+    };
+
+    const subject = "Обновление генеалогического древа - naprimerov.ru";
+    const body = "Здравствуйте!\n\nНиже вложены актуальные данные генеалогического древа со всеми внесенными исправлениями родственников, их связей и индивидуальных настроек карточек (меню 3 точки):\n\n" + JSON.stringify(payload, null, 2);
+    
+    const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    logEl.innerHTML += `<br><span style="color: #66d9ef;">[Данные сформированы]:</span> Перенаправление в почтовый клиент...`;
+    logEl.innerHTML += `<br><span style="color: #cbd5e1;">[Содержимое отправляемого пакета]:</span><br>${JSON.stringify(payload, null, 2)}`;
+    logEl.scrollTop = logEl.scrollHeight;
+
+    window.location.href = mailtoUrl;
+}
+
+buildTreeUI();
+</script>
+
+</body>
+</html>
