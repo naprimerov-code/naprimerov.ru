@@ -160,7 +160,6 @@
             margin: 15px 0;
             position: relative;
         }
-        /* Элегантный разделитель между поколениями */
         .gen-section::after {
             content: "↓";
             color: #b89047;
@@ -201,7 +200,6 @@
         .tree-node:hover { border-color: #b89047; color: #b89047; }
         .tree-node.active { background-color: #1e252b; color: #f7f5f0; border-color: #1e252b; }
         
-        /* Золотая рамка для продолжателей прямой линии */
         .main-line {
             border: 1px solid #b89047;
             font-weight: bold;
@@ -314,12 +312,12 @@
 </header>
 
 <main class="content-container">
-    <!-- Раздел 1: Общая информация -->
     <h2 class="section-title" id="info-heading">Общая информация</h2>
     <div class="info-text" id="info-p1"></div>
     <div class="info-text" id="info-p2"></div>
 
     <!-- РАЗДЕЛ: ГЕНЕАЛОГИЧЕСКОЕ ДРЕВО -->
+    <!-- Все архивные данные теперь хранятся прямо в тегах через data-атрибуты, чтобы их можно было скачать в новый файл -->
     <h2 class="section-title" id="tree-heading">Генеалогическое древо</h2>
     <div class="tree-vertical">
         
@@ -327,7 +325,10 @@
         <div class="gen-section">
             <span class="gen-label" id="lbl-g1">I Поколение</span>
             <div class="gen-row">
-                <button class="tree-node main-line" id="node-naum" onclick="showInfo('naum', this)">Наум</button>
+                <button class="tree-node main-line" id="node-naum" onclick="showInfo('naum', this)"
+                        data-name-ru="Наум" data-name-en="Naum"
+                        data-desc-ru="Родоначальник задокументированной ветви. Коренной житель Рязанских земель."
+                        data-desc-en="The founding father of the documented lineage. Native to the Ryazan lands."></button>
             </div>
         </div>
 
@@ -335,7 +336,10 @@
         <div class="gen-section">
             <span class="gen-label" id="lbl-g2">II Поколение</span>
             <div class="gen-row">
-                <button class="tree-node main-line" id="node-mikhail_n" onclick="showInfo('mikhail_n', this)">Михаил Наумович</button>
+                <button class="tree-node main-line" id="node-mikhail_n" onclick="showInfo('mikhail_n', this)"
+                        data-name-ru="Михаил Наумович" data-name-en="Mikhail Naumovich"
+                        data-desc-ru="II поколение рода. Исторические сведения собираются по архивным фондам."
+                        data-desc-en="Generation II. Historical records are currently being gathered from archival funds."></button>
             </div>
         </div>
 
@@ -343,7 +347,10 @@
         <div class="gen-section">
             <span class="gen-label" id="lbl-g3">III Поколение</span>
             <div class="gen-row">
-                <button class="tree-node main-line" id="node-potap" onclick="showInfo('potap', this)">Потап Михайлович</button>
+                <button class="tree-node main-line" id="node-potap" onclick="showInfo('potap', this)"
+                        data-name-ru="Потап Михайлович" data-name-en="Potap Mikhailovich"
+                        data-desc-ru="III поколение рода. Ведется верификация документов метрических книг."
+                        data-desc-en="Generation III. Parish register verification is in progress."></button>
             </div>
         </div>
 
@@ -351,7 +358,10 @@
         <div class="gen-section">
             <span class="gen-label" id="lbl-g4">IV Поколение</span>
             <div class="gen-row">
-                <button class="tree-node main-line" id="node-filipp" onclick="showInfo('filipp', this)">Филипп Потапович</button>
+                <button class="tree-node main-line" id="node-filipp" onclick="showInfo('filipp', this)"
+                        data-name-ru="Филипп Потапович" data-name-en="Filipp Potapovich"
+                        data-desc-ru="IV поколение рода. Глава большой семьи, давшей начало нескольким ветвям фамилии."
+                        data-desc-en="Generation IV. Head of a large family that initiated several branches of the name."></button>
             </div>
         </div>
 
@@ -359,12 +369,30 @@
         <div class="gen-section">
             <span class="gen-label" id="lbl-g5">V Поколение</span>
             <div class="gen-row">
-                <button class="tree-node" id="node-vasily" onclick="showInfo('vasily', this)"></button>
-                <button class="tree-node main-line" id="node-petr" onclick="showInfo('petr', this)"></button>
-                <button class="tree-node" id="node-evdokiya" onclick="showInfo('evdokiya', this)"></button>
-                <button class="tree-node" id="node-matrona" onclick="showInfo('matrona', this)"></button>
-                <button class="tree-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)"></button>
-                <button class="tree-node" id="node-mikhail_f" onclick="showInfo('mikhail_f', this)"></button>
+                <button class="tree-node" id="node-vasily" onclick="showInfo('vasily', this)"
+                        data-name-ru="Василий Филиппович" data-name-en="Vasily Filippovich"
+                        data-desc-ru="Пропал без вести в конце 1942г под Великим Новгородом, западнее Старой Русы."
+                        data-desc-en="Missing in action in late 1942 near Veliky Novgorod, west of Staraya Russa."></button>
+                <button class="tree-node main-line" id="node-petr" onclick="showInfo('petr', this)"
+                        data-name-ru="Пётр Филиппович" data-name-en="Petr Filippovich"
+                        data-desc-ru="Ваш дед. Военный офицер контрразведки СМЕРШ в годы Великой Отечественной войны. Ветеран государственной службы."
+                        data-desc-en="Your grandfather. Military officer in SMERSH counterintelligence during WWII. Veteran of state service."></button>
+                <button class="tree-node" id="node-evdokiya" onclick="showInfo('evdokiya', this)"
+                        data-name-ru="Евдокия Филипповна" data-name-en="Evdokiya Filippovna"
+                        data-desc-ru="Информация в процессе сбора и архивного поиска..."
+                        data-desc-en="Information is currently being collected from archival sources..."></button>
+                <button class="tree-node" id="node-matrona" onclick="showInfo('matrona', this)"
+                        data-name-ru="Матрона Филипповна" data-name-en="Matrona Filippovna"
+                        data-desc-ru="Информация в процессе сбора и архивного поиска..."
+                        data-desc-en="Information is currently being collected from archival sources..."></button>
+                <button class="tree-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)"
+                        data-name-ru="Афанасий Филиппович" data-name-en="Afanasiy Filippovich"
+                        data-desc-ru="Информация в процессе сбора и архивного поиска..."
+                        data-desc-en="Information is currently being collected from archival sources..."></button>
+                <button class="tree-node" id="node-mikhail_f" onclick="showInfo('mikhail_f', this)"
+                        data-name-ru="Михаил Филиппович" data-name-en="Mikhail Filippovich"
+                        data-desc-ru="Информация в процессе сбора и архивного поиска..."
+                        data-desc-en="Information is currently being collected from archival sources..."></button>
             </div>
         </div>
 
@@ -372,7 +400,10 @@
         <div class="gen-section">
             <span class="gen-label" id="lbl-g6">VI Поколение</span>
             <div class="gen-row">
-                <button class="tree-node main-line" id="node-viktor" onclick="showInfo('viktor', this)"></button>
+                <button class="tree-node main-line" id="node-viktor" onclick="showInfo('viktor', this)"
+                        data-name-ru="Виктор Петрович" data-name-en="Viktor Petrovich"
+                        data-desc-ru="Родился в 1947 г. Посвятил жизнь служению закону и государству: карьера в правоохранительных органах, службе судебных приставов и таможне."
+                        data-desc-en="Born in 1947. Dedicated his life to state service and law enforcement, serving in police departments, bailiff services, and customs."></button>
             </div>
         </div>
 
@@ -380,8 +411,14 @@
         <div class="gen-section">
             <span class="gen-label" id="lbl-g7">VII Поколение</span>
             <div class="gen-row">
-                <button class="tree-node main-line" id="node-dmitry" onclick="showInfo('dmitry', this)"></button>
-                <button class="tree-node" id="node-anna" onclick="showInfo('anna', this)"></button>
+                <button class="tree-node main-line" id="node-dmitry" onclick="showInfo('dmitry', this)"
+                        data-name-ru="Дмитрий Викторович" data-name-en="Dmitriy Viktorovich"
+                        data-desc-ru="Капитан морского флота (нефтеналивные и химические танкеры). Основатель и хранитель цифрового архива фамилии."
+                        data-desc-en="Merchant marine captain (oil/chemical tankers). Founder and keeper of the digital family archive."></button>
+                <button class="tree-node" id="node-anna" onclick="showInfo('anna', this)"
+                        data-name-ru="Анна Викторовна" data-name-en="Anna Viktorovna"
+                        data-desc-ru="Дочь Виктора Петровича. Семейный архив в процессе наполнения."
+                        data-desc-en="Daughter of Viktor Petrovich. Family archive records are currently in progress."></button>
             </div>
         </div>
 
@@ -389,9 +426,18 @@
         <div class="gen-section">
             <span class="gen-label" id="lbl-g8">VIII Поколение</span>
             <div class="gen-row">
-                <button class="tree-node main-line" id="node-daniil" onclick="showInfo('daniil', this)"></button>
-                <button class="tree-node" id="node-polina" onclick="showInfo('polina', this)"></button>
-                <button class="tree-node" id="node-angelina" onclick="showInfo('angelina', this)"></button>
+                <button class="tree-node main-line" id="node-daniil" onclick="showInfo('daniil', this)"
+                        data-name-ru="Даниил Дмитриевич" data-name-en="Daniil Dmitrievich"
+                        data-desc-ru="Сын Дмитрия Викторовича. Продолжатель прямой линии VIII поколения рода."
+                        data-desc-en="Son of Dmitriy Viktorovich. Successor of the main direct line of the VIII generation."></button>
+                <button class="tree-node" id="node-polina" onclick="showInfo('polina', this)"
+                        data-name-ru="Полина Дмитриевна" data-name-en="Polina Dmitrievna"
+                        data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых."
+                        data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage."></button>
+                <button class="tree-node" id="node-angelina" onclick="showInfo('angelina', this)"
+                        data-name-ru="Ангелина Дмитриевна" data-name-en="Angelina Dmitrievna"
+                        data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых."
+                        data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage."></button>
             </div>
         </div>
 
@@ -444,46 +490,6 @@
 </main>
 
 <script>
-    // База архивных данных (поддерживает переключение RU/EN и хранит правки)
-    const familyData = {
-        ru: {
-            naum: { name: "Наум Напримеров", desc: "Родоначальник задокументированной ветви. Коренной житель Рязанских земель." },
-            mikhail_n: { name: "Михаил Наумович Напримеров", desc: "II поколение рода. Исторические сведения собираются по архивным фондам." },
-            potap: { name: "Потап Михайлович Напримеров", desc: "III поколение рода. Ведется верификация документов метрических книг." },
-            filipp: { name: "Филипп Потапович Напримеров", desc: "IV поколение рода. Глава большой семьи, давшей начало нескольким ветвям фамилии." },
-            vasily: { name: "Василий Филиппович Напримеров", desc: "Пропал без вести в конце 1942г под Великим Новгородом, западнее Старой Русы." },
-            petr: { name: "Пётр Филиппович Напримеров", desc: "Ваш дед. Военный офицер контрразведки СМЕРШ в годы Великой Отечественной войны. Ветеран государственной службы." },
-            evdokiya: { name: "Евдокия Филипповна Напримерова", desc: "Информация в процессе сбора и архивного поиска..." },
-            matrona: { name: "Матрона Филипповна Напримерова", desc: "Информация в процессе сбора и архивного поиска..." },
-            afanasiy: { name: "Афанасий Филиппович Напримеров", desc: "Информация в процессе сбора и архивного поиска..." },
-            mikhail_f: { name: "Михаил Филиппович Напримеров", desc: "Информация в процессе сбора и архивного поиска..." },
-            viktor: { name: "Виктор Петрович Напримеров", desc: "Родился в 1947 г. Посвятил жизнь служению закону и государству: карьера в правоохранительных органах, службе судебных приставов и таможне." },
-            anna: { name: "Анна Викторовна Напримерова", desc: "Дочь Виктора Петровича. Семейный архив в процессе наполнения." },
-            dmitry: { name: "Дмитрий Викторович Напримеров", desc: "Капитан морского флота (нефтеналивные и химические танкеры). Основатель и хранитель цифрового архива фамилии." },
-            polina: { name: "Полина Дмитриевна Напримерова", desc: "Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых." },
-            angelina: { name: "Ангелина Дмитриевна Напримерова", desc: "Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых." },
-            daniil: { name: "Даниил Дмитриевич Напримеров", desc: "Сын Дмитрия Викторовича. Продолжатель прямой линии VIII поколения рода." }
-        },
-        en: {
-            naum: { name: "Naum Naprimerov", desc: "The founding father of the documented lineage. Native to the Ryazan lands." },
-            mikhail_n: { name: "Mikhail Naumovich Naprimerov", desc: "Generation II. Historical records are currently being gathered from archival funds." },
-            potap: { name: "Potap Mikhailovich Naprimerov", desc: "Generation III. Parish register verification is in progress." },
-            filipp: { name: "Filipp Potapovich Naprimerov", desc: "Generation IV. Head of a large family that initiated several branches of the name." },
-            vasily: { name: "Vasily Filippovich Naprimerov", desc: "Missing in action in late 1942 near Veliky Novgorod, west of Staraya Russa." },
-            petr: { name: "Petr Filippovich Naprimerov", desc: "Your grandfather. Military officer in SMERSH counterintelligence during WWII. Veteran of state service." },
-            evdokiya: { name: "Evdokiya Filippovna Naprimerova", desc: "Information is currently being collected from archival sources..." },
-            matrona: { name: "Matrona Filippovna Naprimerova", desc: "Information is currently being collected from archival sources..." },
-            afanasiy: { name: "Afanasiy Filippovich Naprimerov", desc: "Information is currently being collected from archival sources..." },
-            mikhail_f: { name: "Mikhail Filippovich Naprimerov", desc: "Information is currently being collected from archival sources..." },
-            viktor: { name: "Viktor Petrovich Naprimerov", desc: "Born in 1947. Dedicated his life to state service and law enforcement, serving in police departments, bailiff services, and customs." },
-            anna: { name: "Anna Viktorovna Naprimerova", desc: "Daughter of Viktor Petrovich. Family archive records are currently in progress." },
-            dmitry: { name: "Dmitriy Viktorovich Naprimerov", desc: "Merchant marine captain (oil/chemical tankers). Founder and keeper of the digital family archive." },
-            polina: { name: "Polina Dmitrievna Naprimerova", desc: "Daughter of Dmitriy Viktorovich. VIII generation of the lineage." },
-            angelina: { name: "Angelina Dmitrievna Naprimerova", desc: "Daughter of Dmitriy Viktorovich. VIII generation of the lineage." },
-            daniil: { name: "Daniil Dmitrievich Naprimerov", desc: "Son of Dmitriy Viktorovich. Successor of the main direct line of the VIII generation." }
-        }
-    };
-
     // Словари интерфейса
     const translations = {
         ru: {
@@ -491,17 +497,11 @@
             heading: "Общая информация",
             p1: "Добро пожаловать на персональный информационный ресурс, посвященный истории, генеалогии и сохранению памяти рода Напримеровых. Цель данного проекта — объединить разрозненные архивные сведения, восстановить хронологию поколений, сохранить память об исторических корнях и наладить прочную связь между потомками.",
             p2: "В настоящее время ведется систематическая исследовательская работа по сбору исторических документов, изучению метрических книг, поиску фотографий и фиксации семейных воспоминаний. Семейная история — это живая нить, связывающая прошлое с будущим, и каждый представитель рода вносит в неё свой неповторимый вклад.",
-            
             treeHeading: "Генеалогическое древо",
             g1: "I Поколение", g2: "II Поколение", g3: "III Поколение", g4: "IV Поколение",
             g5: "V Поколение (Дети Филиппа)", g6: "VI Поколение (Дети Петра)", g7: "VII Поколение (Дети Виктора)", g8: "VIII Поколение (Дети Дмитрия)",
-            
-            n_naum: "Наум", n_mikhail_n: "Михаил Наумович", n_potap: "Потап Михайлович", n_filipp: "Филипп Потапович",
-            n_vasily: "Василий Филиппович", n_petr: "Пётр Филиппович (Дед)", n_evdokiya: "Евдокия Филипповна", n_matrona: "Матрона Филипповна", n_afanasiy: "Афанасий Филиппович", n_mikhail_f: "Михаил Филиппович",
-            n_viktor: "Виктор Петрович", n_anna: "Анна Викторовна",
-            n_dmitry: "Дмитрий Викторович", n_anna: "Анна Викторовна", n_daniil: "Даниил Дмитриевич", n_polina: "Полина Дмитриевна", n_angelina: "Ангелина Дмитриевна",
-            
-            saveBtn: "Сохранить изменения", editHint: "* Вы можете редактировать текст прямо в поле выше.", alertSave: "Изменения сохранены в памяти страницы.",
+            saveBtn: "Сохранить изменения и скачать код", editHint: "* Введите секретный код. Измененный файл сайта автоматически скачается на ваше устройство.", 
+            alertSave: "Код верен! Обновленный файл index.html успешно сгенерирован и скачан. Перешлите его Капитан-наставнику (Дмитрию Викторовичу) для загрузки на хостинг.", alertWrongCode: "Неверный код доступа! Изменения отклонены.", promptCode: "Введите секретный код доступа для подтверждения изменений:",
             roadmapHeading: "В разработке",
             sec1Title: "Военная летопись", sec1Desc: "Систематизация документов о предках, прошедших Великую Отечественную войну и преданно служивших отечеству в государственных ведомствах.",
             sec2Title: "Цифровой архив", sec2Desc: "Реставрация, бережное сохранение и каталогизация старинных семейных фотоснимков, писем и личных архивных документов.",
@@ -518,17 +518,11 @@
             heading: "General Information",
             p1: "Welcome to the personal information resource dedicated to the history, genealogy, and preservation of the Naprimerov family memory. The purpose of this project is to consolidate scattered archival records, restore the chronology of generations, preserve the memory of historical roots, and establish a strong connection between descendants.",
             p2: "Currently, systematic research is underway to collect historical documents, study parish registers, locate photographs, and record family memoirs. Family history is a living thread connecting the past with the future, and every representative of the lineage makes their own unique contribution to it.",
-            
             treeHeading: "Genealogical Tree",
             g1: "Generation I", g2: "Generation II", g3: "Generation III", g4: "Generation IV",
             g5: "Generation V (Filipp's Children)", g6: "Generation VI (Petr's Children)", g7: "Generation VII (Viktor's Children)", g8: "Generation VIII (Dmitriy's Children)",
-            
-            n_naum: "Naum", n_mikhail_n: "Mikhail Naumovich", n_potap: "Potap Mikhailovich", n_filipp: "Filipp Potapovich",
-            n_vasily: "Vasily Filippovich", n_petr: "Petr Filippovich (Grandfather)", n_evdokiya: "Evdokiya Filippovna", n_matrona: "Matrona Filippovna", n_afanasiy: "Afanasiy Filippovich", n_mikhail_f: "Mikhail Filippovich",
-            n_viktor: "Viktor Petrovich", n_anna: "Anna Viktorovna",
-            n_dmitry: "Dmitriy技巧", n_dmitry: "Dmitriy Viktorovich", n_anna: "Anna Viktorovna", n_daniil: "Daniil Dmitrievich", n_polina: "Polina Dmitrievna", n_angelina: "Angelina Dmitrievna",
-            
-            saveBtn: "Save Changes", editHint: "* You can edit the text directly in the field above.", alertSave: "Changes saved in browser session.",
+            saveBtn: "Save changes & Download code", editHint: "* Enter secret code. The updated source file will download automatically.", 
+            alertSave: "Code correct! Updated index.html has been generated and downloaded. Please send this file to Captain Dmitriy to update the host.", alertWrongCode: "Incorrect access code! Changes discarded.", promptCode: "Enter the secret access code to save changes:",
             roadmapHeading: "In Development",
             sec1Title: "Military & State Chronicle", sec1Desc: "Systematization of historical records regarding ancestors who served in World War II and various state departments.",
             sec2Title: "Digital Archive", sec2Desc: "Restoration, preservation, and cataloging of vintage family photographs, letters, and personal archival documents.",
@@ -548,7 +542,6 @@
     function renderPage() {
         document.documentElement.lang = currentLang;
 
-        // Заголовки и тексты
         document.getElementById('site-title').innerText = translations[currentLang].title;
         document.getElementById('site-subtitle').innerText = translations[currentLang].subtitle;
         document.getElementById('info-heading').innerText = translations[currentLang].heading;
@@ -556,26 +549,28 @@
         document.getElementById('info-p2').innerText = translations[currentLang].p2;
         document.getElementById('tree-heading').innerText = translations[currentLang].treeHeading;
         
-        // Поколения (лейблы)
         for(let i=1; i<=8; i++) {
             document.getElementById(`lbl-g${i}`).innerText = translations[currentLang][`g${i}`];
         }
 
-        // Имена на кнопках древа
+        // Обновляем имена на кнопках древа из их собственных data-аттрибутов
         const nodes = ['naum', 'mikhail_n', 'potap', 'filipp', 'vasily', 'petr', 'evdokiya', 'matrona', 'afanasiy', 'mikhail_f', 'viktor', 'anna', 'dmitry', 'daniil', 'polina', 'angelina'];
-        nodes.forEach(node => {
-            document.getElementById(`node-${node}`).innerText = translations[currentLang][`n_${node}`];
+        nodes.forEach(id => {
+            const el = document.getElementById(`node-${id}`);
+            if(el) {
+                el.innerText = currentLang === 'ru' ? el.getAttribute('data-name-ru') : el.getAttribute('data-name-en');
+            }
         });
 
-        // Карточка информации (если открыта)
         document.getElementById('btn-save-text').innerText = translations[currentLang].saveBtn;
         document.getElementById('edit-hint').innerText = translations[currentLang].editHint;
+        
         if(currentMemberId) {
-            document.getElementById('info-name').innerText = familyData[currentLang][currentMemberId].name;
-            document.getElementById('info-text').innerText = familyData[currentLang][currentMemberId].desc;
+            const activeEl = document.getElementById(`node-${currentMemberId}`);
+            document.getElementById('info-name').innerText = currentLang === 'ru' ? activeEl.getAttribute('data-name-ru') : activeEl.getAttribute('data-name-en');
+            document.getElementById('info-text').innerText = currentLang === 'ru' ? activeEl.getAttribute('data-desc-ru') : activeEl.getAttribute('data-desc-en');
         }
 
-        // Анонсы и блоки подвала
         document.getElementById('roadmap-heading').innerText = translations[currentLang].roadmapHeading;
         document.getElementById('sec1-title').innerText = translations[currentLang].sec1Title;
         document.getElementById('sec1-desc').innerText = translations[currentLang].sec1Desc;
@@ -592,13 +587,11 @@
         document.getElementById('lang-toggle').innerText = translations[currentLang].toggle;
         document.getElementById('status-text').innerText = translations[currentLang].statusText;
         
-        // Переводы пунктов меню
         document.getElementById('menu-item-1').innerText = translations[currentLang].m1;
         document.getElementById('menu-item-2').innerText = translations[currentLang].m2;
         document.getElementById('menu-item-3').innerText = translations[currentLang].m3;
         document.getElementById('menu-item-4').innerText = translations[currentLang].m4;
         
-        // Настройка mailto
         const mailBtn = document.getElementById('contact-btn');
         if (currentLang === 'ru') {
             mailBtn.href = "mailto:naprimerov@mail.ru?subject=Связь по проекту рода Напримеровых&body=Здравствуйте, Дмитрий!%0A%0A";
@@ -637,7 +630,6 @@
         }
     }
 
-    // Интерактивные функции клика по узлу древа
     function showInfo(id, element) {
         currentMemberId = id;
         const panel = document.getElementById('info-panel');
@@ -645,22 +637,57 @@
         document.querySelectorAll('.tree-node').forEach(node => node.classList.remove('active'));
         element.classList.add('active');
 
-        document.getElementById('info-name').innerText = familyData[currentLang][id].name;
-        document.getElementById('info-text').innerText = familyData[currentLang][id].desc;
+        document.getElementById('info-name').innerText = currentLang === 'ru' ? element.getAttribute('data-name-ru') : element.getAttribute('data-name-en');
+        document.getElementById('info-text').innerText = currentLang === 'ru' ? element.getAttribute('data-desc-ru') : element.getAttribute('data-desc-en');
 
         panel.style.display = 'block';
         panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
+    // НОВАЯ СИСТЕМА СОХРАНЕНИЯ: пишет прямо в атрибуты тегов и скачивает чистый готовый файл
     function saveInfo() {
+        const inputCode = prompt(translations[currentLang].promptCode);
+        
+        if (inputCode !== "270980") {
+            alert(translations[currentLang].alertWrongCode);
+            return;
+        }
+
         const newText = document.getElementById('info-text').innerText;
+        
         if (currentMemberId) {
-            familyData[currentLang][currentMemberId].desc = newText;
+            const targetNode = document.getElementById(`node-${currentMemberId}`);
+            
+            // Вшиваем измененный текст прямо в разметку элемента
+            if (currentLang === 'ru') {
+                targetNode.setAttribute('data-desc-ru', newText);
+            } else {
+                targetNode.setAttribute('data-desc-en', newText);
+            }
+            
+            // Наводим марафет перед генерацией файла (снимаем выделение кнопок и скрываем панель, чтобы файл был чистым)
+            document.querySelectorAll('.tree-node').forEach(node => node.classList.remove('active'));
+            document.getElementById('info-panel').style.display = 'none';
+            currentMemberId = null;
+
+            // Формируем финальный HTML код страницы со всеми новыми атрибутами
+            const updatedHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            
+            // Создаем виртуальную ссылку для скачивания файла index.html
+            const blob = new Blob([updatedHtml], { type: "text/html;charset=utf-8" });
+            const downloadLink = document.createElement("a");
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = "index.html";
+            
+            // Инициируем скачивание
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            
             alert(translations[currentLang].alertSave);
         }
     }
 
-    // Инициализация первой загрузки
     renderPage();
 </script>
 
