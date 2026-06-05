@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Родословная рода Напримеровых / Genealogy of the Naprimerov Lineage</title>
     <style>
-        /* Стиль Классической Летописи (Глубокий графит, благородное золото и теплая слоновая кость) */
+        /* Стиль Классической Летописи */
         body {
             font-family: "Georgia", "Times New Roman", serif;
-            background-color: #f7f5f0; /* Цвет старинной бумаги */
+            background-color: #f7f5f0; 
             color: #2b2d2f;
             margin: 0;
             padding: 0;
@@ -16,10 +16,10 @@
             line-height: 1.6;
         }
         header {
-            background-color: #1e252b; /* Глубокий строгий темный тон */
+            background-color: #1e252b; 
             color: #f7f5f0;
             padding: 60px 20px;
-            border-bottom: 3px solid #b89047; /* Благородное матовое золото */
+            border-bottom: 3px solid #b89047; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             position: relative;
         }
@@ -36,7 +36,7 @@
             font-size: 1.2rem;
         }
         
-        /* Кнопка-троеточие и выпадающее меню */
+        /* Кнопка-три точки и меню */
         .menu-container {
             position: absolute;
             top: 20px;
@@ -54,9 +54,7 @@
             transition: color 0.3s ease;
             user-select: none;
         }
-        .menu-btn:hover {
-            color: #f7f5f0;
-        }
+        .menu-btn:hover { color: #f7f5f0; }
         .menu-dropdown {
             display: none;
             position: absolute;
@@ -85,16 +83,9 @@
             box-sizing: border-box;
             border-bottom: 1px solid #faf9f6;
         }
-        .menu-dropdown button:last-child {
-            border-bottom: none;
-        }
-        .menu-dropdown button:hover {
-            background-color: #faf9f6;
-            color: #b89047;
-        }
-        .menu-dropdown.show {
-            display: block;
-        }
+        .menu-dropdown button:last-child { border-bottom: none; }
+        .menu-dropdown button:hover { background-color: #faf9f6; color: #b89047; }
+        .menu-dropdown.show { display: block; }
 
         .btn {
             font-family: Arial, sans-serif;
@@ -112,27 +103,18 @@
             display: inline-block;
             transition: all 0.3s ease;
         }
-        .btn:hover {
-            background-color: #b89047;
-            color: #1e252b;
-        }
-        .btn-contact {
-            background-color: #b89047;
-            color: #1e252b;
-            font-weight: bold;
-        }
-        .btn-contact:hover {
-            background-color: transparent;
-            color: #b89047;
-        }
+        .btn:hover { background-color: #b89047; color: #1e252b; }
+        .btn-contact { background-color: #b89047; color: #1e252b; font-weight: bold; }
+        .btn-contact:hover { background-color: transparent; color: #b89047; }
+        
         .content-container {
-            max-width: 800px;
+            max-width: 950px;
             margin: 60px auto;
             padding: 40px;
             background: #ffffff;
             border: 1px solid #e2ded5;
             border-radius: 2px;
-            box-shadow: 0 5px 12px rgba(43, 45, 47, 0.03); /* Исправленная тень */
+            box-shadow: 0 5px 12px rgba(43, 45, 47, 0.03);
             position: relative;
             text-align: left;
         }
@@ -154,9 +136,7 @@
             letter-spacing: 0.5px;
             scroll-margin-top: 30px;
         }
-        .section-title:first-of-type {
-            margin-top: 0;
-        }
+        .section-title:first-of-type { margin-top: 0; }
         .info-text {
             font-size: 1.1rem;
             color: #3a3d40;
@@ -170,81 +150,69 @@
             flex-direction: column;
             align-items: center;
             padding: 20px 0;
+            width: 100%;
         }
-        .gen-node {
-            width: 320px;
-            text-align: center;
-            padding: 12px;
-            margin: 10px 0;
-            background-color: #faf9f6;
-            border: 1px solid #edeae0;
+        .gen-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin: 15px 0;
             position: relative;
-            box-sizing: border-box;
         }
-        .main-line {
-            border-left: 4px solid #b89047;
-            font-weight: bold;
+        /* Элегантный разделитель между поколениями */
+        .gen-section::after {
+            content: "↓";
+            color: #b89047;
+            margin-top: 15px;
+            font-size: 1.2rem;
         }
-        .gen-node::after {
-            content: "";
-            position: absolute;
-            bottom: -22px;
-            left: 50%;
-            width: 1px;
-            height: 20px;
-            background-color: #b89047;
-        }
-        .gen-node:last-child::after { display: none; }
+        .gen-section:last-of-type::after { content: none; }
+
         .gen-label {
             font-size: 0.75rem;
             color: #94a3b8;
             text-transform: uppercase;
             display: block;
-            margin-bottom: 3px;
+            margin-bottom: 8px;
             font-family: Arial, sans-serif;
+            letter-spacing: 1px;
         }
-
-        /* Интерактивный блок детей Филиппа */
-        .siblings-container {
+        .gen-row {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 8px;
-            margin: 20px 0;
-            padding: 15px;
-            background-color: #faf9f6;
-            border: 1px dashed #b89047;
+            gap: 10px;
             width: 100%;
             box-sizing: border-box;
-            position: relative;
         }
-        .siblings-container::after {
-            content: "";
-            position: absolute;
-            bottom: -22px;
-            left: 50%;
-            width: 1px;
-            height: 20px;
-            background-color: #b89047;
-        }
-        .sib-btn {
+        .tree-node {
             background-color: #ffffff;
             border: 1px solid #edeae0;
-            padding: 8px 12px;
+            padding: 10px 16px;
             cursor: pointer;
             font-family: "Georgia", serif;
-            font-size: 0.95rem;
+            font-size: 1rem;
             transition: all 0.2s ease;
+            text-align: center;
+            min-width: 180px;
+            color: #2b2d2f;
         }
-        .sib-btn:hover { border-color: #b89047; color: #b89047; }
-        .sib-btn.active { background-color: #1e252b; color: #f7f5f0; border-color: #1e252b; }
-        .sib-main-line { border: 1px solid #b89047; font-weight: bold; }
+        .tree-node:hover { border-color: #b89047; color: #b89047; }
+        .tree-node.active { background-color: #1e252b; color: #f7f5f0; border-color: #1e252b; }
+        
+        /* Золотая рамка для продолжателей прямой линии */
+        .main-line {
+            border: 1px solid #b89047;
+            font-weight: bold;
+            box-shadow: 0 0 6px rgba(184, 144, 71, 0.08);
+        }
 
-        /* Окно информации */
+        /* Информационная панель */
         #info-panel {
-            margin: 15px 0;
+            margin: 25px 0;
             padding: 20px;
-            background: #ffffff;
+            background: #faf9f6;
             border: 1px solid #b89047;
             width: 100%;
             box-sizing: border-box;
@@ -254,13 +222,14 @@
             width: 100%;
             min-height: 60px;
             border: 1px solid #edeae0;
-            padding: 10px;
+            padding: 12px;
             font-family: "Georgia", serif;
-            font-size: 1rem;
-            background: #faf9f6;
+            font-size: 1.05rem;
+            background: #ffffff;
             margin-bottom: 10px;
             box-sizing: border-box;
             text-align: left;
+            line-height: 1.5;
         }
         .btn-save {
             background: #b89047;
@@ -273,9 +242,9 @@
             text-transform: uppercase;
             font-weight: bold;
         }
-        .highlight { color: #b89047; }
+        .highlight { color: #b89047; font-weight: bold; }
 
-        /* Сетка для анонсов будущих разделов */
+        /* Сетка для анонсов */
         .roadmap-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -286,7 +255,6 @@
             background-color: #faf9f6;
             border: 1px dashed #dcd7cc;
             padding: 20px;
-            border-radius: 2px;
         }
         .roadmap-item h4 {
             margin: 0 0 10px 0;
@@ -296,12 +264,7 @@
             border-bottom: 1px solid #edeae0;
             padding-bottom: 5px;
         }
-        .roadmap-item p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: #64748b;
-            text-align: left;
-        }
+        .roadmap-item p { margin: 0; font-size: 0.95rem; color: #64748b; text-align: left; }
 
         .thanks-block {
             margin-top: 40px;
@@ -317,24 +280,9 @@
             padding: 20px;
             margin-top: 40px;
         }
-        .manager-block h3 {
-            margin: 0 0 5px 0;
-            font-size: 1.2rem;
-            font-weight: normal;
-            color: #1e252b;
-        }
-        .manager-block p {
-            margin: 0;
-            color: #64748b;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-        }
-        .center-wrapper {
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        /* Статус-трекер в футере */
+        .manager-block h3 { margin: 0 0 5px 0; font-size: 1.2rem; font-weight: normal; color: #1e252b; }
+        .manager-block p { margin: 0; color: #64748b; font-family: Arial, sans-serif; font-size: 14px; }
+        .center-wrapper { text-align: center; margin-top: 30px; }
         .status-tracker {
             margin-top: 50px;
             padding-top: 15px;
@@ -350,7 +298,6 @@
 <body>
 
 <header>
-    <!-- Контейнер дополнительного меню -->
     <div class="menu-container">
         <button class="menu-btn" id="menu-trigger" onclick="toggleMenu(event)">⋮</button>
         <div class="menu-dropdown" id="menu-dropdown">
@@ -369,65 +316,93 @@
 <main class="content-container">
     <!-- Раздел 1: Общая информация -->
     <h2 class="section-title" id="info-heading">Общая информация</h2>
-    
-    <div class="info-text" id="info-p1">
-        Добро пожаловать на персональный информационный ресурс, посвященный истории, генеалогии и сохранению памяти рода Напримеровых. Цель данного проекта — объединить разрозненные архивные сведения, восстановить хронологию поколений, сохранить память об исторических корнях и наладить прочную связь между потомками.
-    </div>
-    
-    <div class="info-text" id="info-p2">
-        В настоящее время ведется систематическая исследовательская работа по сбору исторических документов, изучению метрических книг, поиску фотографий и фиксации семейных воспоминаний. Семейная история — это живая нить, связывающая прошлое с будущим, и каждый представитель рода вносит в неё свой неповторимый вклад.
-    </div>
+    <div class="info-text" id="info-p1"></div>
+    <div class="info-text" id="info-p2"></div>
 
     <!-- РАЗДЕЛ: ГЕНЕАЛОГИЧЕСКОЕ ДРЕВО -->
     <h2 class="section-title" id="tree-heading">Генеалогическое древо</h2>
     <div class="tree-vertical">
-        <div class="gen-node">
+        
+        <!-- I Поколение -->
+        <div class="gen-section">
             <span class="gen-label" id="lbl-g1">I Поколение</span>
-            <div id="val-g1">Наум</div>
+            <div class="gen-row">
+                <button class="tree-node main-line" id="node-naum" onclick="showInfo('naum', this)">Наум</button>
+            </div>
         </div>
-        <div class="gen-node">
+
+        <!-- II Поколение -->
+        <div class="gen-section">
             <span class="gen-label" id="lbl-g2">II Поколение</span>
-            <div id="val-g2">Михаил Наумович</div>
+            <div class="gen-row">
+                <button class="tree-node main-line" id="node-mikhail_n" onclick="showInfo('mikhail_n', this)">Михаил Наумович</button>
+            </div>
         </div>
-        <div class="gen-node">
+
+        <!-- III Поколение -->
+        <div class="gen-section">
             <span class="gen-label" id="lbl-g3">III Поколение</span>
-            <div id="val-g3">Потап Михайлович</div>
+            <div class="gen-row">
+                <button class="tree-node main-line" id="node-potap" onclick="showInfo('potap', this)">Потап Михайлович</button>
+            </div>
         </div>
-        <div class="gen-node main-line" style="border-bottom: 2px solid #b89047;">
+
+        <!-- IV Поколение -->
+        <div class="gen-section">
             <span class="gen-label" id="lbl-g4">IV Поколение</span>
-            <div id="val-g4">Филипп Потапович</div>
+            <div class="gen-row">
+                <button class="tree-node main-line" id="node-filipp" onclick="showInfo('filipp', this)">Филипп Потапович</button>
+            </div>
         </div>
 
-        <!-- Сетка ветвей (дети Филиппа Потаповича) -->
-        <div class="siblings-container">
-            <button class="sib-btn" id="btn-vasily" onclick="showInfo('vasily', this)">Василий Филиппович</button>
-            <button class="sib-btn sib-main-line" id="btn-petr" onclick="showInfo('petr', this)">Пётр Филиппович</button>
-            <button class="sib-btn" id="btn-evdokiya" onclick="showInfo('evdokiya', this)">Евдокия Филипповна</button>
-            <button class="sib-btn" id="btn-matrona" onclick="showInfo('matrona', this)">Матрона Филипповна</button>
-            <button class="sib-btn" id="btn-afanasiy" onclick="showInfo('afanasiy', this)">Афанасий Филиппович</button>
-            <button class="sib-btn" id="btn-mikhail" onclick="showInfo('mikhail', this)">Михаил Филиппович</button>
-        </div>
-
-        <!-- Информационная панель для вывода и редактирования -->
-        <div id="info-panel">
-            <h4 id="info-name" style="margin-top:0; color:#1e252b; font-size:1.2rem; font-weight:normal;"></h4>
-            <div id="info-text" class="edit-area" contenteditable="true"></div>
-            <button class="btn-save" id="btn-save-text" onclick="saveInfo()">Сохранить изменения</button>
-            <small id="edit-hint" style="display:block; margin-top:8px; color:#94a3b8; font-family:Arial, sans-serif; font-size:11px;"></small>
-        </div>
-
-        <div class="gen-node main-line" style="margin-top: 12px;">
+        <!-- V Поколение -->
+        <div class="gen-section">
             <span class="gen-label" id="lbl-g5">V Поколение</span>
-            <div id="val-g5">Виктор Петрович</div>
+            <div class="gen-row">
+                <button class="tree-node" id="node-vasily" onclick="showInfo('vasily', this)"></button>
+                <button class="tree-node main-line" id="node-petr" onclick="showInfo('petr', this)"></button>
+                <button class="tree-node" id="node-evdokiya" onclick="showInfo('evdokiya', this)"></button>
+                <button class="tree-node" id="node-matrona" onclick="showInfo('matrona', this)"></button>
+                <button class="tree-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)"></button>
+                <button class="tree-node" id="node-mikhail_f" onclick="showInfo('mikhail_f', this)"></button>
+            </div>
         </div>
-        <div class="gen-node main-line">
+
+        <!-- VI Поколение -->
+        <div class="gen-section">
             <span class="gen-label" id="lbl-g6">VI Поколение</span>
-            <div id="val-g6">Дмитрий Викторович</div>
+            <div class="gen-row">
+                <button class="tree-node main-line" id="node-viktor" onclick="showInfo('viktor', this)"></button>
+            </div>
         </div>
-        <div class="gen-node main-line">
+
+        <!-- VII Поколение -->
+        <div class="gen-section">
             <span class="gen-label" id="lbl-g7">VII Поколение</span>
-            <div id="val-g7" class="highlight">Даниил Дмитриевич</div>
+            <div class="gen-row">
+                <button class="tree-node main-line" id="node-dmitry" onclick="showInfo('dmitry', this)"></button>
+                <button class="tree-node" id="node-anna" onclick="showInfo('anna', this)"></button>
+            </div>
         </div>
+
+        <!-- VIII Поколение -->
+        <div class="gen-section">
+            <span class="gen-label" id="lbl-g8">VIII Поколение</span>
+            <div class="gen-row">
+                <button class="tree-node main-line" id="node-daniil" onclick="showInfo('daniil', this)"></button>
+                <button class="tree-node" id="node-polina" onclick="showInfo('polina', this)"></button>
+                <button class="tree-node" id="node-angelina" onclick="showInfo('angelina', this)"></button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Информационная панель для вывода и редактирования -->
+    <div id="info-panel">
+        <h4 id="info-name" style="margin-top:0; color:#1e252b; font-size:1.2rem; font-weight:normal;"></h4>
+        <div id="info-text" class="edit-area" contenteditable="true"></div>
+        <button class="btn-save" id="btn-save-text" onclick="saveInfo()">Сохранить изменения</button>
+        <small id="edit-hint" style="display:block; margin-top:8px; color:#94a3b8; font-family:Arial, sans-serif; font-size:11px;"></small>
     </div>
 
     <!-- Раздел 3: Перспективы исследования -->
@@ -435,171 +410,135 @@
     <div class="roadmap-grid">
         <div class="roadmap-item" id="roadmap-military">
             <h4 id="sec1-title">Военная летопись</h4>
-            <p id="sec1-desc">Систематизация документов о предках, прошедших Великую Отечественную войну и преданно служивших отечеству в государственных ведомствах.</p>
+            <p id="sec1-desc"></p>
         </div>
         <div class="roadmap-item" id="roadmap-archive">
             <h4 id="sec2-title">Цифровой архив</h4>
-            <p id="sec2-desc">Реставрация, бережное сохранение и каталогизация старинных семейных фотоснимков, писем и личных архивных документов.</p>
+            <p id="sec2-desc"></p>
         </div>
         <div class="roadmap-item" id="roadmap-map">
             <h4 id="sec3-title">Карта расселения</h4>
-            <p id="sec3-desc">Визуализация исторической географии рода: от Рязанской земли до современных мест проживания и службы представителей семьи.</p>
+            <p id="sec3-desc"></p>
         </div>
     </div>
 
     <!-- Раздел 4: Приглашение к сотрудничеству -->
     <h2 class="section-title" id="invite-heading">Ищу Напримеровых!</h2>
-    <div class="info-text" id="invite-text">
-        Привет, однофамилец или родственник. Я создаю карту нашей большой семьи и хочу отправить тебе подарок из Рязанской области. Оставь свои координаты.
-    </div>
+    <div class="info-text" id="invite-text"></div>
 
     <!-- Блок благодарностей -->
-    <div class="thanks-block" id="thanks-text">
-        Выражаю искреннюю благодарность Константину Горелову и Сергею Галкину за бесценную помощь в создании проекта.
-    </div>
+    <div class="thanks-block" id="thanks-text"></div>
 
     <!-- Блок управляющего -->
     <div class="manager-block">
-        <h3 id="manager-title">Проект ведет: Капитан Напримеров Дмитрий Викторович</h3>
-        <p id="manager-desc">Основатель и хранитель цифрового архива фамилии</p>
+        <h3 id="manager-title"></h3>
+        <p id="manager-desc"></p>
     </div>
 
     <div class="center-wrapper">
-        <a class="btn btn-contact" id="contact-btn" href="mailto:naprimerov@mail.ru?subject=Связь по проекту рода Напримеровых&body=Здравствуйте, Дмитрий!%0A%0A">Написать мне</a>
+        <a class="btn btn-contact" id="contact-btn" href=""></a>
     </div>
 
     <!-- Статус-трекер исследования -->
-    <div class="status-tracker" id="status-text">
-        Текущий статус архива (июнь 2026 г.): Систематизировано IV поколения, продолжается сбор данных по архивным фондам и верификация документов.
-    </div>
+    <div class="status-tracker" id="status-text"></div>
 </main>
 
 <script>
-    // База данных для интерактивных кнопок (поддерживает оба языка)
+    // База архивных данных (поддерживает переключение RU/EN и хранит правки)
     const familyData = {
         ru: {
+            naum: { name: "Наум Напримеров", desc: "Родоначальник задокументированной ветви. Коренной житель Рязанских земель." },
+            mikhail_n: { name: "Михаил Наумович Напримеров", desc: "II поколение рода. Исторические сведения собираются по архивным фондам." },
+            potap: { name: "Потап Михайлович Напримеров", desc: "III поколение рода. Ведется верификация документов метрических книг." },
+            filipp: { name: "Филипп Потапович Напримеров", desc: "IV поколение рода. Глава большой семьи, давшей начало нескольким ветвям фамилии." },
             vasily: { name: "Василий Филиппович Напримеров", desc: "Пропал без вести в конце 1942г под Великим Новгородом, западнее Старой Русы." },
-            petr: { name: "Пётр Филиппович Напримеров", desc: "Ваш дед. Ветеран государственной службы, ключевой стержень хроники рода." },
+            petr: { name: "Пётр Филиппович Напримеров", desc: "Ваш дед. Военный офицер контрразведки СМЕРШ в годы Великой Отечественной войны. Ветеран государственной службы." },
             evdokiya: { name: "Евдокия Филипповна Напримерова", desc: "Информация в процессе сбора и архивного поиска..." },
             matrona: { name: "Матрона Филипповна Напримерова", desc: "Информация в процессе сбора и архивного поиска..." },
             afanasiy: { name: "Афанасий Филиппович Напримеров", desc: "Информация в процессе сбора и архивного поиска..." },
-            mikhail: { name: "Михаил Филиппович Напримеров", desc: "Информация в процессе сбора и архивного поиска..." }
+            mikhail_f: { name: "Михаил Филиппович Напримеров", desc: "Информация в процессе сбора и архивного поиска..." },
+            viktor: { name: "Виктор Петрович Напримеров", desc: "Родился в 1947 г. Посвятил жизнь служению закону и государству: карьера в правоохранительных органах, службе судебных приставов и таможне." },
+            anna: { name: "Анна Викторовна Напримерова", desc: "Дочь Виктора Петровича. Семейный архив в процессе наполнения." },
+            dmitry: { name: "Дмитрий Викторович Напримеров", desc: "Капитан морского флота (нефтеналивные и химические танкеры). Основатель и хранитель цифрового архива фамилии." },
+            polina: { name: "Полина Дмитриевна Напримерова", desc: "Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых." },
+            angelina: { name: "Ангелина Дмитриевна Напримерова", desc: "Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых." },
+            daniil: { name: "Даниил Дмитриевич Напримеров", desc: "Сын Дмитрия Викторовича. Продолжатель прямой линии VIII поколения рода." }
         },
         en: {
+            naum: { name: "Naum Naprimerov", desc: "The founding father of the documented lineage. Native to the Ryazan lands." },
+            mikhail_n: { name: "Mikhail Naumovich Naprimerov", desc: "Generation II. Historical records are currently being gathered from archival funds." },
+            potap: { name: "Potap Mikhailovich Naprimerov", desc: "Generation III. Parish register verification is in progress." },
+            filipp: { name: "Filipp Potapovich Naprimerov", desc: "Generation IV. Head of a large family that initiated several branches of the name." },
             vasily: { name: "Vasily Filippovich Naprimerov", desc: "Missing in action in late 1942 near Veliky Novgorod, west of Staraya Russa." },
-            petr: { name: "Petr Filippovich Naprimerov", desc: "Your grandfather. State service veteran, central core of the lineage chronicle." },
-            evdokiya: { name: "Evdokiya Filippovna Naprimerova", desc: "Information is currently being collected from archival funds..." },
-            matrona: { name: "Matrona Filippovna Naprimerova", desc: "Information is currently being collected from archival funds..." },
-            afanasiy: { name: "Afanasiy Filippovich Naprimerov", desc: "Information is currently being collected from archival funds..." },
-            mikhail: { name: "Mikhail Filippovich Naprimerov", desc: "Information is currently being collected from archival funds..." }
+            petr: { name: "Petr Filippovich Naprimerov", desc: "Your grandfather. Military officer in SMERSH counterintelligence during WWII. Veteran of state service." },
+            evdokiya: { name: "Evdokiya Filippovna Naprimerova", desc: "Information is currently being collected from archival sources..." },
+            matrona: { name: "Matrona Filippovna Naprimerova", desc: "Information is currently being collected from archival sources..." },
+            afanasiy: { name: "Afanasiy Filippovich Naprimerov", desc: "Information is currently being collected from archival sources..." },
+            mikhail_f: { name: "Mikhail Filippovich Naprimerov", desc: "Information is currently being collected from archival sources..." },
+            viktor: { name: "Viktor Petrovich Naprimerov", desc: "Born in 1947. Dedicated his life to state service and law enforcement, serving in police departments, bailiff services, and customs." },
+            anna: { name: "Anna Viktorovna Naprimerova", desc: "Daughter of Viktor Petrovich. Family archive records are currently in progress." },
+            dmitry: { name: "Dmitriy Viktorovich Naprimerov", desc: "Merchant marine captain (oil/chemical tankers). Founder and keeper of the digital family archive." },
+            polina: { name: "Polina Dmitrievna Naprimerova", desc: "Daughter of Dmitriy Viktorovich. VIII generation of the lineage." },
+            angelina: { name: "Angelina Dmitrievna Naprimerova", desc: "Daughter of Dmitriy Viktorovich. VIII generation of the lineage." },
+            daniil: { name: "Daniil Dmitrievich Naprimerov", desc: "Son of Dmitriy Viktorovich. Successor of the main direct line of the VIII generation." }
         }
     };
 
-    // Словари переводов интерфейса
+    // Словари интерфейса
     const translations = {
         ru: {
-            title: "Родословная рода Напримеровых",
-            subtitle: "Историко-генеалогический архив семьи",
+            title: "Родословная рода Напримеровых", subtitle: "Историко-генеалогический архив семьи",
             heading: "Общая информация",
             p1: "Добро пожаловать на персональный информационный ресурс, посвященный истории, генеалогии и сохранению памяти рода Напримеровых. Цель данного проекта — объединить разрозненные архивные сведения, восстановить хронологию поколений, сохранить память об исторических корнях и наладить прочную связь между потомками.",
             p2: "В настоящее время ведется систематическая исследовательская работа по сбору исторических документов, изучению метрических книг, поиску фотографий и фиксации семейных воспоминаний. Семейная история — это живая нить, связывающая прошлое с будущим, и каждый представитель рода вносит в неё свой неповторимый вклад.",
             
             treeHeading: "Генеалогическое древо",
-            g1_lbl: "I Поколение", g1_val: "Наум",
-            g2_lbl: "II Поколение", g2_val: "Михаил Наумович",
-            g3_lbl: "III Поколение", g3_val: "Потап Михайлович",
-            g4_lbl: "IV Поколение", g4_val: "Филипп Потапович",
-            g5_lbl: "V Поколение", g5_val: "Виктор Петрович",
-            g6_lbl: "VI Поколение", g6_val: "Дмитрий Викторович",
-            g7_lbl: "VII Поколение", g7_val: "Даниил Дмитриевич",
+            g1: "I Поколение", g2: "II Поколение", g3: "III Поколение", g4: "IV Поколение",
+            g5: "V Поколение (Дети Филиппа)", g6: "VI Поколение (Дети Петра)", g7: "VII Поколение (Дети Виктора)", g8: "VIII Поколение (Дети Дмитрия)",
             
-            btn_vasily: "Василий Филиппович",
-            btn_petr: "Пётр Филиппович (Дед)",
-            btn_evdokiya: "Евдокия Филипповна",
-            btn_matrona: "Матрона Филипповна",
-            btn_afanasiy: "Афанасий Филиппович",
-            btn_mikhail: "Михаил Филиппович",
+            n_naum: "Наум", n_mikhail_n: "Михаил Наумович", n_potap: "Потап Михайлович", n_filipp: "Филипп Потапович",
+            n_vasily: "Василий Филиппович", n_petr: "Пётр Филиппович (Дед)", n_evdokiya: "Евдокия Филипповна", n_matrona: "Матрона Филипповна", n_afanasiy: "Афанасий Филиппович", n_mikhail_f: "Михаил Филиппович",
+            n_viktor: "Виктор Петрович", n_anna: "Анна Викторовна",
+            n_dmitry: "Дмитрий Викторович", n_anna: "Анна Викторовна", n_daniil: "Даниил Дмитриевич", n_polina: "Полина Дмитриевна", n_angelina: "Ангелина Дмитриевна",
             
-            saveBtn: "Сохранить изменения",
-            editHint: "* Вы можете редактировать текст прямо в поле выше.",
-            alertSave: "Изменения сохранены в памяти страницы.",
-            
+            saveBtn: "Сохранить изменения", editHint: "* Вы можете редактировать текст прямо в поле выше.", alertSave: "Изменения сохранены в памяти страницы.",
             roadmapHeading: "В разработке",
-            sec1Title: "Военная летопись",
-            sec1Desc: "Систематизация документов о предках, прошедших Великую Отечественную войну и преданно служивших отечеству в государственных ведомствах.",
-            sec2Title: "Цифровой архив",
-            sec2Desc: "Реставрация, бережное сохранение и каталогизация старинных семейных фотоснимков, писем и личных архивных документов.",
-            sec3Title: "Карта расселения",
-            sec3Desc: "Визуализация исторической географии рода: от Рязанской земли до современных мест проживания и службы представителей семьи.",
-            
-            inviteHeading: "Ищу Напримеровых!",
-            inviteText: "Привет, однофамилец или родственник. Я создаю карту нашей большой семьи и хочу отправить тебе подарок из Рязанской области. Оставь свои координаты.",
-            
+            sec1Title: "Военная летопись", sec1Desc: "Систематизация документов о предках, прошедших Великую Отечественную войну и преданно служивших отечеству в государственных ведомствах.",
+            sec2Title: "Цифровой архив", sec2Desc: "Реставрация, бережное сохранение и каталогизация старинных семейных фотоснимков, писем и личных архивных документов.",
+            sec3Title: "Карта расселения", sec3Desc: "Визуализация исторической географии рода: от Рязанской земли до современных мест проживания и службы представителей семьи.",
+            inviteHeading: "Ищу Напримеровых!", inviteText: "Привет, однофамилец или родственник. Я создаю карту нашей большой семьи и хочу отправить тебе подарок из Рязанской области. Оставь свои координаты.",
             thanksText: "Выражаю искреннюю благодарность Константину Горелову и Сергею Галкину за бесценную помощь в создании проекта.",
-            managerTitle: "Проект ведет: Капитан Напримеров Дмитрий Викторович",
-            managerDesc: "Основатель и хранитель цифрового архива фамилии",
-            contact: "Написать мне",
-            toggle: "English",
+            managerTitle: "Проект ведет: Капитан Напримеров Дмитрий Викторович", managerDesc: "Основатель и хранитель цифрового архива фамилии",
+            contact: "Написать мне", toggle: "English",
             statusText: "Текущий статус архива (июнь 2026 г.): Систематизировано IV поколения, продолжается сбор данных по архивным фондам и верификация документов.",
-            
-            m1: "Родословное древо",
-            m2: "Цифровой архив _в разработке",
-            m3: "Военная летопись",
-            m4: "Интерактивная карта расселения",
-            devAlert: "Этот раздел находится в разработке и будет доступен позже."
+            m1: "Родословное древо", m2: "Цифровой архив _в разработке", m3: "Военная летопись", m4: "Интерактивная карта расселения", devAlert: "Этот раздел находится в разработке и будет доступен позже."
         },
         en: {
-            title: "Genealogy of the Naprimerov Lineage",
-            subtitle: "Historical and Genealogical Family Archive",
+            title: "Genealogy of the Naprimerov Lineage", subtitle: "Historical and Genealogical Family Archive",
             heading: "General Information",
             p1: "Welcome to the personal information resource dedicated to the history, genealogy, and preservation of the Naprimerov family memory. The purpose of this project is to consolidate scattered archival records, restore the chronology of generations, preserve the memory of historical roots, and establish a strong connection between descendants.",
             p2: "Currently, systematic research is underway to collect historical documents, study parish registers, locate photographs, and record family memoirs. Family history is a living thread connecting the past with the future, and every representative of the lineage makes their own unique contribution to it.",
             
             treeHeading: "Genealogical Tree",
-            g1_lbl: "Generation I", g1_val: "Naum",
-            g2_lbl: "Generation II", g2_val: "Mikhail Naumovich",
-            g3_lbl: "Generation III", g3_val: "Potap Mikhailovich",
-            g4_lbl: "Generation IV", g4_val: "Filipp Potapovich",
-            g5_lbl: "Generation V", g5_val: "Viktor Petrovich",
-            g6_lbl: "Generation VI", g6_val: "Dmitriy Viktorovich",
-            g7_lbl: "Generation VII", g7_val: "Daniil Dmitrievich",
+            g1: "Generation I", g2: "Generation II", g3: "Generation III", g4: "Generation IV",
+            g5: "Generation V (Filipp's Children)", g6: "Generation VI (Petr's Children)", g7: "Generation VII (Viktor's Children)", g8: "Generation VIII (Dmitriy's Children)",
             
-            btn_vasily: "Vasily Filippovich",
-            btn_petr: "Petr Filippovich (Grandfather)",
-            btn_evdokiya: "Evdokiya Filippovna",
-            btn_matrona: "Matrona Filippovna",
-            btn_afanasiy: "Afanasiy%20Filippovich",
-            btn_afanasiy: "Afanasiy Filippovich",
-            btn_mikhail: "Mikhail%20Filippovich",
-            btn_mikhail: "Mikhail Filippovich",
+            n_naum: "Naum", n_mikhail_n: "Mikhail Naumovich", n_potap: "Potap Mikhailovich", n_filipp: "Filipp Potapovich",
+            n_vasily: "Vasily Filippovich", n_petr: "Petr Filippovich (Grandfather)", n_evdokiya: "Evdokiya Filippovna", n_matrona: "Matrona Filippovna", n_afanasiy: "Afanasiy Filippovich", n_mikhail_f: "Mikhail Filippovich",
+            n_viktor: "Viktor Petrovich", n_anna: "Anna Viktorovna",
+            n_dmitry: "Dmitriy技巧", n_dmitry: "Dmitriy Viktorovich", n_anna: "Anna Viktorovna", n_daniil: "Daniil Dmitrievich", n_polina: "Polina Dmitrievna", n_angelina: "Angelina Dmitrievna",
             
-            saveBtn: "Save Changes",
-            editHint: "* You can edit the text directly in the field above.",
-            alertSave: "Changes saved in browser session.",
-            
+            saveBtn: "Save Changes", editHint: "* You can edit the text directly in the field above.", alertSave: "Changes saved in browser session.",
             roadmapHeading: "In Development",
-            sec1Title: "Military & State Chronicle",
-            sec1Desc: "Systematization of historical records regarding ancestors who served in World War II and various state departments.",
-            sec2Title: "Digital Archive",
-            sec2Desc: "Restoration, preservation, and cataloging of vintage family photographs, letters, and personal archival documents.",
-            sec3Title: "Lineage Geography",
-            sec3Desc: "Visual mapping of the family's historical migration from the Ryazan region to modern settlements and service locations.",
-            
-            inviteHeading: "Looking for Naprimerovs!",
-            inviteText: "Hello, namesake or relative! I am creating a map of our big family and would love to send you a gift from the Ryazan region. Please leave your contact details.",
-            
+            sec1Title: "Military & State Chronicle", sec1Desc: "Systematization of historical records regarding ancestors who served in World War II and various state departments.",
+            sec2Title: "Digital Archive", sec2Desc: "Restoration, preservation, and cataloging of vintage family photographs, letters, and personal archival documents.",
+            sec3Title: "Lineage Geography", sec3Desc: "Visual mapping of the family's historical migration from the Ryazan region to modern settlements and service locations.",
+            inviteHeading: "Looking for Naprimerovs!", inviteText: "Hello, namesake or relative! I am creating a map of our big family and would love to send you a gift from the Ryazan region. Please leave your contact details.",
             thanksText: "I express my sincere gratitude to Konstantin Gorelov and Sergey Galkin for their invaluable assistance in creating this project.",
-            managerTitle: "Project Managed by: Capt. Dmitriy Viktorovich Naprimerov",
-            managerDesc: "Founder and keeper of the digital family archive",
-            contact: "Contact Me",
-            toggle: "Русский",
+            managerTitle: "Project Managed by: Capt. Dmitriy Viktorovich Naprimerov", managerDesc: "Founder and keeper of the digital family archive",
+            contact: "Contact Me", toggle: "Русский",
             statusText: "Current research status (June 2026): IV generations documented, archival data collection and historical record verification are ongoing.",
-            
-            m1: "Genealogical Tree",
-            m2: "Digital Archive _in development",
-            m3: "Military Chronicle",
-            m4: "Interactive Settlement Map",
-            devAlert: "This section is currently under development and will be available later."
+            m1: "Genealogical Tree", m2: "Digital Archive _in development", m3: "Military Chronicle", m4: "Interactive Settlement Map", devAlert: "This section is currently under development and will be available later."
         }
     };
 
@@ -609,29 +548,26 @@
     function renderPage() {
         document.documentElement.lang = currentLang;
 
-        // Основные текстовые узлы
+        // Заголовки и тексты
         document.getElementById('site-title').innerText = translations[currentLang].title;
         document.getElementById('site-subtitle').innerText = translations[currentLang].subtitle;
         document.getElementById('info-heading').innerText = translations[currentLang].heading;
         document.getElementById('info-p1').innerText = translations[currentLang].p1;
         document.getElementById('info-p2').innerText = translations[currentLang].p2;
-        
-        // Перевод древа
         document.getElementById('tree-heading').innerText = translations[currentLang].treeHeading;
-        for (let i = 1; i <= 7; i++) {
-            document.getElementById(`lbl-g${i}`).innerText = translations[currentLang][`g${i}_lbl`];
-            document.getElementById(`val-g${i}`).innerText = translations[currentLang][`g${i}_val`];
+        
+        // Поколения (лейблы)
+        for(let i=1; i<=8; i++) {
+            document.getElementById(`lbl-g${i}`).innerText = translations[currentLang][`g${i}`];
         }
-        
-        // Кнопки детей
-        document.getElementById('btn-vasily').innerText = translations[currentLang].btn_vasily;
-        document.getElementById('btn-petr').innerText = translations[currentLang].btn_petr;
-        document.getElementById('btn-evdokiya').innerText = translations[currentLang].btn_evdokiya;
-        document.getElementById('btn-matrona').innerText = translations[currentLang].btn_matrona;
-        document.getElementById('btn-afanasiy').innerText = translations[currentLang].btn_afanasiy;
-        document.getElementById('btn-mikhail').innerText = translations[currentLang].btn_mikhail;
-        
-        // Элементы редактирования
+
+        // Имена на кнопках древа
+        const nodes = ['naum', 'mikhail_n', 'potap', 'filipp', 'vasily', 'petr', 'evdokiya', 'matrona', 'afanasiy', 'mikhail_f', 'viktor', 'anna', 'dmitry', 'daniil', 'polina', 'angelina'];
+        nodes.forEach(node => {
+            document.getElementById(`node-${node}`).innerText = translations[currentLang][`n_${node}`];
+        });
+
+        // Карточка информации (если открыта)
         document.getElementById('btn-save-text').innerText = translations[currentLang].saveBtn;
         document.getElementById('edit-hint').innerText = translations[currentLang].editHint;
         if(currentMemberId) {
@@ -639,7 +575,7 @@
             document.getElementById('info-text').innerText = familyData[currentLang][currentMemberId].desc;
         }
 
-        // Блоки анонсов
+        // Анонсы и блоки подвала
         document.getElementById('roadmap-heading').innerText = translations[currentLang].roadmapHeading;
         document.getElementById('sec1-title').innerText = translations[currentLang].sec1Title;
         document.getElementById('sec1-desc').innerText = translations[currentLang].sec1Desc;
@@ -647,10 +583,8 @@
         document.getElementById('sec2-desc').innerText = translations[currentLang].sec2Desc;
         document.getElementById('sec3-title').innerText = translations[currentLang].sec3Title;
         document.getElementById('sec3-desc').innerText = translations[currentLang].sec3Desc;
-        
         document.getElementById('invite-heading').innerText = translations[currentLang].inviteHeading;
         document.getElementById('invite-text').innerText = translations[currentLang].inviteText;
-        
         document.getElementById('thanks-text').innerText = translations[currentLang].thanksText;
         document.getElementById('manager-title').innerText = translations[currentLang].managerTitle;
         document.getElementById('manager-desc').innerText = translations[currentLang].managerDesc;
@@ -658,13 +592,13 @@
         document.getElementById('lang-toggle').innerText = translations[currentLang].toggle;
         document.getElementById('status-text').innerText = translations[currentLang].statusText;
         
-        // Меню
+        // Переводы пунктов меню
         document.getElementById('menu-item-1').innerText = translations[currentLang].m1;
         document.getElementById('menu-item-2').innerText = translations[currentLang].m2;
         document.getElementById('menu-item-3').innerText = translations[currentLang].m3;
         document.getElementById('menu-item-4').innerText = translations[currentLang].m4;
         
-        // Почта
+        // Настройка mailto
         const mailBtn = document.getElementById('contact-btn');
         if (currentLang === 'ru') {
             mailBtn.href = "mailto:naprimerov@mail.ru?subject=Связь по проекту рода Напримеровых&body=Здравствуйте, Дмитрий!%0A%0A";
@@ -703,13 +637,13 @@
         }
     }
 
-    // Логика интерактивного древа
-    function showInfo(id, btn) {
+    // Интерактивные функции клика по узлу древа
+    function showInfo(id, element) {
         currentMemberId = id;
         const panel = document.getElementById('info-panel');
         
-        document.querySelectorAll('.sib-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        document.querySelectorAll('.tree-node').forEach(node => node.classList.remove('active'));
+        element.classList.add('active');
 
         document.getElementById('info-name').innerText = familyData[currentLang][id].name;
         document.getElementById('info-text').innerText = familyData[currentLang][id].desc;
@@ -726,7 +660,7 @@
         }
     }
 
-    // Старт страницы
+    // Инициализация первой загрузки
     renderPage();
 </script>
 
