@@ -474,18 +474,35 @@
         </div>
 
         <!-- III Поколение -->
+
+
+<!-- III Поколение -->       
         <div class="gen-section" id="gen-sec-3">
             <span class="gen-label" id="lbl-g3">III Поколение</span>
-            <div class="gen-row">
-                <div class="parent-block">
-                    <button class="tree-node main-line" id="node-potap" onclick="showInfo('potap', this)"
-                            data-name-ru="Потап Михайлович" data-name-en="Potap Mikhailovich"
-                            data-desc-ru="III поколение рода. Ведется верификация документов метрических книг."
-                            data-desc-en="Generation III. Parish register verification is in progress."></button>
-                    <div class="parent-arrow"></div>
-                </div>
+    <div class="gen-row">
+        <div class="parent-block">
+            <!-- Блок супругов: Потап и Пелагея -->
+            <div class="couple-wrapper" style="margin-bottom: 20px;">
+                <button class="tree-node" id="node-potap" onclick="showInfo('potap', this)"
+                        data-name-ru="Потап Михайлович" data-name-en="Potap Mikhailovich"
+                        data-desc-ru="III поколение рода. Ведется верификация документов метрических книг."
+                        data-desc-en="Generation III. Parish register verification is in progress."></button>
+                <button class="tree-node" id="node-pelageya" onclick="showInfo('pelageya', this)"
+                        data-name-ru="Пелагея Яковлевна (Соколова)" data-name-en="Pelageya Yakovlevna (Sokolova)"
+                        data-desc-ru="Супруга Потапа Михайловича. Происходит из дер. Смыково."
+                        data-desc-en="Spouse of Potap Mikhailovich. From the village of Smykovo."></button>
             </div>
+            
+            <!-- Ссылка на Филиппа (сына) -->
+            <div class="parent-arrow"></div>
+            <button class="tree-node" id="node-filipp" onclick="showInfo('filipp', this)"
+                    data-name-ru="Филипп Потапович" data-name-en="Filipp Potapovich"
+                    data-desc-ru="IV поколение рода. Глава большой семьи, давшей начало нескольким ветвям фамилии."
+                    data-desc-en="Generation IV. Head of a large family that initiated several branches of the name."></button>
         </div>
+    </div>
+</div>
+
 
         <!-- IV Поколение -->
         <div class="gen-section" id="gen-sec-4">
