@@ -551,29 +551,40 @@ data-desc-en="Spouse of Filipp Potapovich."></button>
         <div class="gen-section" id="gen-sec-5">
             <span class="gen-label" id="lbl-g5">V Поколение</span>
             
-            <!-- Верхний ряд: Братья и сестры -->
-            <div class="gen-row" style="gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 15px;">
-                <button class="tree-node" id="node-vasiliy" onclick="showInfo('vasiliy', this)"
-                        data-name-ru="Василий Филиппович" data-name-en="Vasiliy Filippovich"
-                        data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
-                <button class="tree-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)"
-                        data-name-ru="Афанасий Филиппович" data-name-en="Afanasiy Filippovich"
-                        data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
-                <button class="tree-node" id="node-mikhail" onclick="showInfo('mikhail', this)"
-                        data-name-ru="Михаил Филиппович" data-name-en="Mikhail Filippovich"
-                        data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
-                <button class="tree-node" id="node-matrona" onclick="showInfo('matrona', this)"
-                        data-name-ru="Матрона Филипповна" data-name-en="Matrona Filippovna"
-                        data-desc-ru="Сестра Петра Филипповича." data-desc-en="Sister of Petr Filippovich."></button>
-                <button class="tree-node" id="node-evpatiya" onclick="showInfo('evpatiya', this)"
-                        data-name-ru="Евпатия Филипповна" data-name-en="Evpatiya Filippovna"
-                        data-desc-ru="Сестра Петра Филипповича." data-desc-en="Sister of Petr Filippovich."></button>
+            <!-- Верхний ряд: Сестры -->
+            <div class="gen-row" style="gap: 15px; margin-bottom: 15px; justify-content: center;">
+                <div class="couple-wrapper">
+                    <button class="tree-node" id="node-matrona" onclick="showInfo('matrona', this)"
+                            data-name-ru="Матрона Филипповна" data-name-en="Matrona Filippovna"
+                            data-desc-ru="Сестра Петра Филипповича." data-desc-en="Sister of Petr Filippovich."></button>
+                </div>
+                <div class="couple-wrapper">
+                    <button class="tree-node" id="node-evpatiya" onclick="showInfo('evpatiya', this)"
+                            data-name-ru="Евпатия Филипповна" data-name-en="Evpatiya Filippovna"
+                            data-desc-ru="Сестра Петра Филипповича." data-desc-en="Sister of Petr Filippovich."></button>
+                </div>
             </div>
 
-            <!-- Нижний ряд: Пётр с супругой -->
-            <div class="gen-row">
+            <!-- Нижний ряд: Братья и Пётр с супругой -->
+            <div class="gen-row" style="gap: 15px; justify-content: center;">
+                <div class="couple-wrapper">
+                    <button class="tree-node" id="node-vasiliy" onclick="showInfo('vasiliy', this)"
+                            data-name-ru="Василий Филиппович" data-name-en="Vasiliy Filippovich"
+                            data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
+                </div>
+                <div class="couple-wrapper">
+                    <button class="tree-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)"
+                            data-name-ru="Афанасий Филиппович" data-name-en="Afanasiy Filippovich"
+                            data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
+                </div>
+                <div class="couple-wrapper">
+                    <button class="tree-node" id="node-mikhail" onclick="showInfo('mikhail', this)"
+                            data-name-ru="Михаил Филиппович" data-name-en="Mikhail Filippovich"
+                            data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
+                </div>
+                <!-- Пётр с супругой -->
                 <div class="parent-block">
-                    <div class="couple-wrapper">
+                    <div class="couple-wrapper" style="border: 2px solid #b89047;">
                         <button class="tree-node main-line" id="node-petr" onclick="showInfo('petr', this)"
                                 data-name-ru="Пётр Филиппович" data-name-en="Petr Filippovich"
                                 data-desc-ru="Ваш дед. Офицер СМЕРШ. Ветеран государственной службы."
@@ -587,7 +598,6 @@ data-desc-en="Spouse of Filipp Potapovich."></button>
                 </div>
             </div>
         </div>
-
 
 
 
