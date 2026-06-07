@@ -547,33 +547,47 @@ data-desc-en="Spouse of Filipp Potapovich."></button>
 
 
             
-                        <!-- V Поколение -->
+        <!-- V Поколение -->
         <div class="gen-section" id="gen-sec-5">
             <span class="gen-label" id="lbl-g5">V Поколение</span>
-            <div class="gen-row" style="gap: 10px; flex-wrap: wrap; justify-content: center;">
-                <button class="tree-node main-line" id="node-petr" onclick="showInfo('petr', this)"
-                        data-name-ru="Пётр Филиппович" data-name-en="Petr Filippovich"
-                        data-desc-ru="Ваш дед. Офицер СМЕРШ. Ветеран государственной службы."
-                        data-desc-en="Your grandfather. SMERSH officer. Veteran of state service."></button>
+            
+            <!-- Верхний ряд: Братья и сестры -->
+            <div class="gen-row" style="gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 15px;">
                 <button class="tree-node" id="node-vasiliy" onclick="showInfo('vasiliy', this)"
-                        data-name-ru="Василий" data-name-en="Vasiliy Filippovich"
+                        data-name-ru="Василий Филиппович" data-name-en="Vasiliy Filippovich"
                         data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
                 <button class="tree-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)"
-                        data-name-ru="Афанасий" data-name-en="Afanasiy Filippovich"
+                        data-name-ru="Афанасий Филиппович" data-name-en="Afanasiy Filippovich"
                         data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
                 <button class="tree-node" id="node-mikhail" onclick="showInfo('mikhail', this)"
-                        data-name-ru="Михаил" data-name-en="Mikhail Filippovich"
+                        data-name-ru="Михаил Филиппович" data-name-en="Mikhail Filippovich"
                         data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
                 <button class="tree-node" id="node-matrona" onclick="showInfo('matrona', this)"
-                        data-name-ru="Матрона" data-name-en="Matrona Filippovna"
+                        data-name-ru="Матрона Филипповна" data-name-en="Matrona Filippovna"
                         data-desc-ru="Сестра Петра Филипповича." data-desc-en="Sister of Petr Filippovich."></button>
                 <button class="tree-node" id="node-evpatiya" onclick="showInfo('evpatiya', this)"
-                        data-name-ru="Евпатия" data-name-en="Evpatiya Filippovna"
+                        data-name-ru="Евпатия Филипповна" data-name-en="Evpatiya Filippovna"
                         data-desc-ru="Сестра Петра Филипповича." data-desc-en="Sister of Petr Filippovich."></button>
             </div>
-            <!-- Стрелка вниз для сохранения связи с VI поколением -->
-            <div class="parent-arrow"></div>
+
+            <!-- Нижний ряд: Пётр с супругой -->
+            <div class="gen-row">
+                <div class="parent-block">
+                    <div class="couple-wrapper">
+                        <button class="tree-node main-line" id="node-petr" onclick="showInfo('petr', this)"
+                                data-name-ru="Пётр Филиппович" data-name-en="Petr Filippovich"
+                                data-desc-ru="Ваш дед. Офицер СМЕРШ. Ветеран государственной службы."
+                                data-desc-en="Your grandfather. SMERSH officer. Veteran of state service."></button>
+                        <button class="tree-node" id="node-anna-i" onclick="showInfo('anna-i', this)"
+                                data-name-ru="Анна Ивановна (Жена)" data-name-en="Anna Ivanovna (Wife)"
+                                data-desc-ru="Супруга Петра Филипповича."
+                                data-desc-en="Spouse of Petr Filippovich."></button>
+                    </div>
+                    <div class="parent-arrow"></div>
+                </div>
+            </div>
         </div>
+
 
 
 
