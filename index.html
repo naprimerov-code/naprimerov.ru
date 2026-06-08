@@ -8,71 +8,99 @@
     <style>
 <style>
     <style>
-    /* Глобальные настройки */
+    <style>
+    /* Уютная цветовая палитра */
     :root {
-        --gold: #b89047;
-        --dark: #1e252b;
-        --bg: #fdfcf9;
-        --text: #2b2d2f;
+        --gold: #c5a059;       /* Приглушенное золото */
+        --warm-bg: #f5f0e6;   /* Цвет старинной бумаги */
+        --paper: #ffffff;      /* Белый для карточек */
+        --text: #4a4036;       /* Глубокий шоколадный вместо черного */
+        --accent: #8b7355;     /* Мягкий коричневый */
     }
 
     body {
         font-family: 'Georgia', serif;
-        background-color: var(--bg);
+        background-color: var(--warm-bg);
         color: var(--text);
         margin: 0;
-        line-height: 1.6;
+        line-height: 1.7;
     }
 
-    /* Аккуратный Header */
+    /* Мягкий заголовок */
     header {
-        background-color: var(--dark);
-        color: #fff;
-        padding: 50px 20px;
+        background-color: #ede4d3;
+        color: var(--text);
+        padding: 40px 20px;
         text-align: center;
-        border-bottom: 4px solid var(--gold);
+        border-bottom: 2px solid var(--gold);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
 
-    header h1 { font-size: 2.2rem; margin: 0; font-weight: 300; letter-spacing: 2px; }
-    header p { color: var(--gold); font-style: italic; margin-top: 10px; }
+    header h1 { font-size: 2rem; font-weight: 400; margin: 0; }
+    header p { color: var(--accent); font-style: italic; margin-top: 10px; }
 
-    /* Карточки узлов */
+    /* Уютные карточки с мягкими тенями */
     .tree-node {
-        background: #fff;
-        border: 1px solid #e2ded5;
+        background: var(--paper);
+        border: 1px solid #dcd7ce;
+        border-radius: 12px; /* Скругления делают интерфейс дружелюбнее */
         padding: 15px;
         min-width: 180px;
         cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 4px 4px 10px rgba(0,0,0,0.03);
     }
 
     .tree-node:hover {
         border-color: var(--gold);
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(184, 144, 71, 0.2);
+        transform: scale(1.05);
+        background-color: #fffaf0;
     }
 
-    .tree-node.active { background: var(--dark); color: #fff; border-color: var(--dark); }
-
-    /* Структура древа */
-    .tree-vertical {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-        padding: 40px 10px;
+    .tree-node.active { 
+        background: var(--gold); 
+        color: #fff; 
+        border-color: var(--gold); 
     }
 
-    .gen-row {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap; /* Идеально для мобильных */
+    /* Панель информации как записка */
+    #info-panel {
+        background: #fffdf9;
+        border: 1px solid #e2ded5;
+        border-radius: 15px;
+        padding: 30px;
+        max-width: 600px;
+        margin: 40px auto;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        border-left: 5px solid var(--gold);
     }
+
+    .section-title {
+        text-align: center;
+        color: var(--accent);
+        font-variant: small-caps;
+        margin-top: 50px;
+    }
+
+    /* Кнопки в стиле "винтаж" */
+    .btn {
+        background: #ede4d3;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        color: var(--text);
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover { background: var(--gold); color: white; }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .tree-node { min-width: 120px; padding: 10px; }
+    }
+</style>
+
 
     /* Адаптивность для мобильных */
     @media (max-width: 768px) {
