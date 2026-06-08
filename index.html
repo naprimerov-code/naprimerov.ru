@@ -9,14 +9,39 @@
 <style>
     <style>
     <style>
-    /* Уютная цветовая палитра */
-    :root {
-        --gold: #c5a059;       /* Приглушенное золото */
-        --warm-bg: #f5f0e6;   /* Цвет старинной бумаги */
-        --paper: #ffffff;      /* Белый для карточек */
-        --text: #4a4036;       /* Глубокий шоколадный вместо черного */
-        --accent: #8b7355;     /* Мягкий коричневый */
-    }
+/* Исправленное меню */
+.menu-container { position: relative; display: inline-block; }
+
+.menu-dropdown {
+    display: none;
+    position: absolute; /* Отрываем от потока */
+    top: 100%;          /* Сразу под кнопкой */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border: 1px solid #dcd7ce;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+    min-width: 200px;
+    padding: 10px 0;
+}
+
+.menu-dropdown.show { display: block; }
+
+.menu-dropdown button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+}
+
+.menu-dropdown button:hover { background: #fdf5e6; }
+
 
     body {
         font-family: 'Georgia', serif;
