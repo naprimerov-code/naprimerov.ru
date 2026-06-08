@@ -421,6 +421,32 @@
             color: #94a3b8;
             text-align: center;
             letter-spacing: 0.5px;
+
+            @media (max-width: 600px) {
+    /* Позволяем элементам дерева уменьшаться */
+    .tree-node {
+        min-width: 100px !important;
+        font-size: 0.8rem !important;
+        padding: 6px 8px !important;
+    }
+
+    /* Разрешаем перенос строк в поколениях */
+    .gen-row {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        padding: 5px !important;
+    }
+
+    /* Уменьшаем контейнеры */
+    .content-container {
+        padding: 15px !important;
+        margin: 10px !important;
+    }
+
+    /* Уменьшаем шрифты заголовков */
+    header h1 { font-size: 1.8rem !important; }
+}
+
         }
     </style>
 </head>
