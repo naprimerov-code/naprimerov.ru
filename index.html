@@ -6,6 +6,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>История рода Напримеровых / History of the Naprimerov Lineage</title>
     <style>
+<style>
+    /* Базовые стили */
+    body {
+        font-family: "Georgia", "Times New Roman", serif;
+        background-color: #f7f5f0; 
+        color: #2b2d2f;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    /* Адаптивный контейнер */
+    .content-container {
+        max-width: 950px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #ffffff;
+        border: 1px solid #e2ded5;
+        box-sizing: border-box;
+    }
+
+    /* Древо - основа адаптивности */
+    .tree-vertical {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .gen-row {
+        display: flex;
+        flex-wrap: nowrap; /* Изначально в ряд */
+        justify-content: center;
+        gap: 16px;
+        padding: 10px;
+    }
+
+    .tree-node {
+        background-color: #ffffff;
+        border: 1px solid #edeae0;
+        padding: 10px;
+        cursor: pointer;
+        min-width: 150px; /* Немного уменьшили для мобильных */
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+    }
+
+    /* МОБИЛЬНАЯ АДАПТАЦИЯ */
+    @media (max-width: 600px) {
+        .gen-row {
+            flex-wrap: wrap; /* Перенос на новую строку */
+            gap: 10px;
+        }
+
+        .tree-node {
+            min-width: 120px;
+            font-size: 0.8rem;
+            padding: 8px;
+        }
+
+        .content-container {
+            margin: 10px;
+            padding: 15px;
+        }
+
+        header h1 { font-size: 1.8rem; }
+        
+        /* Скрываем лишние декоративные элементы, если мешают */
+        .parent-arrow { display: none !important; }
+    }
+
+    /* Сохраняем остальные ваши стили без изменений ниже */
+    header { background-color: #1e252b; color: #f7f5f0; padding: 40px 20px; border-bottom: 3px solid #b89047; }
+    .menu-container { position: absolute; top: 20px; right: 20px; }
+    .menu-btn { background: none; border: none; color: #b89047; font-size: 32px; cursor: pointer; }
+    .add-node-trigger { background: none; border: 1px dashed #b89047; color: #b89047; padding: 8px 20px; cursor: pointer; display: block; margin: 20px auto; }
+    
+    /* Дополнительные служебные классы */
+    .child-node { border: 1px solid #2c5282 !important; background-color: #f0f4f8 !important; }
+    .main-line { font-weight: bold; border: 1px solid #b89047; }
+</style>
+
+
+
+        
         /* Стиль Классической Летописи */
         body {
             font-family: "Georgia", "Times New Roman", serif;
