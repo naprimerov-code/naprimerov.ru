@@ -1,924 +1,741 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Родословная рода Напримеровых / Genealogy of the Naprimerov Lineage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История рода Напримеровых / History of the Naprimerov Lineage</title>
+    <style>
 <style>
-/* Стиль Классической Летописи */
-body {
-font-family: "Georgia", "Times New Roman", serif;
-background-color: #f7f5f0;
-color: #2b2d2f;
-margin: 0;
-padding: 0;
-text-align: center;
-line-height: 1.6;
-}
-header {
-background-color: #1e252b;
-color: #f7f5f0;
-padding: 60px 20px;
-border-bottom: 3px solid #b89047;
-box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-position: relative;
-}
-header h1 {
-margin: 0 0 10px 0;
-font-size: 2.6rem;
-font-weight: normal;
-letter-spacing: 1px;
-}
-header p {
-margin: 0 0 25px 0;
-font-style: italic;
-color: #b89047;
-font-size: 1.2rem;
-}
-.children-block {
-display: flex;
-flex-direction: column;
-gap: 8px;
-align-items: center;
-}
+    <style>
+    <style>
+/* Исправленное меню */
+.menu-container { position: relative; display: inline-block; }
 
-/* Принудительное отображение для кнопок детей /
-.children-block .tree-node {
-display: block !important;
-visibility: visible !important;
-opacity: 1 !important;
-color: #2b2d2f !important; / Гарантируем, что текст темный */
-background: #ffffff !important;
-border: 1px solid #edeae0 !important;
-padding: 8px 12px;
-font-size: 0.9rem;
-min-width: 160px;
-}
-
-/* Кнопка-три точки и меню */
-.menu-container {
-position: absolute;
-top: 20px;
-right: 20px;
-z-index: 1000;
-}
-.menu-btn {
-background: none;
-border: none;
-color: #b89047;
-font-size: 32px;
-cursor: pointer;
-padding: 0 10px;
-line-height: 1;
-transition: color 0.3s ease;
-user-select: none;
-}
-.menu-btn:hover { color: #f7f5f0; }
 .menu-dropdown {
-display: none;
-position: absolute;
-right: 0;
-top: 45px;
-background-color: #ffffff;
-min-width: 280px;
-box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-border: 1px solid #e2ded5;
-border-radius: 2px;
-z-index: 1010;
-padding: 6px 0;
+    display: none;
+    position: absolute; /* Отрываем от потока */
+    top: 100%;          /* Сразу под кнопкой */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border: 1px solid #dcd7ce;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+    min-width: 200px;
+    padding: 10px 0;
 }
-.menu-dropdown button {
-display: block;
-width: 100%;
-background: none;
-border: none;
-text-align: left;
-padding: 12px 20px;
-font-family: "Georgia", "Times New Roman", serif;
-font-size: 14px;
-color: #2b2d2f;
-cursor: pointer;
-transition: all 0.2s ease;
-box-sizing: border-box;
-border-bottom: 1px solid #faf9f6;
-}
-.menu-dropdown button:last-child { border-bottom: none; }
-.menu-dropdown button:hover { background-color: #faf9f6; color: #b89047; }
+
 .menu-dropdown.show { display: block; }
 
-.btn {
-font-family: Arial, sans-serif;
-background-color: transparent;
-color: #f7f5f0;
-border: 1px solid #b89047;
-padding: 12px 28px;
-margin: 8px;
-font-size: 14px;
-text-transform: uppercase;
-letter-spacing: 1px;
-cursor: pointer;
-border-radius: 2px;
-text-decoration: none;
-display: inline-block;
-transition: all 0.3s ease;
-}
-.btn:hover { background-color: #b89047; color: #1e252b; }
-.btn-contact { background-color: #b89047; color: #1e252b; font-weight: bold; }
-.btn-contact:hover { background-color: transparent; color: #b89047; }
-
-.content-container {
-max-width: 950px;
-margin: 60px auto;
-padding: 40px;
-background: #ffffff;
-border: 1px solid #e2ded5;
-border-radius: 2px;
-box-shadow: 0 5px 12 rgba(43, 45, 47, 0.03);
-position: relative;
-text-align: left;
-}
-.content-container::before {
-content: "";
-position: absolute;
-top: 8px; left: 8px; right: 8px; bottom: 8px;
-border: 1px solid #edeae0;
-pointer-events: none;
-}
-.section-title {
-font-size: 1.6rem;
-color: #1e252b;
-margin-top: 40px;
-margin-bottom: 20px;
-border-bottom: 1px solid #b89047;
-padding-bottom: 10px;
-font-weight: normal;
-letter-spacing: 0.5px;
-scroll-margin-top: 30px;
-}
-.section-title:first-of-type { margin-top: 0; }
-.info-text {
-font-size: 1.1rem;
-color: #3a3d40;
-margin-bottom: 30px;
-text-align: justify;
+.menu-dropdown button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
 }
 
-/* СТИЛИ ГЕНЕАЛОГИЧЕСКОГО ДРЕВА С СИСТЕМОЙ ЗАМЕТНЫХ СКВОЗНЫХ СТРЕЛОК */
-.tree-vertical {
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 20px 0;
-width: 100%;
-overflow-x: auto;
--webkit-overflow-scrolling: touch;
-}
-.gen-section {
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 100%;
-margin: 5px 0;
-position: relative;
-}
+.menu-dropdown button:hover { background: #fdf5e6; }
 
-/* ЖЕСТКОЕ ВЫЖИГАНИЕ ЛЮБЫХ СТАРЫХ СКРЫТЫХ ДУБЛИРУЮЩИХ СТРЕЛОК */
-.gen-section::before, .gen-section::after,
-.gen-row::before, .gen-row::after,
-.parent-block::before, .parent-block::after,
-.tree-vertical::before, .tree-vertical::after {
-content: none !important;
-display: none !important;
-}
 
-.gen-label {
-font-size: 0.75rem;
-color: #94a3b8;
-text-transform: uppercase;
-display: block;
-margin-bottom: 12px;
-font-family: Arial, sans-serif;
-letter-spacing: 1px;
-}
-.gen-row {
-display: flex;
-flex-wrap: nowrap;
-justify-content: center;
-gap: 16px;
-min-width: max-content;
-padding: 5px 20px;
-box-sizing: border-box;
-align-items: flex-start;
-}
+    body {
+        font-family: 'Georgia', serif;
+        background-color: var(--warm-bg);
+        color: var(--text);
+        margin: 0;
+        line-height: 1.7;
+    }
 
-/* Контейнер точечной вертикальной связи Родитель -> Четкая линия под ним */
-.parent-block {
-display: flex;
-flex-direction: column;
-align-items: center;
-position: relative;
-}
+    /* Мягкий заголовок */
+    header {
+        background-color: #ede4d3;
+        color: var(--text);
+        padding: 40px 20px;
+        text-align: center;
+        border-bottom: 2px solid var(--gold);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
 
-/* ОДНА ХОРОШО ЗАМЕТНАЯ СТРЕЛКА-ЛИНИЯ ПО ВСЕЙ ДЛИНЕ ПРОМЕЖУТКА /
-.parent-arrow {
-width: 2px;
-height: 38px;
-background-color: #b89047;
-margin: 12px 0 2px 0;
-position: relative;
-display: block;
-}
-/ Наконечник стрелки на конце линии */
-.parent-arrow::after {
-content: "" !important;
-display: block !important;
-position: absolute;
-bottom: -6px;
-left: 50%;
-transform: translateX(-50%);
-width: 0;
-height: 0;
-border-left: 5px solid transparent;
-border-right: 5px solid transparent;
-border-top: 7px solid #b89047;
-}
+    header h1 { font-size: 2rem; font-weight: 400; margin: 0; }
+    header p { color: var(--accent); font-style: italic; margin-top: 10px; }
 
-/* Стили для разделения веток внутри одного поколения */
-.branch-subgroup {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 8px;
-border: 1px dashed #edeae0;
-padding: 15px;
-background-color: #faf9f6;
-border-radius: 4px;
-min-width: 220px;
-}
-.branch-label {
-font-size: 11px;
-font-family: Arial, sans-serif;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-font-weight: bold;
-}
-.branch-nodes {
-display: flex;
-gap: 10px;
-flex-wrap: nowrap;
-}
+    /* Уютные карточки с мягкими тенями */
+    .tree-node {
+        background: var(--paper);
+        border: 1px solid #dcd7ce;
+        border-radius: 12px; /* Скругления делают интерфейс дружелюбнее */
+        padding: 15px;
+        min-width: 180px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 4px 4px 10px rgba(0,0,0,0.03);
+    }
 
-/* Кнопка-карточка человека */
-.tree-node {
-background-color: #ffffff;
-border: 1px solid #edeae0;
-padding: 10px 16px;
-cursor: pointer;
-font-family: "Georgia", serif;
-font-size: 1rem;
-transition: all 0.2s ease;
-text-align: center;
-min-width: 180px;
-color: #2b2d2f;
-box-sizing: border-box;
-white-space: nowrap;
-}
-.tree-node:hover { border-color: #b89047; color: #b89047; }
-.tree-node.active { background-color: #1e252b; color: #f7f5f0; border-color: #1e252b; }
+    .tree-node:hover {
+        border-color: var(--gold);
+        transform: scale(1.05);
+        background-color: #fffaf0;
+    }
 
-/* ОБЪЕДИНЕННЫЙ КВАДРАТ ДЛЯ МУЖА И ЖЕНЫ */
-.couple-wrapper {
-display: inline-flex;
-flex-wrap: nowrap;
-gap: 8px;
-padding: 10px;
-background-color: #faf7f2;
-border: 2px solid #b89047;
-box-shadow: 0 4px 10px rgba(184, 144, 71, 0.12);
-justify-content: center;
-align-items: center;
-}
-.couple-wrapper .tree-node {
-border: 1px solid transparent;
-font-weight: bold;
-background: #ffffff;
-}
-.couple-wrapper .tree-node:hover { border-color: #b89047; }
+    .tree-node.active { 
+        background: var(--gold); 
+        color: #fff; 
+        border-color: var(--gold); 
+    }
 
-/* ВЫДЕЛЕНИЕ ДЕТЕЙ ДРУГИМ ЦВЕТОМ */
-.child-node {
-border: 1px solid #2c5282 !important;
-color: #2c5282 !important;
-background-color: #f0f4f8 !important;
-font-weight: normal;
-}
-.child-node:hover { background-color: #2c5282 !important; color: #ffffff !important; }
-.child-node.active { background-color: #1a365d !important; color: #ffffff !important; border-color: #1a365d !important; }
+    /* Панель информации как записка */
+    #info-panel {
+        background: #fffdf9;
+        border: 1px solid #e2ded5;
+        border-radius: 15px;
+        padding: 30px;
+        max-width: 600px;
+        margin: 40px auto;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        border-left: 5px solid var(--gold);
+    }
 
-.main-line { font-weight: bold; border: 1px solid #b89047; }
+    .section-title {
+        text-align: center;
+        color: var(--accent);
+        font-variant: small-caps;
+        margin-top: 50px;
+    }
 
-/* Кнопка добавления родственника */
-.add-node-trigger {
-background: none;
-border: 1px dashed #b89047;
-color: #b89047;
-padding: 8px 20px;
-cursor: pointer;
-font-family: Arial, sans-serif;
-font-size: 12px;
-text-transform: uppercase;
-margin: 20px auto 0 auto;
-display: block;
-transition: all 0.3s ease;
-}
-.add-node-trigger:hover { background-color: #b89047; color: #1e252b; }
+    /* Кнопки в стиле "винтаж" */
+    .btn {
+        background: #ede4d3;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        color: var(--text);
+        cursor: pointer;
+        transition: 0.3s;
+    }
 
-/* Информационные панели */
-#info-panel, #add-panel {
-margin: 25px 0;
-padding: 20px;
-background: #faf9f6;
-border: 1px solid #b89047;
-width: 100%;
-box-sizing: border-box;
-display: none;
-}
-.edit-area, .form-input {
-width: 100%;
-min-height: 40px;
-border: 1px solid #e2ded5;
-padding: 10px;
-font-family: "Georgia", serif;
-font-size: 1rem;
-background: #ffffff;
-margin-bottom: 15px;
-box-sizing: border-box;
-text-align: left;
-}
-.edit-area { min-height: 80px; line-height: 1.5; }
-.form-select {
-width: 100%;
-height: 40px;
-border: 1px solid #e2ded5;
-padding: 5px;
-font-family: Arial, sans-serif;
-margin-bottom: 15px;
-background: #ffffff;
-}
-.form-label {
-font-family: Arial, sans-serif;
-font-size: 12px;
-color: #64748b;
-text-transform: uppercase;
-display: block;
-margin-bottom: 5px;
-text-align: left;
-}
-.btn-save {
-background: #b89047;
-color: #1e252b;
-border: none;
-padding: 8px 22px;
-cursor: pointer;
-font-family: Arial, sans-serif;
-font-size: 12px;
-text-transform: uppercase;
-font-weight: bold;
-}
+    .btn:hover { background: var(--gold); color: white; }
 
-/* Сетка для анонсов */
-.roadmap-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-gap: 20px;
-margin-top: 25px;
-}
-.roadmap-item {
-background-color: #faf9f6;
-border: 1px dashed #dcd7cc;
-padding: 20px;
-}
-.roadmap-item h4 {
-margin: 0 0 10px 0;
-color: #1e252b;
-font-size: 1.1rem;
-font-weight: normal;
-border-bottom: 1px solid #edeae0;
-padding-bottom: 5px;
-}
-.roadmap-item p { margin: 0; font-size: 0.95rem; color: #64748b; text-align: left; }
-
-.thanks-block {
-margin-top: 40px;
-padding-top: 25px;
-border-top: 1px dashed #b89047;
-font-style: italic;
-color: #5a5d60;
-font-size: 1.05rem;
-}
-.manager-block {
-background-color: #faf9f6;
-border-left: 4px solid #b89047;
-padding: 20px;
-margin-top: 40px;
-}
-.manager-block h3 { margin: 0 0 5px 0; font-size: 1.2rem; font-weight: normal; color: #1e252b; }
-.manager-block p { margin: 0; color: #64748b; font-family: Arial, sans-serif; font-size: 14px; }
-.center-wrapper { text-align: center; margin-top: 30px; }
-.status-tracker {
-margin-top: 50px;
-padding-top: 15px;
-border-top: 1px solid #edeae0;
-font-family: Arial, sans-serif;
-font-size: 12px;
-color: #94a3b8;
-text-align: center;
-letter-spacing: 0.5px;
-}
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .tree-node { min-width: 120px; padding: 10px; }
+    }
 </style>
-</head>
-<body>
+
 
 <header>
-<div class="menu-container">
-<button class="menu-btn" id="menu-trigger" onclick="toggleMenu(event)">⋮</button>
-<div class="menu-dropdown" id="menu-dropdown">
-<button onclick="menuAction(1)" id="menu-item-1">Родословное древо</button>
-<button onclick="menuAction(2)" id="menu-item-2">Цифровой архив_в разработке</button>
-<button onclick="menuAction(3)" id="menu-item-3">Военная летопись</button>
-<button onclick="menuAction(4)" id="menu-item-4">Интерактивная карта расселения</button>
-</div>
-</div>
+    <div class="menu-container">
+        <button class="menu-btn" id="menu-trigger" onclick="toggleMenu(event)">⋮</button>
+        <div class="menu-dropdown" id="menu-dropdown">
+            <button onclick="menuAction(1)" id="menu-item-1">Родословное древо</button>
+            <button onclick="menuAction(2)" id="menu-item-2">Цифровой архив_в разработке</button>
+            <button onclick="menuAction(3)" id="menu-item-3">Военная летопись</button>
+            <button onclick="menuAction(4)" id="menu-item-4">Интерактивная карта расселения</button>
+        </div>
+    </div>
 
-<h1 id="site-title">Родословная рода Напримеровых</h1>
-<p id="site-subtitle">Историко-генеалогический архив семьи</p>
-<button class="btn" id="lang-toggle" onclick="toggleLanguage()">English</button>
+    <h1 id="site-title">История рода Напримеровых</h1>
+    <p id="site-subtitle">Историко-генеалогический архив семьи</p>
+    <button class="btn" id="lang-toggle" onclick="toggleLanguage()">English</button>
 </header>
 
 <main class="content-container">
-<h2 class="section-title" id="info-heading">Общая информация</h2>
-<div class="info-text" id="info-p1"></div>
-<div class="info-text" id="info-p2"></div>
+    <h2 class="section-title" id="info-heading">Общая информация</h2>
+    <div class="info-text" id="info-p1"></div>
+    <div class="info-text" id="info-p2"></div>
 
-<!-- РАЗДЕЛ: ГЕНЕАЛОГИЧЕСКОЕ ДРЕВО -->
-<h2 class="section-title" id="tree-heading">Генеалогическое древо</h2>
-<div class="tree-vertical">
+    <h2 class="section-title" id="tree-heading">Генеалогическое древо</h2>
+    <div class="tree-vertical">
+        <div class="gen-section" id="gen-sec-1">
+            <span class="gen-label" id="lbl-g1">I Поколение</span>
+            <div class="gen-row">
+                <div class="parent-block">
+                    <button class="tree-node main-line" id="node-naum" onclick="showInfo('naum', this)"
+                            data-name-ru="Наум" data-name-en="Naum"
+                            data-desc-ru="Родоначальник задокументированной ветви. Коренной житель Рязанских земель."
+                            data-desc-en="The founding father of the documented lineage. Native to the Ryazan lands."></button>
+                    <div class="parent-arrow"></div>
+                </div>
+            </div>
+        </div>
 
-<!-- I Поколение -->
-<div class="gen-section" id="gen-sec-1">
-<span class="gen-label" id="lbl-g1">I Поколение</span>
-<div class="gen-row">
-<div class="parent-block">
-<button class="tree-node main-line" id="node-naum" onclick="showInfo('naum', this)"
-data-name-ru="Наум" data-name-en="Naum"
-data-desc-ru="Родоначальник задокументированной ветви. Коренной житель Рязанских земель."
-data-desc-en="The founding father of the documented lineage. Native to the Ryazan lands."></button>
-<div class="parent-arrow"></div>
-</div>
-</div>
-</div>
+        <div class="gen-section" id="gen-sec-2">
+            <span class="gen-label" id="lbl-g2">II Поколение</span>
+            <div class="gen-row">
+                <div class="parent-block">
+                    <button class="tree-node main-line" id="node-mikhail_n" onclick="showInfo('mikhail_n', this)"
+                            data-name-ru="Михаил Наумович" data-name-en="Mikhail Naumovich"
+                            data-desc-ru="II поколение рода. Исторические сведения собираются по архивным фондам."
+                            data-desc-en="Generation II. Historical records are currently being gathered from archival funds."></button>
+                    <div class="parent-arrow"></div>
+                </div>
+            </div>
+        </div>
 
-<!-- II Поколение -->
-<div class="gen-section" id="gen-sec-2">
-<span class="gen-label" id="lbl-g2">II Поколение</span>
-<div class="gen-row">
-<div class="parent-block">
-<button class="tree-node main-line" id="node-mikhail_n" onclick="showInfo('mikhail_n', this)"
-data-name-ru="Михаил Наумович" data-name-en="Mikhail Naumovich"
-data-desc-ru="II поколение рода. Исторические сведения собираются по архивным фондам."
-data-desc-en="Generation II. Historical records are currently being gathered from archival funds."></button>
-<div class="parent-arrow"></div>
-</div>
-</div>
-</div>
+        <div class="gen-section" id="gen-sec-3">
+            <span class="gen-label" id="lbl-g3">III Поколение</span>
+            <div class="gen-row">
+                <div class="parent-block">
+                    <div class="couple-wrapper">
+                        <button class="tree-node" id="node-potap" onclick="showInfo('potap', this)"
+                                data-name-ru="Потап Михайлович" data-name-en="Potap Mikhailovich"
+                                data-desc-ru="III поколение рода. Ведется верификация документов метрических книг."
+                                data-desc-en="Generation III. Parish register verification is in progress."></button>
+                        <button class="tree-node" id="node-pelageya" onclick="showInfo('pelageya', this)"
+                                data-name-ru="Пелагея Яковлевна" data-name-en="Pelageya Yakovlevna (Sokolova)"
+                                data-desc-ru="Супруга Потапа Михайловича. Происходит из дер. Смыково."
+                                data-desc-en="Spouse of Potap Mikhailovich. From the village of Smykovo."></button>
+                    </div>
+                    <div class="parent-arrow"></div>
+                </div>
+            </div>
+        </div>
 
-<!-- III Поколение -->
+        <div class="gen-section" id="gen-sec-4">
+            <span class="gen-label" id="lbl-g4">IV Поколение</span>
+            <div class="gen-row" style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 20px;">
+                <div class="parent-block">
+                    <div class="couple-wrapper">
+                        <button class="tree-node" id="node-filipp" onclick="showInfo('filipp', this)"
+                                data-name-ru="Филипп Потапович" data-name-en="Filipp Potapovich"
+                                data-desc-ru="IV поколение рода. Глава большой семьи."
+                                data-desc-en="Generation IV. Head of a large family."></button>
+                        <button class="tree-node" id="node-elena" onclick="showInfo('elena', this)"
+                                data-name-ru="Елена Алексеевна (Жена)" data-name-en="Elena Alekseevna (Wife)"
+                                data-desc-ru="Супруга Филиппа Потаповича."
+                                data-desc-en="Spouse of Filipp Potapovich."></button>
+                    </div>
+                    <div class="parent-arrow"></div>
+                </div>
+            </div>
+        </div>
 
+        <div class="gen-section" id="gen-sec-5">
+            <span class="gen-label" id="lbl-g5">V Поколение</span>
+            <div class="gen-row" style="gap: 15px; margin-bottom: 15px; justify-content: center;">
+                <div class="couple-wrapper">
+                    <button class="tree-node" id="node-vasiliy" onclick="showInfo('vasiliy', this)"
+                            data-name-ru="Василий Филиппович" data-name-en="Vasiliy Filippovich"
+                            data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
+                </div>
+                <div class="couple-wrapper">
+                    <button class="tree-node" id="node-matrona" onclick="showInfo('matrona', this)"
+                            data-name-ru="Матрона Филипповна" data-name-en="Matrona Filippovna"
+                            data-desc-ru="Сестра Петра Филипповича." data-desc-en="Sister of Petr Filippovich."></button>
+                </div>
+                <div class="couple-wrapper">
+                    <button class="tree-node" id="node-evpatiya" onclick="showInfo('evpatiya', this)"
+                            data-name-ru="Евпатия Филипповна" data-name-en="Evpatiya Filippovna"
+                            data-desc-ru="Сестра Петра Филипповича." data-desc-en="Sister of Petr Filippovich."></button>
+                </div>
+            </div>
+            <div class="gen-row" style="gap: 15px; justify-content: center;">
+                <div class="couple-wrapper">
+                    <button class="tree-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)"
+                            data-name-ru="Афанасий Филиппович" data-name-en="Afanasiy Filippovich"
+                            data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
+                </div>
+                <div class="couple-wrapper">
+                    <button class="tree-node" id="node-mikhail" onclick="showInfo('mikhail', this)"
+                            data-name-ru="Михаил Филиппович" data-name-en="Mikhail Filippovich"
+                            data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
+                </div>
+                <div class="parent-block">
+                    <div class="couple-wrapper" style="border: 2px solid #b89047;">
+                        <button class="tree-node main-line" id="node-petr" onclick="showInfo('petr', this)"
+                                data-name-ru="Пётр Филиппович" data-name-en="Petr Filippovich"
+                                data-desc-ru="Ваш дед. Офицер СМЕРШ. Ветеран государственной службы."
+                                data-desc-en="Your grandfather. SMERSH officer. Veteran of state service."></button>
+                        <button class="tree-node" id="node-anna-i" onclick="showInfo('anna-i', this)"
+                                data-name-ru="Анна Ивановна (Жена)" data-name-en="Anna Ivanovna (Wife)"
+                                data-desc-ru="Супруга Петра Филипповича."
+                                data-desc-en="Spouse of Petr Filippovich."></button>
+                    </div>
+                    <div class="parent-arrow"></div>
+                </div>
+            </div>
+        </div>
 
-<!-- III Поколение -->
- <div class="gen-section" id="gen-sec-3">
-<div class="gen-section" id="gen-sec-3">
-<span class="gen-label" id="lbl-g3">III Поколение</span>
-<div class="gen-row">
-<div class="parent-block">
-<div class="couple-wrapper" style="margin-bottom: 0;">
-<button class="tree-node" id="node-potap" onclick="showInfo('potap', this)"
-data-name-ru="Потап Михайлович" data-name-en="Potap Mikhailovich"
-data-desc-ru="III поколение рода. Ведется верификация документов метрических книг."
-data-desc-en="Generation III. Parish register verification is in progress."></button>
-<button class="tree-node" id="node-pelageya" onclick="showInfo('pelageya', this)"
-data-name-ru="Пелагея Яковлевна" data-name-en="Pelageya Yakovlevna (Sokolova)"
-data-desc-ru="Супруга Потапа Михайловича. Происходит из дер. Смыково."
-data-desc-en="Spouse of Potap Mikhailovich. From the village of Smykovo."></button>
-</div>
-<div class="parent-arrow"></div>
-</div>
-</div>
-</div>
+        <div class="gen-section" id="gen-sec-6">
+            <span class="gen-label" id="lbl-g6">VI Поколение</span>
+            <div class="gen-row">
+                <div class="parent-block">
+                    <div class="couple-wrapper">
+                        <button class="tree-node" id="node-viktor" onclick="showInfo('viktor', this)"
+                                data-name-ru="Виктор Петрович" data-name-en="Viktor Petrovich"
+                                data-desc-ru="Родился в 1947 г. Посвятил жизнь служению закону и государству: карьера в правоохранительных органах, службе судебных приставов и таможне."
+                                data-desc-en="Born in 1947. Dedicated his life to state service and law enforcement, serving in police departments, bailiff services, and customs."></button>
+                        <button class="tree-node" id="node-nadezhda" onclick="showInfo('nadezhda', this)"
+                                data-name-ru="Надежда Петровна (Жена)" data-name-en="Nadezhda Petrovna (Wife)"
+                                data-desc-ru="Супруга Виктора Петровича. VI поколение рода."
+                                data-desc-en="Spouse of Viktor Petrovich. Generation VI."></button>
+                    </div>
+                    <div class="parent-arrow"></div>
+                </div>
+            </div>
+        </div>
 
+        <div class="gen-section" id="gen-sec-7">
+            <span class="gen-label" id="lbl-g7">VII Поколение</span>
+            <div class="gen-row" style="gap: 20px;">
+                <div class="parent-block">
+                    <div class="couple-wrapper">
+                        <button class="tree-node" id="node-dmitry" onclick="showInfo('dmitry', this)"
+                                data-name-ru="Дмитрий Викторович" data-name-en="Dmitriy Viktorovich"
+                                data-desc-ru="Капитан морского флота (нефтеналивные и химические танкеры). Основатель и хранитель цифрового архива фамилии."
+                                data-desc-en="Merchant marine captain (oil/chemical tankers). Founder and keeper of the digital family archive."></button>
+                        <button class="tree-node" id="node-dmitry-wife" onclick="showInfo('dmitry-wife', this)"
+                                data-name-ru="Анна Викторовна (Жена)" data-name-en="Anna Viktorovna (Wife)"
+                                data-desc-ru="Супруга Дмитрия Викторовича. VII поколение рода."
+                                data-desc-en="Spouse of Dmitriy Viktorovich. Generation VII."></button>
+                    </div>
+                    <div class="parent-arrow"></div>
+                </div>
+                
+                <div class="parent-block">
+                    <button class="tree-node child-node" id="node-anna" onclick="showInfo('anna', this)"
+                            data-name-ru="Анна Викторовна" data-name-en="Anna Viktorovna"
+                            data-desc-ru="Дочь Виктора Петровича. Семейный архив в процессе наполнения."
+                            data-desc-en="Daughter of Viktor Petrovich. Family archive records are currently in progress."></button>
+                    <div class="parent-arrow"></div>
+                </div>
+            </div>
+        </div>
 
+        <div class="gen-section" id="gen-sec-8">
+            <span class="gen-label" id="lbl-g8">VIII Поколение</span>
+            <div class="gen-row" style="gap: 30px; align-items: flex-start;">
+                <div class="branch-subgroup" id="group-dmitry">
+                    <span class="branch-label" id="lbl-branch-dmitry" style="color: #b89047;">Ветвь Дмитрия</span>
+                    <div class="branch-nodes" id="row-parent-dmitry">
+                        <button class="tree-node child-node" id="node-daniil" onclick="showInfo('daniil', this)"
+                                data-name-ru="Даниил Дмитриевич" data-name-en="Daniil Dmitrievich"
+                                data-desc-ru="Сын Дмитрия Викторовича. Продолжатель прямой линии VIII поколения рода."
+                                data-desc-en="Son of Dmitriy Viktorovich. Successor of the main direct line of the VIII generation."></button>
+                        <button class="tree-node child-node" id="node-polina" onclick="showInfo('polina', this)"
+                                data-name-ru="Полина Дмитриевна" data-name-en="Polina Dmitrievna"
+                                data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых."
+                                data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage."></button>
+                        <button class="tree-node child-node" id="node-angelina" onclick="showInfo('angelina', this)"
+                                data-name-ru="Ангелина Дмитриевна" data-name-en="Angelina Dmitrievna"
+                                data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых."
+                                data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage."></button>
+                    </div>
+                </div>
+                <div class="branch-subgroup" id="group-anna">
+                    <span class="branch-label" id="lbl-branch-anna" style="color: #94a3b8;">Ветвь Анны</span>
+                    <div class="branch-nodes" id="row-parent-anna">
+                        <button class="tree-node child-node" id="node-stanislav" onclick="showInfo('stanislav', this)"
+                                data-name-ru="Станислав Владиславович" data-name-en="Stanislav Vladislavovich"
+                                data-desc-ru="Сын Анны Викторовны. VIII поколение рода Напримеровых."
+                                data-desc-en="Son of Anna Viktorovna. VIII generation of the lineage."></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- IV Поколение -->
-<div class="gen-section" id="gen-sec-4">
-<span class="gen-label" id="lbl-g4">IV Поколение</span>
-<div class="gen-row" style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 20px;">
-<div class="children-block" style="display: flex; flex-direction: column; gap: 5px;">
-<button class="tree-node" style="font-size: 0.9rem;">Василий Филиппович</button>
-<button class="tree-node" style="font-size: 0.9rem;">Афанасий Филиппович</button>
-<button class="tree-node" style="font-size: 0.9rem;">Михаил Филиппович</button>
-<button class="tree-node" style="font-size: 0.9rem;">Матрона Филипповна</button>
-<button class="tree-node" style="font-size: 0.9rem;">Евпатия Филипповна</button>
-</div>
-<div class="parent-block">
-<div class="couple-wrapper">
-<button class="tree-node" id="node-filipp" onclick="showInfo('filipp', this)"
-data-name-ru="Филипп Потапович" data-name-en="Filipp Potapovich"
-data-desc-ru="IV поколение рода. Глава большой семьи."
-data-desc-en="Generation IV. Head of a large family."></button>
-<button class="tree-node" id="node-elena" onclick="showInfo('elena', this)"
-data-name-ru="Елена Алексеевна (Жена)" data-name-en="Elena Alekseevna (Wife)"
-data-desc-ru="Супруга Филиппа Потаповича."
-data-desc-en="Spouse of Filipp Potapovich."></button>
-</div>
-<div class="parent-arrow"></div>
-</div>
-</div>
-</div>
+    <button class="add-node-trigger" id="btn-add-trigger" onclick="toggleAddPanel()">+ Добавить родственника</button>
 
+    <div id="add-panel">
+        <h4 style="margin-top:0; color:#1e252b; font-size:1.2rem; font-weight:normal;" id="add-panel-title">Добавить человека в древо</h4>
+        <label class="form-label" id="lbl-form-gen">Выберите поколение:</label>
+        <select id="form-gen-select" class="form-select" onchange="checkGenSelection()">
+            <option value="1">I Поколение</option>
+            <option value="2">II Поколение</option>
+            <option value="3">III Поколение</option>
+            <option value="4">IV Поколение</option>
+            <option value="5">V Поколение</option>
+            <option value="6">VI Поколение</option>
+            <option value="7">VII Поколение</option>
+            <option value="8">VIII Поколение</option>
+        </select>
+        <div id="parent-selector-wrapper" style="display:none;">
+            <label class="form-label" id="lbl-form-parent">Укажите родительскую ветвь:</label>
+            <select id="form-parent-select" class="form-select">
+                <option value="dmitry">Дмитрий Викторович (Ветвь Дмитрия)</option>
+                <option value="anna">Анна Викторовна (Ветвь Анны)</option>
+            </select>
+        </div>
+        <label class="form-label">Имя (Русский):</label>
+        <input type="text" id="form-name-ru" class="form-input" placeholder="Пример: Иван Петрович Напримеров">
+        <label class="form-label">Name (English):</label>
+        <input type="text" id="form-name-en" class="form-input" placeholder="Example: Ivan Petrovich Naprimerov">
+        <label class="form-label">Биография / Описание (Русский):</label>
+        <textarea id="form-desc-ru" class="edit-area" placeholder="Историческая справка..."></textarea>
+        <label class="form-label">Biography / Description (English):</label>
+        <textarea id="form-desc-en" class="edit-area" placeholder="Historical notes..."></textarea>
+        <button class="btn-save" id="btn-create-node" onclick="addNewRelative()">Вставить в структуру и сохранить</button>
+    </div>
 
+    <div id="info-panel">
+        <h4 id="info-name" style="margin-top:0; color:#1e252b; font-size:1.2rem; font-weight:normal;"></h4>
+        <div id="info-text" class="edit-area" contenteditable="true"></div>
+        <button class="btn-save" id="btn-save-text" onclick="saveInfo()">Сохранить изменения</button>
+        <small id="edit-hint" style="display:block; margin-top:8px; color:#94a3b8; font-family:Arial, sans-serif; font-size:11px;"></small>
+    </div>
 
-<!-- V Поколение -->
-<div class="gen-section" id="gen-sec-5">
-<span class="gen-label" id="lbl-g5">V Поколение</span>
+    <h2 class="section-title" id="roadmap-heading">В разработке</h2>
+    <div class="roadmap-grid">
+        <div class="roadmap-item" id="roadmap-military">
+            <h4 id="sec1-title">Военная летопись</h4>
+            <p id="sec1-desc"></p>
+        </div>
+        <div class="roadmap-item" id="roadmap-archive">
+            <h4 id="sec2-title">Цифровой архив</h4>
+            <p id="sec2-desc"></p>
+        </div>
+        <div class="roadmap-item" id="roadmap-map">
+            <h4 id="sec3-title">Карта расселения</h4>
+            <p id="sec3-desc"></p>
+        </div>
+    </div>
 
-<!-- Верхний ряд: Василий и сестры -->
-<div class="gen-row" style="gap: 15px; margin-bottom: 15px; justify-content: center;">
-<div class="couple-wrapper">
-<button class="tree-node" id="node-vasiliy" onclick="showInfo('vasiliy', this)"
-data-name-ru="Василий Филиппович" data-name-en="Vasiliy Filippovich"
-data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
-</div>
-<div class="couple-wrapper">
-<button class="tree-node" id="node-matrona" onclick="showInfo('matrona', this)"
-data-name-ru="Матрона Филипповна" data-name-en="Matrona Filippovna"
-data-desc-ru="Сестра Петра Филипповича." data-desc-en="Sister of Petr Filippovich."></button>
-</div>
-<div class="couple-wrapper">
-<button class="tree-node" id="node-evpatiya" onclick="showInfo('evpatiya', this)"
-data-name-ru="Евпатия Филипповна" data-name-en="Evpatiya Filippovna"
-data-desc-ru="Сестра Петра Филипповича." data-desc-en="Sister of Petr Filippovich."></button>
-</div>
-</div>
+    <h2 class="section-title" id="invite-heading">Ищу Напримеровых!</h2>
+    <div class="info-text" id="invite-text"></div>
+    <div class="thanks-block" id="thanks-text"></div>
 
-<!-- Нижний ряд: Афанасий, Михаил и Пётр с супругой -->
-<div class="gen-row" style="gap: 15px; justify-content: center;">
-<div class="couple-wrapper">
-<button class="tree-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)"
-data-name-ru="Афанасий Филиппович" data-name-en="Afanasiy Filippovich"
-data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
-</div>
-<div class="couple-wrapper">
-<button class="tree-node" id="node-mikhail" onclick="showInfo('mikhail', this)"
-data-name-ru="Михаил Филиппович" data-name-en="Mikhail Filippovich"
-data-desc-ru="Брат Петра Филипповича." data-desc-en="Brother of Petr Filippovich."></button>
-</div>
-<!-- Пётр с супругой -->
-<div class="parent-block">
-<div class="couple-wrapper" style="border: 2px solid #b89047;">
-<button class="tree-node main-line" id="node-petr" onclick="showInfo('petr', this)"
-data-name-ru="Пётр Филиппович" data-name-en="Petr Filippovich"
-data-desc-ru="Ваш дед. Офицер СМЕРШ. Ветеран государственной службы."
-data-desc-en="Your grandfather. SMERSH officer. Veteran of state service."></button>
-<button class="tree-node" id="node-anna-i" onclick="showInfo('anna-i', this)"
-data-name-ru="Анна Ивановна (Жена)" data-name-en="Anna Ivanovna (Wife)"
-data-desc-ru="Супруга Петра Филипповича."
-data-desc-en="Spouse of Petr Filippovich."></button>
-</div>
-<div class="parent-arrow"></div>
-</div>
-</div>
-</div>
+    <div class="manager-block">
+        <h3 id="manager-title"></h3>
+        <p id="manager-desc"></p>
+    </div>
 
+    <div class="center-wrapper">
+        <a class="btn btn-contact" id="contact-btn" href=""></a>
+    </div>
 
-
-
-<!-- VI Поколение -->
-<div class="gen-section" id="gen-sec-6">
-<span class="gen-label" id="lbl-g6">VI Поколение</span>
-<div class="gen-row">
-<div class="parent-block">
-<div class="couple-wrapper">
-<button class="tree-node" id="node-viktor" onclick="showInfo('viktor', this)"
-data-name-ru="Виктор Петрович" data-name-en="Viktor Petrovich"
-data-desc-ru="Родился в 1947 г. Посвятил жизнь служению закону и государству: карьера в правоохранительных органах, службе судебных приставов и таможне."
-data-desc-en="Born in 1947. Dedicated his life to state service and law enforcement, serving in police departments, bailiff services, and customs."></button>
-<button class="tree-node" id="node-nadezhda" onclick="showInfo('nadezhda', this)"
-data-name-ru="Надежда Петровна (Жена)" data-name-en="Nadezhda Petrovna (Wife)"
-data-desc-ru="Супруга Виктора Петровича. VI поколение рода."
-data-desc-en="Spouse of Viktor Petrovich. Generation VI."></button>
-</div>
-<div class="parent-arrow"></div>
-</div>
-</div>
-</div>
-
-
-<!-- VII Поколение -->
-<div class="gen-section" id="gen-sec-7">
-<span class="gen-label" id="lbl-g7">VII Поколение</span>
-<div class="gen-row" style="gap: 20px;">
-<div class="parent-block">
-<div class="couple-wrapper">
-<button class="tree-node" id="node-dmitry" onclick="showInfo('dmitry', this)"
-data-name-ru="Дмитрий Викторович" data-name-en="Dmitriy Viktorovich"
-data-desc-ru="Капитан морского флота (нефтеналивные и химические танкеры). Основатель и хранитель цифрового архива фамилии."
-data-desc-en="Merchant marine captain (oil/chemical tankers). Founder and keeper of the digital family archive."></button>
-<button class="tree-node" id="node-dmitry-wife" onclick="showInfo('dmitry-wife', this)"
-data-name-ru="Анна Викторовна (Жена)" data-name-en="Anna Viktorovna (Wife)"
-data-desc-ru="Супруга Дмитрия Викторовича. VII поколение рода."
-data-desc-en="Spouse of Dmitriy Viktorovich. Generation VII."></button>
-</div>
-<div class="parent-arrow"></div>
-</div>
-
-<div class="parent-block">
-<button class="tree-node child-node" id="node-anna" onclick="showInfo('anna', this)"
-data-name-ru="Анна Викторовна" data-name-en="Anna Viktorovna"
-data-desc-ru="Дочь Виктора Петровича. Семейный архив в процессе наполнения."
-data-desc-en="Daughter of Viktor Petrovich. Family archive records are currently in progress."></button>
-<div class="parent-arrow"></div>
-</div>
-</div>
-</div>
-
-<!-- VIII Поколение -->
-<div class="gen-section" id="gen-sec-8">
-<span class="gen-label" id="lbl-g8">VIII Поколение</span>
-<div class="gen-row" style="gap: 30px; align-items: flex-start;">
-
-<div class="branch-subgroup" id="group-dmitry">
-<span class="branch-label" id="lbl-branch-dmitry" style="color: #b89047;">Ветвь Дмитрия</span>
-<div class="branch-nodes" id="row-parent-dmitry">
-<button class="tree-node child-node" id="node-daniil" onclick="showInfo('daniil', this)"
-data-name-ru="Даниил Дмитриевич" data-name-en="Daniil Dmitrievich"
-data-desc-ru="Сын Дмитрия Викторовича. Продолжатель прямой линии VIII поколения рода."
-data-desc-en="Son of Dmitriy Viktorovich. Successor of the main direct line of the VIII generation."></button>
-<button class="tree-node child-node" id="node-polina" onclick="showInfo('polina', this)"
-data-name-ru="Полина Дмитриевна" data-name-en="Polina Dmitrievna"
-data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых."
-data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage."></button>
-<button class="tree-node child-node" id="node-angelina" onclick="showInfo('angelina', this)"
-data-name-ru="Ангелина Дмитриевна" data-name-en="Angelina Dmitrievna"
-data-desc-ru="Дочь Дмитрия Викторовича. VIII поколение рода Напримеровых."
-data-desc-en="Daughter of Dmitriy Viktorovich. VIII generation of the lineage."></button>
-</div>
-</div>
-
-<div class="branch-subgroup" id="group-anna">
-<span class="branch-label" id="lbl-branch-anna" style="color: #94a3b8;">Ветвь Анны</span>
-<div class="branch-nodes" id="row-parent-anna">
-<button class="tree-node child-node" id="node-stanislav" onclick="showInfo('stanislav', this)"
-data-name-ru="Станислав Владиславович" data-name-en="Stanislav Vladislavovich"
-data-desc-ru="Сын Анны Викторовны. VIII поколение рода Напримеровых."
-data-desc-en="Son of Anna Viktorovna. VIII generation of the lineage."></button>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-
-<!-- Кнопка добавления -->
-<button class="add-node-trigger" id="btn-add-trigger" onclick="toggleAddPanel()">+ Добавить родственника</button>
-
-<div id="add-panel">
-<h4 style="margin-top:0; color:#1e252b; font-size:1.2rem; font-weight:normal;" id="add-panel-title">Добавить человека в древо</h4>
-<label class="form-label" id="lbl-form-gen">Выберите поколение:</label>
-<select id="form-gen-select" class="form-select" onchange="checkGenSelection()">
-<option value="1">I Поколение</option>
-<option value="2">II Поколение</option>
-<option value="3">III Поколение</option>
-<option value="4">IV Поколение</option>
-<option value="5">V Поколение</option>
-<option value="6">VI Поколение</option>
-<option value="7">VII Поколение</option>
-<option value="8">VIII Поколение</option>
-</select>
-
-<div id="parent-selector-wrapper" style="display:none;">
-<label class="form-label" id="lbl-form-parent">Укажите родительскую ветвь:</label>
-<select id="form-parent-select" class="form-select">
-<option value="dmitry">Дмитрий Викторович (Ветвь Дмитрия)</option>
-<option value="anna">Анна Викторовна (Ветвь Анны)</option>
-</select>
-</div>
-
-<label class="form-label">Имя (Русский):</label>
-<input type="text" id="form-name-ru" class="form-input" placeholder="Пример: Иван Петрович Напримеров">
-<label class="form-label">Name (English):</label>
-<input type="text" id="form-name-en" class="form-input" placeholder="Example: Ivan Petrovich Naprimerov">
-<label class="form-label">Биография / Описание (Русский):</label>
-<textarea id="form-desc-ru" class="edit-area" placeholder="Историческая справка..."></textarea>
-<label class="form-label">Biography / Description (English):</label>
-<textarea id="form-desc-en" class="edit-area" placeholder="Historical notes..."></textarea>
-<button class="btn-save" id="btn-create-node" onclick="addNewRelative()">Вставить в структуру и сохранить</button>
-</div>
-
-<div id="info-panel">
-<h4 id="info-name" style="margin-top:0; color:#1e252b; font-size:1.2rem; font-weight:normal;"></h4>
-<div id="info-text" class="edit-area" contenteditable="true"></div>
-<button class="btn-save" id="btn-save-text" onclick="saveInfo()">Сохранить изменения</button>
-<small id="edit-hint" style="display:block; margin-top:8px; color:#94a3b8; font-family:Arial, sans-serif; font-size:11px;"></small>
-</div>
-
-<!-- Разделы -->
-<h2 class="section-title" id="roadmap-heading">В разработке</h2>
-<div class="roadmap-grid">
-<div class="roadmap-item" id="roadmap-military">
-<h4 id="sec1-title">Военная летопись</h4>
-<p id="sec1-desc"></p>
-</div>
-<div class="roadmap-item" id="roadmap-archive">
-<h4 id="sec2-title">Цифровой архив</h4>
-<p id="sec2-desc"></p>
-</div>
-<div class="roadmap-item" id="roadmap-map">
-<h4 id="sec3-title">Карта расселения</h4>
-<p id="sec3-desc"></p>
-</div>
-</div>
-
-<h2 class="section-title" id="invite-heading">Ищу Напримеровых!</h2>
-<div class="info-text" id="invite-text"></div>
-<div class="thanks-block" id="thanks-text"></div>
-
-<div class="manager-block">
-<h3 id="manager-title"></h3>
-<p id="manager-desc"></p>
-</div>
-
-<div class="center-wrapper">
-<a class="btn btn-contact" id="contact-btn" href=""></a>
-</div>
-
-<div class="status-tracker" id="status-text"></div>
+    <div class="status-tracker" id="status-text"></div>
 </main>
 
 <script>
-const hiddenEmail = atob("bmFwcmltZXJvdkBtYWlsLnJ1");
+    const hiddenEmail = atob("bmFwcmltZXJvdkBtYWlsLnJ1");
 
-const translations = {
-ru: {
-title: "Родословная рода Напримеровых", subtitle: "Историко-генеалогический архив семьи",
-heading: "Общая информация",
-p1: "Добро пожаловать на персональный информационный ресурс, посвященный истории, генеалогии и сохранению памяти рода Напримеровых. Цель данного проекта — объединить разрозненные архивные сведения, восстановить хронологию поколений, сохранить память об исторических корнях и наладить прочную связь между потомками.",
-p2: "В настоящее время ведется систематическая исследовательская работа по сбору исторических документов, изучению метрических книг, поиску фотографий и фиксации семейных воспоминаний. Семейная история — это живая нить, связывающая прошлое с будущим, и каждый представитель рода вносит в неё свой неповторимый вклад.",
-treeHeading: "Генеалогическое древо",
-g1: "I Поколение", g2: "II Поколение", g3: "III Поколение", g4: "IV Поколение",
-g5: "V Поколение", g6: "VI Поколение", g7: "VII Поколение", g8: "VIII Поколение",
-saveBtn: "Сохранить изменения и скачать код", editHint: "* Введите секретный код. Измененный файл сайта скачется, и внизу отобразится текстовый блок для копирования кода.",
-alertSave: "Код верен! Обновленный файл index.html скачан на ваше устройство.", alertWrongCode: "Неверный код доступа! Изменения отклонены.", promptCode: "Введите секретный код доступа для подтверждения изменений:",
-roadmapHeading: "В разработке",
-sec1Title: "Военная летопись", sec1Desc: "Систематизация документов о предках, прошедших Великую Отечественную войну и преданно служивших отечеству в государственных ведомствах.",
-sec2Title: "Цифровой архив", sec2Desc: "Реставрация, бережное сохранение и каталогизация старинных семейных фотоснимков, писем и личных архивных документов.",
-sec3Title: "Карта расселения", sec3Desc: "Визуализация исторической географии рода: от Рязанской земли до современных мест проживания и службы представителей семьи.",
-inviteHeading: "Ищу Напримеровых!", inviteText: "Привет, однофамилец или родственник. Я создаю карту нашей большой семьи и хочу отправить тебе подарок из Рязанской области. Оставь свои координаты.",
-thanksText: "Выражаю искреннюю благодарность Константину Горелову и Сергею Галкину за бесценную помощь в создании проекта.",
-managerTitle: "Проект ведет: Капитан Напримеров Дмитрий Викторович", managerDesc: "Основатель и хранитель цифрового архива фамилии",
-contact: "Написать мне", toggle: "English",
-statusText: "Текущий статус архива (июнь 2026 г.): Систематизировано IV поколения, продолжается сбор данных по архивным фондам и верификация документов.",
-m1: "Родословное древо", m2: "Цифровой архив _в разработке", m3: "Военная летопись", m4: "Interactive Map", devAlert: "Этот раздел находится в разработке.",
-addTrigger: "+ Добавить родственника", addPanelTitle: "Добавить человека в древо", formGen: "Выберите поколение:",
-lblParent: "Укажите родительскую ветвь:", branchDmitry: "Ветвь Дмитрия", branchAnna: "Ветвь Анны"
-},
-en: {
-title: "Genealogy of the Naprimerov Lineage", subtitle: "Historical and Genealogical Family Archive",
-heading: "General Information",
-p1: "Welcome to the personal information resource dedicated to the history, genealogy, and preservation of the Naprimerov family memory.",
-p2: "Currently, systematic research is underway to collect historical documents, study parish registers, locate photographs, and record family memoirs.",
-treeHeading: "Genealogical Tree",
-g1: "Generation I", g2: "Generation II", g3: "Generation III", g4: "Generation IV",
-g5: "Generation V", g6: "Generation VI", g7: "Generation VII", g8: "Generation VIII",
-saveBtn: "Save changes & Download code", editHint: "* Enter secret code. File will download, and a clean text block for copy-pasting code will appear below.",
-alertSave: "Code correct! Updated index.html successfully downloaded to your device.", alertWrongCode: "Incorrect access code! Changes discarded.", promptCode: "Enter the secret access code to save changes:",
-roadmapHeading: "In Development",
-sec1Title: "Military & State Chronicle", sec1Desc: "Systematization of historical records regarding ancestors who served in World War II and various state departments.",
-sec2Title: "Digital Archive", sec2Desc: "Restoration, preservation, and cataloging of vintage family photographs, letters, and personal archival documents.",
-sec3Title: "Lineage Geography", sec3Desc: "Visual mapping of the family's historical migration from the Ryazan region to modern settlements.",
-inviteHeading: "Looking for Naprimerovs!", inviteText: "Hello, namesake or relative! I am creating a map of our big family and would love to send you a gift from the Ryazan region.",
-thanksText: "I express my sincere gratitude to Konstantin Gorelov and Sergey Galkin for their invaluable assistance in creating this project.",
-managerTitle: "Project Managed by: Capt. Dmitriy Viktorovich Naprimerov", managerDesc: "Founder and keeper of the digital family archive",
-contact: "Contact Me", toggle: "Русский",
-statusText: "Current research status (June 2026): IV generations documented, archival data collection ongoing.",
-m1: "Genealogical Tree", m2: "Digital Archive _in development", m3: "Military Chronicle", m4: "Interactive Map", devAlert: "This section is currently under development.",
-addTrigger: "+ Add a relative", addPanelTitle: "Add a relative to the tree", formGen: "Select generation:",
-lblParent: "Select Parent Branch:", branchDmitry: "Dmitry Branch", branchAnna: "Anna Branch"
-}
-};
+    const translations = {
+        ru: {
+            title: "История рода Напримеровых", 
+            subtitle: "Историко-генеалогический архив семьи",
+            heading: "Общая информация",
+            p1: "Добро пожаловать на персональный информационный ресурс, посвященный истории, генеалогии и сохранению памяти рода Напримеровых. Цель данного проекта — объединить разрозненные архивные сведения, восстановить хронологию поколений, сохранить память об исторических корнях и наладить прочную связь между потомками.",
+            p2: "В настоящее время ведется систематическая исследовательская работа по сбору исторических документов, изучению метрических книг, поиску фотографий и фиксации семейных воспоминаний. Семейная история — это живая нить, связывающая прошлое с будущим, и каждый представитель рода вносит в неё свой неповторимый вклад.",
+            treeHeading: "Генеалогическое древо",
+            g1: "I Поколение", g2: "II Поколение", g3: "III Поколение", g4: "IV Поколение",
+            g5: "V Поколение", g6: "VI Поколение", g7: "VII Поколение", g8: "VIII Поколение",
+            saveBtn: "Сохранить изменения и скачать код", editHint: "* Введите секретный код. Измененный файл сайта скачется, и внизу отобразится текстовый блок для копирования кода.", 
+            alertSave: "Код верен! Обновленный файл index.html скачан на ваше устройство.", alertWrongCode: "Неверный код доступа! Изменения отклонены.", promptCode: "Введите секретный код доступа для подтверждения изменений:",
+            roadmapHeading: "В разработке",
+            sec1Title: "Военная летопись", sec1Desc: "Систематизация документов о предках, прошедших Великую Отечественную войну и преданно служивших отечеству в государственных ведомствах.",
+            sec2Title: "Цифровой архив", sec2Desc: "Реставрация, бережное сохранение и каталогизация старинных семейных фотоснимков, писем и личных архивных документов.",
+            sec3Title: "Карта расселения", sec3Desc: "Визуализация исторической географии рода: от Рязанской земли до современных мест проживания и службы представителей семьи.",
+            inviteHeading: "Ищу Напримеровых!", inviteText: "Привет, однофамилец или родственник. Я создаю карту нашей большой семьи и хочу отправить тебе подарок из Рязанской области. Оставь свои координаты.",
+            thanksText: "Выражаю искреннюю благодарность Константину Горелову и Сергею Галкину за бесценную помощь в создании проекта.",
+            managerTitle: "Проект ведет: Капитан Напримеров Дмитрий Викторович", managerDesc: "Основатель и хранитель цифрового архива фамилии",
+            contact: "Написать мне", toggle: "English",
+            statusText: "Текущий статус архива (июнь 2026 г.): Систематизировано IV поколения, продолжается сбор данных по архивным фондам и верификация документов.",
+            m1: "Родословное древо", m2: "Цифровой архив _в разработке", m3: "Военная летопись", m4: "Interactive Map", devAlert: "Этот раздел находится в разработке.",
+            addTrigger: "+ Добавить родственника", addPanelTitle: "Добавить человека в древо", formGen: "Выберите поколение:",
+            lblParent: "Укажите родительскую ветвь:", branchDmitry: "Ветвь Дмитрия", branchAnna: "Ветвь Анны"
+        },
+        en: {
+            title: "History of the Naprimerov Lineage", 
+            subtitle: "Historical and Genealogical Family Archive",
+            heading: "General Information",
+            p1: "Welcome to the personal information resource dedicated to the history, genealogy, and preservation of the Naprimerov family memory.",
+            p2: "Currently, systematic research is underway to collect historical documents, study parish registers, locate photographs, and record family memoirs.",
+            treeHeading: "Genealogical Tree",
+            g1: "Generation I", g2: "Generation II", g3: "Generation III", g4: "Generation IV",
+            g5: "Generation V", g6: "Generation VI", g7: "Generation VII", g8: "Generation VIII",
+            saveBtn: "Save changes & Download code", editHint: "* Enter secret code. File will download, and a clean text block for copy-pasting code will appear below.", 
+            alertSave: "Code correct! Updated index.html successfully downloaded to your device.", alertWrongCode: "Incorrect access code! Changes discarded.", promptCode: "Enter the secret access code to save changes:",
+            roadmapHeading: "In Development",
+            sec1Title: "Military & State Chronicle", sec1Desc: "Systematization of historical records regarding ancestors who served in World War II and various state departments.",
+            sec2Title: "Digital Archive", sec2Desc: "Restoration, preservation, and cataloging of vintage family photographs, letters, and personal archival documents.",
+            sec3Title: "Lineage Geography", sec3Desc: "Visual mapping of the family's historical migration from the Ryazan region to modern settlements.",
+            inviteHeading: "Looking for Naprimerovs!", inviteText: "Hello, namesake or relative! I am creating a map of our big family and would love to send you a gift from the Ryazan region.",
+            thanksText: "I express my sincere gratitude to Konstantin Gorelov and Sergey Galkin for their invaluable assistance in creating this project.",
+            managerTitle: "Project Managed by: Capt. Dmitriy Viktorovich Naprimerov", managerDesc: "Founder and keeper of the digital family archive",
+            contact: "Contact Me", toggle: "Русский",
+            statusText: "Current research status (June 2026): IV generations documented, archival data collection ongoing.",
+            m1: "Genealogical Tree", m2: "Digital Archive _in development", m3: "Military Chronicle", m4: "Interactive Map", devAlert: "This section is currently under development.",
+            addTrigger: "+ Add a relative", addPanelTitle: "Add a relative to the tree", formGen: "Select generation:",
+            lblParent: "Select Parent Branch:", branchDmitry: "Dmitry Branch", branchAnna: "Anna Branch"
+        }
+    };
 
-let currentLang = 'ru';
-let currentMemberId = null;
+    let currentLang = 'ru';
+    let currentMemberId = null;
 
-function renderPage() {
-document.documentElement.lang = currentLang;
+    function renderPage() {
+        document.documentElement.lang = currentLang;
+        document.getElementById('site-title').innerText = translations[currentLang].title;
+        document.getElementById('site-subtitle').innerText = translations[currentLang].subtitle;
+        document.getElementById('info-heading').innerText = translations[currentLang].heading;
+        document.getElementById('info-p1').innerText = translations[currentLang].p1;
+        document.getElementById('info-p2').innerText = translations[currentLang].p2;
+        document.getElementById('tree-heading').innerText = translations[currentLang].treeHeading;
+        document.getElementById('btn-add-trigger').innerText = translations[currentLang].addTrigger;
+        document.getElementById('add-panel-title').innerText = translations[currentLang].addPanelTitle;
+        document.getElementById('lbl-form-gen').innerText = translations[currentLang].formGen;
+        document.getElementById('lbl-form-parent').innerText = translations[currentLang].lblParent;
+        document.getElementById('lbl-branch-dmitry').innerText = translations[currentLang].branchDmitry;
+        document.getElementById('lbl-branch-anna').innerText = translations[currentLang].branchAnna;
+        
+        for(let i=1; i<=8; i++) {
+            document.getElementById(`lbl-g${i}`).innerText = translations[currentLang][`g${i}`];
+        }
 
-document.getElementById('site-title').innerText = translations[currentLang].title;
-document.getElementById('site-subtitle').innerText = translations[currentLang].subtitle;
-document.getElementById('info-heading').innerText = translations[currentLang].heading;
-document.getElementById('info-p1').innerText = translations[currentLang].p1;
-document.getElementById('info-p2').innerText = translations[currentLang].p2;
-document.getElementById('tree-heading').innerText = translations[currentLang].treeHeading;
-document.getElementById('btn-add-trigger').innerText = translations[currentLang].addTrigger;
-document.getElementById('add-panel-title').innerText = translations[currentLang].addPanelTitle;
-document.getElementById('lbl-form-gen').innerText = translations[currentLang].formGen;
-document.getElementById('lbl-form-parent').innerText = translations[currentLang].lblParent;
-document.getElementById('lbl-branch-dmitry').innerText = translations[currentLang].branchDmitry;
-document.getElementById('lbl-branch-anna').innerText = translations[currentLang].branchAnna;
+        document.querySelectorAll('.tree-node').forEach(el => {
+            el.innerText = currentLang === 'ru' ? el.getAttribute('data-name-ru') : el.getAttribute('data-name-en');
+        });
 
-for(let i=1; i<=8; i++) {
-document.getElementById(lbl-g${i}).innerText = translations[currentLang][g${i}];
-}
+        document.getElementById('btn-save-text').innerText = translations[currentLang].saveBtn;
+        document.getElementById('edit-hint').innerText = translations[currentLang].editHint;
+        
+        if(currentMemberId) {
+            const activeEl = document.getElementById(`node-${currentMemberId}`);
+            if(activeEl) {
+                document.getElementById('info-name').innerText = currentLang === 'ru' ? activeEl.getAttribute('data-name-ru') : activeEl.getAttribute('data-name-en');
+                document.getElementById('info-text').innerText = currentLang === 'ru' ? activeEl.getAttribute('data-desc-ru') : activeEl.getAttribute('data-desc-en');
+            }
+        }
 
-document.querySelectorAll('.tree-node').forEach(el => {
-el.innerText = currentLang === 'ru' ? el.getAttribute('data-name-ru') : el.getAttribute('data-name-en');
-});
+        document.getElementById('roadmap-heading').innerText = translations[currentLang].roadmapHeading;
+        document.getElementById('sec1-title').innerText = translations[currentLang].sec1Title;
+        document.getElementById('sec1-desc').innerText = translations[currentLang].sec1Desc;
+        document.getElementById('sec2-title').innerText = translations[currentLang].sec2Title;
+        document.getElementById('sec2-desc').innerText = translations[currentLang].sec2Desc;
+        document.getElementById('sec3-title').innerText = translations[currentLang].sec3Title;
+        document.getElementById('sec3-desc').innerText = translations[currentLang].sec3Desc;
+        document.getElementById('invite-heading').innerText = translations[currentLang].inviteHeading;
+        document.getElementById('invite-text').innerText = translations[currentLang].inviteText;
+        document.getElementById('thanks-text').innerText = translations[currentLang].thanksText;
+        document.getElementById('manager-title').innerText = translations[currentLang].managerTitle;
+        document.getElementById('manager-desc').innerText = translations[currentLang].managerDesc;
+        document.getElementById('contact-btn').innerText = translations[currentLang].contact;
+        document.getElementById('lang-toggle').innerText = translations[currentLang].toggle;
+        document.getElementById('status-text').innerText = translations[currentLang].statusText;
+        
+        document.getElementById('menu-item-1').innerText = translations[currentLang].m1;
+        document.getElementById('menu-item-2').innerText = translations[currentLang].m2;
+        document.getElementById('menu-item-3').innerText = translations[currentLang].m3;
+        document.getElementById('menu-item-4').innerText = translations[currentLang].m4;
+        
+        const mailBtn = document.getElementById('contact-btn');
+        mailBtn.href = `mailto:${hiddenEmail}?subject=Feedback&body=Hello!`;
+    }
 
-document.getElementById('btn-save-text').innerText = translations[currentLang].saveBtn;
-document.getElementById('edit-hint').innerText = translations[currentLang].editHint;
+    function toggleLanguage() {
+        currentLang = currentLang === 'ru' ? 'en' : 'ru';
+        renderPage();
+    }
 
-if(currentMemberId) {
-const activeEl = document.getElementById(node-${currentMemberId}`);
-if(activeEl) {
-document.getElementById('info-name').innerText = currentLang === 'ru' ? activeEl.getAttribute('data-name-ru') : activeEl.getAttribute('data-name-en');
-document.getElementById('info-text').innerText = currentLang === 'ru' ? activeEl.getAttribute('data-desc-ru') : activeEl.getAttribute('data-desc-en');
-}
-}
+    function toggleMenu(event) {
+        event.stopPropagation();
+        document.getElementById('menu-dropdown').classList.toggle('show');
+    }
 
-document.getElementById('roadmap-heading').innerText = translations[currentLang].roadmapHeading;
-document.getElementById('sec1-title').innerText = translations[currentLang].sec1Title;
-document.getElementById('sec1-desc').innerText = translations[currentLang].sec1Desc;
-document.getElementById('sec2-title').innerText = translations[currentLang].sec2Title;
-document.getElementById('sec2-desc').innerText = translations[currentLang].sec2Desc;
-document.getElementById('sec3-title').innerText = translations[currentLang].sec3Title;
-document.getElementById('sec3-desc').innerText = translations[currentLang].sec3Desc;
-document.getElementById('invite-heading').innerText = translations[currentLang].inviteHeading;
-document.getElementById('invite-text').innerText = translations[currentLang].inviteText;
-document.getElementById('thanks-text').innerText = translations[currentLang].thanksText;
-document.getElementById('manager-title').innerText = translations[currentLang].managerTitle;
-document.getElementById('manager-desc').innerText = translations[currentLang].managerDesc;
-document.getElementById('contact-btn').innerText = translations[currentLang].contact;
-document.getElementById('lang-toggle').innerText = translations[currentLang].toggle;
-document.getElementById('status-text').innerText = translations[currentLang].statusText;
+    window.addEventListener('click', function() {
+        const dropdown = document.getElementById('menu-dropdown');
+        if (dropdown.classList.contains('show')) dropdown.classList.remove('show');
+    });
 
-document.getElementById('menu-item-1').innerText = translations[currentLang].m1;
-document.getElementById('menu-item-2').innerText = translations[currentLang].m2;
-document.getElementById('menu-item-3').innerText = translations[currentLang].m3;
-document.getElementById('menu-item-4').innerText = translations[currentLang].m4;
+    function menuAction(id) {
+        if (id === 1) document.getElementById('tree-heading').scrollIntoView({ behavior: 'smooth' });
+        else if (id === 2) alert(translations[currentLang].devAlert);
+        else if (id === 3) document.getElementById('roadmap-military').scrollIntoView({ behavior: 'smooth' });
+        else if (id === 4) document.getElementById('roadmap-map').scrollIntoView({ behavior: 'smooth' });
+    }
 
-const mailBtn = document.getElementById('contact-btn');
-mailBtn.href = mailto:${hiddenEmail}?subject=Feedback&body=Hello!`;
-}
+    function showInfo(id, element) {
+        currentMemberId = id;
+        document.getElementById('add-panel').style.display = 'none';
+        const panel = document.getElementById('info-panel');
+        
+        document.querySelectorAll('.tree-node').forEach(node => node.classList.remove('active'));
+        element.classList.add('active');
 
-function toggleLanguage() {
-currentLang = currentLang === 'ru' ? 'en' : 'ru';
-renderPage();
-}
+        document.getElementById('info-name').innerText = currentLang === 'ru' ? element.getAttribute('data-name-ru') : element.getAttribute('data-name-en');
+        document.getElementById('info-text').innerText = currentLang === 'ru' ? element.getAttribute('data-desc-ru') : element.getAttribute('data-desc-en');
 
-function toggleMenu(event) {
-event.stopPropagation();
-document.getElementById('menu-dropdown').classList.toggle('show');
-}
+        panel.style.display = 'block';
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 
-window.addEventListener('click', function() {
-const dropdown = document.getElementById('menu-dropdown');
-if (dropdown.classList.contains('show')) dropdown.classList.remove('show');
-});
+    function toggleAddPanel() {
+        document.getElementById('info-panel').style.display = 'none';
+        document.querySelectorAll('.tree-node').forEach(node => node.classList.remove('active'));
+        const panel = document.getElementById('add-panel');
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        if (panel.style.display === 'block') {
+            checkGenSelection();
+            panel.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
 
-function menuAction(id) {
-if (id === 1) document.getElementById('tree-heading').scrollIntoView({ behavior: 'smooth' });
-else if (id === 2) alert(translations[currentLang].devAlert);
-else if (id === 3) document.getElementById('roadmap-military').scrollIntoView({ behavior: 'smooth' });
-else if (id === 4) document.getElementById('roadmap-map').scrollIntoView({ behavior: 'smooth' });
-}
+    function checkGenSelection() {
+        const genNum = document.getElementById('form-gen-select').value;
+        const parentWrapper = document.getElementById('parent-selector-wrapper');
+        if (genNum === "8") {
+            parentWrapper.style.display = "block";
+        } else {
+            parentWrapper.style.display = "none";
+        }
+    }
 
-function showInfo(id, element) {
-currentMemberId = id;
-document.getElementById('add-panel').style.display = 'none';
-const panel = document.getElementById('info-panel');
+    function addNewRelative() {
+        const genNum = document.getElementById('form-gen-select').value;
+        const nameRu = document.getElementById('form-name-ru').value.trim();
+        const nameEn = document.getElementById('form-name-en').value.trim();
+        const descRu = document.getElementById('form-desc-ru').value.trim();
+        const descEn = document.getElementById('form-desc-en').value.trim();
 
-document.querySelectorAll('.tree-node').forEach(node => node.classList.remove('active'));
-element.classList.add('active');
+        if(!nameRu || !nameEn) {
+            alert("Пожалуйста, заполните имя на обоих языках!");
+            return;
+        }
 
-document.getElementById('info-name').innerText = currentLang === 'ru' ? element.getAttribute('data-name-ru') : element.getAttribute('data-name-en');
-document.getElementById('info-text').innerText = currentLang === 'ru' ? element.getAttribute('data-desc-ru') : element.getAttribute('data-desc-en');
+        const uniqueId = "custom-" + Date.now();
+        let targetRow;
 
-panel.style.display = 'block';
-panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
+        if (genNum === "8") {
+            const parentValue = document.getElementById('form-parent-select').value;
+            targetRow = document.getElementById(`row-parent-${parentValue}`);
+        } else {
+            targetRow = document.querySelector(`#gen-sec-${genNum} .gen-row`);
+        }
 
-function toggleAddPanel() {
-document.getElementById('info-panel').style.display = 'none';
-document.querySelectorAll('.tree-node').forEach(node => node.classList.remove('active'));
-const panel = document.getElementById('add-panel');
-panel.
+        if(targetRow) {
+            const newBtn = document.createElement("button");
+            newBtn.className = "tree-node child-node";
+            newBtn.id = `node-${uniqueId}`;
+            newBtn.setAttribute("onclick", `showInfo('${uniqueId}', this)`);
+            newBtn.setAttribute("data-name-ru", nameRu);
+            newBtn.setAttribute("data-name-en", nameEn);
+            newBtn.setAttribute("data-desc-ru", descRu || "Информация собирается...");
+            newBtn.setAttribute("data-desc-en", descEn || "Information in progress...");
+            
+            targetRow.appendChild(newBtn);
+            
+            document.getElementById('form-name-ru').value = "";
+            document.getElementById('form-name-en').value = "";
+            document.getElementById('form-desc-ru').value = "";
+            document.getElementById('form-desc-en').value = "";
+            document.getElementById('add-panel').style.display = 'none';
+
+            currentMemberId = uniqueId;
+            showInfo(uniqueId, newBtn);
+            saveInfo();
+        }
+    }
+
+    function saveInfo() {
+        const inputCode = prompt(translations[currentLang].promptCode);
+        if (inputCode !== "270980") {
+            alert(translations[currentLang].alertWrongCode);
+            return;
+        }
+
+        if (currentMemberId) {
+            const targetNode = document.getElementById(`node-${currentMemberId}`);
+            if (targetNode) {
+                const newText = document.getElementById('info-text').innerText;
+                if (currentLang === 'ru') {
+                    targetNode.setAttribute('data-desc-ru', newText);
+                } else {
+                    targetNode.setAttribute('data-desc-en', newText);
+                }
+            }
+        }
+
+        document.querySelectorAll('.tree-node').forEach(node => node.classList.remove('active'));
+        document.getElementById('info-panel').style.display = 'none';
+        document.getElementById('add-panel').style.display = 'none';
+        currentMemberId = null;
+
+        const updatedHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+        
+        const blob = new Blob([updatedHtml], { type: "text/html;charset=utf-8" });
+        const downloadLink = document.createElement("a");
+        downloadLink.href = URL.createObjectURL(blob);
+        downloadLink.download = "index.html";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        
+        let codeWindow = document.getElementById('code-output-wrapper');
+        if(!codeWindow) {
+            codeWindow = document.createElement('div');
+            codeWindow.id = 'code-output-wrapper';
+            codeWindow.style.marginTop = "30px";
+            codeWindow.style.padding = "20px";
+            codeWindow.style.backgroundColor = "#ffffff";
+            codeWindow.style.border = "2px solid #b89047";
+            codeWindow.style.textAlign = "left";
+            document.querySelector('main').appendChild(codeWindow);
+        }
+        
+        codeWindow.innerHTML = ""; 
+        
+        const winTitle = document.createElement('h4');
+        winTitle.style.margin = "0 0 10px 0";
+        winTitle.style.color = "#1e252b";
+        winTitle.innerText = currentLang === 'ru' ? "Файл index.html обновлен и скачан!" : "File index.html updated and downloaded!";
+        
+        const winDesc = document.createElement('p');
+        winDesc.style.fontSize = "14px";
+        winDesc.style.color = "#64748b";
+        winDesc.style.margin = "0 0 15px 0";
+        winDesc.innerHTML = currentLang === 'ru' 
+            ? "Код страницы успешно перегенерирован. Вы можете скопировать его кнопкой ниже и отправить Капитану на почту <strong>naprimerov@mail.ru</strong> удобным вам способом." 
+            : "The page code has been successfully regenerated. You can copy it via the button below and forward it to the Captain at <strong>naprimerov@mail.ru</strong>.";
+        
+        const codeArea = document.createElement('textarea');
+        codeArea.id = "html-code-area";
+        codeArea.style.width = "100%";
+        codeArea.style.height = "200px";
+        codeArea.style.fontFamily = "monospace";
+        codeArea.style.fontSize = "12px";
+        codeArea.style.marginBottom = "10px";
+        codeArea.style.boxSizing = "border-box";
+        codeArea.readOnly = true;
+        codeArea.value = updatedHtml; 
+        
+        const copyBtn = document.createElement('button');
+        copyBtn.style.backgroundColor = "#b89047";
+        copyBtn.style.color = "#1e252b";
+        copyBtn.style.border = "none";
+        copyBtn.style.padding = "10px 20px";
+        copyBtn.style.cursor = "pointer";
+        copyBtn.style.fontWeight = "bold";
+        copyBtn.style.fontSize = "12px";
+        copyBtn.style.textTransform = "uppercase";
+        copyBtn.innerText = currentLang === 'ru' ? "Скопировать код в буфер" : "Copy code to clipboard";
+        
+        copyBtn.addEventListener('click', function() {
+            codeArea.select();
+            try {
+                navigator.clipboard.writeText(codeArea.value);
+                alert(currentLang === 'ru' ? 'Код успешно скопирован в буфер обмена!' : 'Code successfully copied to clipboard!');
+            } catch (err) {
+                document.execCommand('copy');
+                alert(currentLang === 'ru' ? 'Код скопирован!' : 'Код скопирован!');
+            }
+        });
+        
+        codeWindow.appendChild(winTitle);
+        codeWindow.appendChild(winDesc);
+        codeWindow.appendChild(codeArea);
+        codeWindow.appendChild(copyBtn);
+        
+        alert(translations[currentLang].alertSave);
+        codeWindow.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    renderPage();
+</script>
+
+</body>
+</html>
