@@ -150,18 +150,44 @@
 
     <h2 class="section-title" id="tree-heading">Генеалогическое древо</h2>
     <div class="tree-vertical">
-        <div class="gen-section" id="gen-sec-1">
-            <span class="gen-label" id="lbl-g1">I Поколение</span>
-            <div class="gen-row">
-                <div class="parent-block">
-                    <button class="tree-node main-line" id="node-naum" onclick="showInfo('naum', this)"
-                            data-name-ru="Наум" data-name-en="Naum"
-                            data-desc-ru="Родоначальник задокументированной ветви. Коренной житель Рязанских земель."
-                            data-desc-en="The founding father of the documented lineage. Native to the Ryazan lands."></button>
-                    <div class="parent-arrow"></div>
+        <div class="gen-section" id="gen-sec-1"><span class="gen-label" id="lbl-g1">I Поколение</span><div class="gen-row"><button class="tree-node main-line" id="node-naum" onclick="showInfo('naum', this)" data-name-ru="Наум" data-name-en="Naum"></button></div></div>
+        <div class="gen-section" id="gen-sec-2"><span class="gen-label" id="lbl-g2">II Поколение</span><div class="gen-row"><button class="tree-node main-line" id="node-mikhail_n" onclick="showInfo('mikhail_n', this)" data-name-ru="Михаил Наумович" data-name-en="Mikhail Naumovich"></button></div></div>
+        <div class="gen-section" id="gen-sec-3"><span class="gen-label" id="lbl-g3">III Поколение</span><div class="gen-row"><button class="tree-node" id="node-potap" onclick="showInfo('potap', this)" data-name-ru="Потап Михайлович" data-name-en="Potap Mikhailovich"></button></div></div>
+        <div class="gen-section" id="gen-sec-4"><span class="gen-label" id="lbl-g4">IV Поколение</span><div class="gen-row"><button class="tree-node" id="node-filipp" onclick="showInfo('filipp', this)" data-name-ru="Филипп Потапович" data-name-en="Filipp Potapovich"></button></div></div>
+
+        <div class="gen-section" id="gen-sec-5">
+            <span class="gen-label" id="lbl-g5">V Поколение</span>
+            <div class="gen-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                <div class="branch-group">
+                    <button class="tree-node" id="node-vasiliy" onclick="showInfo('vasiliy', this)" data-name-ru="Василий Филиппович" data-name-en="Vasiliy Filippovich"></button>
+                    <div class="sub-nodes" style="margin-top: 10px;">
+                        <button class="tree-node child-node" onclick="showInfo('viktor-vas', this)" data-name-ru="Виктор Васильевич" data-name-en="Viktor Vasilievich"></button>
+                        <button class="tree-node child-node" onclick="showInfo('anatoly-vas', this)" data-name-ru="Анатолий Васильевич" data-name-en="Anatoly Vasilievich"></button>
+                        <button class="tree-node child-node" onclick="showInfo('vladimir-vas', this)" data-name-ru="Владимир Васильевич" data-name-en="Vladimir Vasilievich"></button>
+                    </div>
+                </div>
+                <div class="branch-group">
+                    <button class="tree-node main-line" id="node-petr" onclick="showInfo('petr', this)" data-name-ru="Пётр Филиппович" data-name-en="Petr Filippovich"></button>
+                </div>
+                <div class="branch-group">
+                    <button class="tree-node" id="node-afanasiy" onclick="showInfo('afanasiy', this)" data-name-ru="Афанасий Филиппович" data-name-en="Afanasiy Filippovich"></button>
+                    <div class="sub-nodes" style="margin-top: 10px;">
+                        <button class="tree-node child-node" onclick="showInfo('aleksandr-af', this)" data-name-ru="Александр Афанасьевич" data-name-en="Aleksandr Afanasievich"></button>
+                        <button class="tree-node child-node" onclick="showInfo('elena-af', this)" data-name-ru="Елена Афанасьевна" data-name-en="Elena Afanasievna"></button>
+                        <button class="tree-node child-node" onclick="showInfo('tatyana-af', this)" data-name-ru="Татьяна Афанасьевна" data-name-en="Tatyana Afanasievna"></button>
+                        <button class="tree-node child-node" onclick="showInfo('serafima-af', this)" data-name-ru="Серафима" data-name-en="Serafima"></button>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="gen-section" id="gen-sec-6"><span class="gen-label" id="lbl-g6">VI Поколение</span><div class="gen-row"><button class="tree-node" id="node-viktor" onclick="showInfo('viktor', this)" data-name-ru="Виктор Петрович" data-name-en="Viktor Petrovich"></button></div></div>
+        <div class="gen-section" id="gen-sec-7"><span class="gen-label" id="lbl-g7">VII Поколение</span><div class="gen-row"><button class="tree-node" id="node-dmitry" onclick="showInfo('dmitry', this)" data-name-ru="Дмитрий Викторович" data-name-en="Dmitriy Viktorovich"></button></div></div>
+        <div class="gen-section" id="gen-sec-8"><span class="gen-label" id="lbl-g8">VIII Поколение</span><div class="gen-row" id="row-parent-dmitry"><button class="tree-node child-node" id="node-daniil" onclick="showInfo('daniil', this)" data-name-ru="Даниил Дмитриевич" data-name-en="Daniil Dmitrievich"></button></div></div>
+    </div>
+    
+    </main>
+
 
         <div class="gen-section" id="gen-sec-2">
             <span class="gen-label" id="lbl-g2">II Поколение</span>
