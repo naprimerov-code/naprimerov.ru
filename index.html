@@ -128,15 +128,55 @@
 
 
 <header>
-    <div class="menu-container">
-        <button class="menu-btn" id="menu-trigger" onclick="toggleMenu(event)">⋮</button>
-        <div class="menu-dropdown" id="menu-dropdown">
-            <button onclick="menuAction(1)" id="menu-item-1">Родословное древо</button>
-            <button onclick="menuAction(2)" id="menu-item-2">Цифровой архив_в разработке</button>
-            <button onclick="menuAction(3)" id="menu-item-3">Военная летопись</button>
-            <button onclick="menuAction(4)" id="menu-item-4">Интерактивная карта расселения</button>
+<div class="tree-vertical">
+    <!-- I поколение -->
+    <div class="gen-section"><span class="gen-label">I Поколение</span>
+        <div class="gen-row"><button class="tree-node">Наум</button></div>
+    </div>
+    <!-- II поколение -->
+    <div class="gen-section"><span class="gen-label">II Поколение</span>
+        <div class="gen-row"><button class="tree-node">Михаил Наумович</button></div>
+    </div>
+    <!-- III поколение -->
+    <div class="gen-section"><span class="gen-label">III Поколение</span>
+        <div class="gen-row"><button class="tree-node">Потап Михайлович</button><button class="tree-node">Пелагея Яковлевна</button></div>
+    </div>
+    <!-- IV поколение -->
+    <div class="gen-section"><span class="gen-label">IV Поколение</span>
+        <div class="gen-row"><button class="tree-node">Филипп Потапович</button><button class="tree-node">Елена Алексеевна</button></div>
+    </div>
+    <!-- V поколение -->
+    <div class="gen-section"><span class="gen-label">V Поколение</span>
+        <div class="gen-row" style="flex-wrap: wrap;">
+            <button class="tree-node">Василий Филиппович</button>
+            <button class="tree-node">Матрона Филипповна</button>
+            <button class="tree-node">Евпатия Филипповна</button>
+            <button class="tree-node">Афанасий Филиппович</button>
+            <button class="tree-node">Михаил Филиппович</button>
+            <button class="tree-node">Пётр Филиппович</button><button class="tree-node">Анна Ивановна</button>
+        </div>
+        <!-- Потомки V поколения (дети Василия и Афанасия) -->
+        <div class="gen-row" style="margin-top:10px;">
+            <div style="width:100%; text-align:center; font-size: 0.8em; color:#94a3b8;">Потомки: Виктор, Анатолий, Владимир Васильевичи | Александр, Елена, Татьяна, Серафима Афанасьевичи</div>
         </div>
     </div>
+    <!-- VI поколение -->
+    <div class="gen-section"><span class="gen-label">VI Поколение</span>
+        <div class="gen-row"><button class="tree-node">Виктор Петрович</button><button class="tree-node">Надежда Петровна</button></div>
+    </div>
+    <!-- VII поколение -->
+    <div class="gen-section"><span class="gen-label">VII Поколение</span>
+        <div class="gen-row"><button class="tree-node">Дмитрий Викторович</button><button class="tree-node">Анна Викторовна (жена)</button><button class="tree-node">Анна Викторовна (сестра)</button></div>
+    </div>
+    <!-- VIII поколение -->
+    <div class="gen-section"><span class="gen-label">VIII Поколение</span>
+        <div class="gen-row">
+            <div class="branch-subgroup"><small>Ветвь Дмитрия</small><br><button class="tree-node">Даниил</button><button class="tree-node">Полина</button><button class="tree-node">Ангелина</button></div>
+            <div class="branch-subgroup"><small>Ветвь Анны</small><br><button class="tree-node">Станислав</button></div>
+        </div>
+    </div>
+</div>
+
 
     <h1 id="site-title">История рода Напримеровых</h1>
     <p id="site-subtitle">Историко-генеалогический архив семьи</p>
