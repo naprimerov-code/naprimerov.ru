@@ -1,198 +1,68 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Род Напримеровых — Семейная галерея</title>
+    <!-- ================= БЛОК С КАРТИНОЙ (В САМОМ ВЕРХУ) ================= -->
     <style>
-        :root {
-            --bg-color: #121214;
-            --panel-bg: #1c1c21;
-            --gold-primary: #d4af37;
-            --gold-light: #f3e5ab;
-            --gold-dark: #aa8c2c;
-            --text-main: #e2e2e6;
-            --text-muted: #a0a0ab;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Georgia', serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 40px 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            color: var(--gold-light);
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            font-style: italic;
-        }
-
-        .container {
+        .hero-portrait-container {
             width: 100%;
             max-width: 900px;
-            background-color: var(--panel-bg);
-            border: 2px solid var(--gold-dark);
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(212, 175, 55, 0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin: 20px auto 40px auto;
+            padding: 0 15px;
+            box-sizing: border-box;
         }
-
-        .frame-container {
+        .hero-frame-container {
             position: relative;
             width: 100%;
-            max-width: 800px;
             background: #0b0b0e;
             padding: 16px;
             border: 12px solid transparent;
-            border-image: linear-gradient(to bottom right, var(--gold-light), var(--gold-dark), #5c4b12) 1;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-            margin-bottom: 25px;
-            overflow: hidden;
+            border-image: linear-gradient(to bottom right, #f3e5ab, #aa8c2c, #5c4b12) 1;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(212, 175, 55, 0.1);
+            box-sizing: border-box;
+            text-align: center;
         }
-
-        .image-wrapper {
+        .hero-image-wrapper {
             position: relative;
             width: 100%;
             overflow: hidden;
             cursor: zoom-in;
             aspect-ratio: 16 / 9;
         }
-
-        .image-wrapper img {
+        .hero-image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
             transition: transform 0.3s ease;
         }
-
-        .image-wrapper.zoomed img {
+        .hero-image-wrapper.zoomed img {
             transform: scale(1.6);
             cursor: zoom-out;
         }
-
-        .plaque {
+        .hero-plaque {
             margin-top: 15px;
             background: linear-gradient(135deg, #2b2512, #1a160a);
-            border: 1px solid var(--gold-primary);
+            border: 1px solid #d4af37;
             text-align: center;
-            padding: 10px 20px;
+            padding: 8px 20px;
             box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.2);
+            display: inline-block;
         }
-
-        .plaque span {
+        .hero-plaque span {
             font-family: 'Times New Roman', serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             letter-spacing: 4px;
-            color: var(--gold-light);
+            color: #f3e5ab;
             text-transform: uppercase;
             font-weight: bold;
         }
-
-        .controls {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        button {
-            background: transparent;
-            color: var(--gold-light);
-            border: 1px solid var(--gold-primary);
-            padding: 8px 16px;
-            font-family: 'Georgia', serif;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-radius: 4px;
-        }
-
-        button:hover {
-            background: var(--gold-primary);
-            color: var(--bg-color);
-        }
-
-        .description {
-            margin-top: 25px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            max-width: 700px;
-        }
     </style>
-</head>
-<body>
 
-    <header>
-        <h1>naprimerov.ru</h1>
-        <p class="subtitle">Семейный исторический портал</p>
-    </header>
-
-    <div class="container">
-        <div class="frame-container">
-            <div class="image-wrapper" id="imageWrapper" title="Нажмите для приближения">
-                <!-- Вставьте ссылку на изображение или положите файл рядом с именем 69697.jpg -->
+    <div class="hero-portrait-container">
+        <div class="hero-frame-container">
+            <div class="hero-image-wrapper" id="heroImageWrapper" onclick="this.classList.toggle('zoomed')" title="Нажмите для увеличения">
                 <img src="69697.jpg" alt="Портрет рода Напримеровых">
             </div>
-            <div class="plaque">
-                <span>Напримеров</span>
+            <div class="hero-plaque">
+                <span>НАПРИМЕРОВ</span>
             </div>
         </div>
-
-        <div class="controls">
-            <button id="zoomBtn">Увеличить портрет</button>
-        </div>
-
-        <div class="description">
-            <p>Историческая галерея рода. Хранилище памяти, документов и поколений.</p>
-        </div>
     </div>
-
-    <script>
-        const wrapper = document.getElementById('imageWrapper');
-        const zoomBtn = document.getElementById('zoomBtn');
-
-        function toggleZoom() {
-            wrapper.classList.toggle('zoomed');
-            if (wrapper.classList.contains('zoomed')) {
-                zoomBtn.textContent = 'Уменьшить';
-            } else {
-                zoomBtn.textContent = 'Увеличить портрет';
-            }
-        }
-
-        wrapper.addEventListener('click', toggleZoom);
-        zoomBtn.addEventListener('click', toggleZoom);
-    </script>
-
-</body>
-</html>
+    <!-- ================= КОНЕЦ БЛОКА С КАРТИНОЙ ================= -->
